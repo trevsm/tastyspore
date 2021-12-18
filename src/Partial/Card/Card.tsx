@@ -29,10 +29,12 @@ export default function Card({
         </div>
         <div className="next">
           {price.sale ? (
-            <>
+            <p>
               <span className="cross">{price.msrp}</span>
               <span className="sale">{price.sale}</span>
-            </>
+              <br />
+              <span className="ends">Sale ends: 1/2/3</span>
+            </p>
           ) : (
             <span className="sale">{price.msrp}</span>
           )}

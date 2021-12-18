@@ -1,0 +1,40 @@
+.info {
+  max-width: 700px;
+  section {
+    color: white;
+    h1 {
+      font-weight: bold;
+      font-size: 23px;
+      color: #ffe0af;
+      letter-spacing: 1px;
+    }
+    h2 {
+      padding-bottom: 5px;
+      margin-bottom: 30px;
+      color: #fff3e4;
+      border-bottom: 1px solid #ffffff30;
+      width: fit-content;
+    }
+    p {
+      max-width: 500px;
+      padding-bottom: 20px;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #545485de;
+      border-radius: 30px;
+    }
+  }
+}

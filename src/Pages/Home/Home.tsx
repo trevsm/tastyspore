@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Logo } from "../../Components"
-import { Card, Header } from "../../Partial"
+import { Card, Header, Info } from "../../Partial"
 
 export default function Home() {
   const [height, setHeight] = useState(0)
@@ -33,6 +33,30 @@ export default function Home() {
             price={{ msrp: "$30", sale: "$23" }}
           />
         </div>
+        <hr />
+        <div className="split">
+          <Info
+            title="Introduction"
+            subtitle="Welcome to TastySpore!"
+            description={
+              <>
+                <p>
+                  The only thing better than eating mushrooms is growing them
+                  yourself. Our Mushrooms grow kits are the best kits available
+                  for growing gourmet mushrooms indoors.
+                </p>
+                <p>
+                  Our kits are designed to be easy to use, and contain a
+                  complete list of what you will need to grow your own
+                  mushrooms. We strive to provide premium quality at an
+                  affordable price. With a <b> 100% guarantee </b>, we are
+                  confident you will love our mushrooms as much as we do!
+                </p>
+              </>
+            }
+          />
+        </div>
+        {/* Bottom Spacer */}
         <div className="blob" style={{ opacity: 0 }}>
           <section style={{ minHeight: "100px" }}></section>
         </div>
