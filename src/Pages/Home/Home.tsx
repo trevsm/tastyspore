@@ -30,7 +30,7 @@ export default function Home() {
             description="Golden Oyster mushrooms are aromatic, delicate, and delicious. They also have a hint of nuttiness."
             imageSrc="/golden_oyster.png"
             imageWidth={150}
-            price={{ msrp: "$30" }}
+            price={{ msrp: "$30", sale: "$23" }}
           />
         </div>
         <div className="blob" style={{ opacity: 0 }}>
