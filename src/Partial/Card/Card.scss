@@ -16,6 +16,9 @@
     div {
       width: 100%;
     }
+    img {
+      max-width: 160px;
+    }
     &::after {
       content: "";
       position: absolute;

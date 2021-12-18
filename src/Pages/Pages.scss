@@ -11,7 +11,7 @@
 .split {
   display: flex;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
   .split {
     flex-wrap: wrap;
   }
@@ -61,6 +61,15 @@
       display: inline-block;
       padding: 5px;
       margin: 10px;
+    }
+  }
+}
+
+@media only screen and (min-width: 501px) {
+  .top {
+    .logo {
+      position: relative;
+      top: -60px;
     }
   }
 }

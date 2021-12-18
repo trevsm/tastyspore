@@ -23,7 +23,11 @@ export default function Home() {
             description="Pink Oyster mushrooms aren't just strikingly beautiful. They are also succulent and savory!"
             imageSrc="/pink_oyster.png"
           />
-          <Card title="Pink Oyster" description="asdf" />
+          <Card
+            title="Pink Oyster"
+            description="Pink Oyster mushrooms aren't just strikingly beautiful. They are also succulent and savory!"
+            imageSrc="/pink_oyster.png"
+          />
         </div>
         <Card title="Pink Oyster" description="asdf" />
         <div className="split">
