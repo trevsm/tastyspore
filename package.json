@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://trevsm.github.io",
+  "homepage": "https://tastyspore.com",
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf docs && react-scripts build && mv build docs",
+    "cname:add": "echo | set /p dummyName=\"tastyspore.com\" > docs/CNAME",
+    "build": "rm -rf docs && react-scripts build && mv build docs && yarn cname:add",
     "deploy": "gh-pages -b main -d docs",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
