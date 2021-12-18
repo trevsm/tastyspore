@@ -8,7 +8,7 @@ export default function Navigation() {
     <div className="navigation content">
       <nav>
         <div className="blob link">
-          <NavLink to="/shop">
+          <NavLink to="/">
             <section>Shop</section>
           </NavLink>
         </div>

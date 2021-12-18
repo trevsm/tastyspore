@@ -1,35 +1,66 @@
 .blob.card {
   section {
-    display: flex;
-    h2 {
-      width: fit-content;
-      font-size: 18px;
-      font-weight: bold;
-      color: #cb9053;
-      padding-bottom: 4px;
-      border-bottom: 1px solid #c9a06a36;
+    .next {
+      padding-top: 20px;
+      display: flex;
     }
-    p {
-      padding-top: 10px;
-      font-size: 15px;
-    }
-    div {
-      width: 100%;
-    }
-    img {
-      max-width: 160px;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      background-color: #f7daba5e;
-      border-radius: 30px;
-      transform: translate(3px, 5px) rotate(1deg);
+    .flex {
+      display: flex;
+      h2 {
+        width: fit-content;
+        font-size: 18px;
+        font-weight: bold;
+        color: #cb9053;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #c9a06a36;
+      }
+      p {
+        padding-top: 10px;
+        font-size: 15px;
+      }
+      div {
+        width: 100%;
+      }
+      div:last-of-type {
+        justify-content: flex-end;
+        display: flex;
+        align-items: center;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #f7daba5e;
+        border-radius: 30px;
+        transform: translate(3px, 5px) rotate(1deg);
+      }
     }
   }
+}
+.cart {
+  width: fit-content;
+  margin-left: auto;
+}
+.sale {
+  font-weight: bold;
+}
+.cross {
+  position: relative;
+  color: grey;
+  display: inline-block;
+  padding-right: 10px;
+}
+.cross::after {
+  content: "";
+  position: absolute;
+  left: 40%;
+  width: 1px;
+  top: -20%;
+  height: 37px;
+  transform: rotate(110deg);
+  background-color: grey;
 }
