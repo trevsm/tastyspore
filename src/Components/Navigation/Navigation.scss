@@ -1,0 +1,25 @@
+@import "../../Styles/Colors.scss";
+/* Logo Border Radius */
+$br: 25px;
+
+.navigation.content {
+  padding: 0 !important;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Links */
+    .blob {
+      text-align: center;
+    }
+    .blob:last-of-type section {
+      background-color: #545485;
+      box-shadow: 2px 2px 2px #51518152;
+      color: white;
+    }
+  }
+}

@@ -1,1 +1,1 @@
-# tastyspore
+# react-typescript-starter

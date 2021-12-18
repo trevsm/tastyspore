@@ -1,0 +1,32 @@
+.blob.card {
+  section {
+    display: flex;
+    h2 {
+      width: fit-content;
+      font-size: 18px;
+      font-weight: bold;
+      color: #cb9053;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #c9a06a36;
+    }
+    p {
+      padding-top: 10px;
+      font-size: 15px;
+    }
+    div {
+      width: 100%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #f7daba5e;
+      border-radius: 30px;
+      transform: translate(3px, 5px) rotate(1deg);
+    }
+  }
+}

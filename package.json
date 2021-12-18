@@ -1,0 +1,56 @@
+{
+  "name": "react-chance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://trevsm.github.io",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "rm -rf docs && react-scripts build && mv build docs",
+    "deploy": "gh-pages -b main -d docs",
+    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gh-pages": "^3.2.3",
+    "minireset.css": "^0.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.1.1",
+    "react-scripts": "^4.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@babel/runtime": "^7.15.4",
+    "@types/babel__core": "^7.1.17",
+    "@types/babel__generator": "^7.6.3",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "babel-loader": "8.1.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "sass": "^1.45.0",
+    "typescript": "^4.4.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
