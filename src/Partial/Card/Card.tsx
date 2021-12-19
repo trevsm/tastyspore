@@ -33,7 +33,7 @@ export default function Card({
               <span className="cross">{price.msrp}</span>
               <span className="sale">{price.sale}</span>
               <br />
-              <span className="ends">Sale ends: 1/2/3</span>
+              <span className="ends">Sale ends: 01/08/22</span>
             </p>
           ) : (
             <span className="sale">{price.msrp}</span>

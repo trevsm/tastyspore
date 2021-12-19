@@ -65,6 +65,28 @@
   }
 }
 
+.notice {
+  background-color: #d46262f2;
+  padding: 15px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #ffe8e8;
+  transform: translateY(-101%);
+  border-radius: 0 0 30px 30px;
+  transition: transform 1s ease;
+  max-width: 1080px;
+  margin: 0 auto;
+  a {
+    border-bottom: 1px solid;
+  }
+}
+.notice.show {
+  transform: translateY(0);
+}
+
 @media only screen and (min-width: 501px) {
   .top {
     .logo {

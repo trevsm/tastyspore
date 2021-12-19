@@ -1,10 +1,17 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Logo } from "../../Components"
+import MailingList from "../../Components/Forms/MailingList"
 import { Card, Header, Info } from "../../Partial"
 
 export default function Home() {
   const [height, setHeight] = useState(0)
+  const [popup, setPopup] = useState(false)
 
+  useEffect(() => {
+    setTimeout(() => {
+      setPopup(true)
+    }, 2000)
+  }, [])
   return (
     <div
       className="page"
@@ -12,6 +19,35 @@ export default function Home() {
         setHeight(e.currentTarget.scrollTop)
       }}
     >
+      <div className={"notice" + (popup ? " show" : "")}>
+        <button
+          style={{
+            position: "absolute",
+            right: "0",
+            top: "0",
+            padding: "10px",
+            opacity: ".5",
+            background: "none",
+            border: "none",
+            fontSize: "15px",
+            color: "inherit",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            setPopup(false)
+          }}
+        >
+          (hide popup)
+        </button>
+        <p>
+          <b>Hey!</b> You found us! &#128516; <br /> Looks like we&rsquo;re
+          still getting things set up, so some pages might not work quite yet.
+          Check back here soon or join our mailing list to get notified when we
+          officially launch. <br /> <br /> (Enter your email below to get
+          notified &#128227;)
+        </p>
+        <MailingList />
+      </div>
       <div className="content">
         <div className="top">
           <Logo height={height} />
