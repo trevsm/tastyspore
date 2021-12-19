@@ -39,7 +39,7 @@ export default function Home() {
         >
           (hide popup)
         </button>
-        <p>
+        <p style={{ paddingBottom: "10px" }}>
           <b>Hey!</b> You found us! &#128516; <br /> Looks like we&rsquo;re
           still getting things set up, so some pages might not work quite yet.
           Check back here soon or join our mailing list to get notified when we
