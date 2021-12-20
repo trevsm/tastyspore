@@ -32,11 +32,10 @@ export default function Notice() {
           (hide popup)
         </button>
         <p style={{ paddingBottom: "10px" }}>
-          <b>Hey!</b> You found us! &#128516; <br /> We&rsquo;re still getting
-          things set up, so some pages might not work quite yet. Check back here
-          soon or join our mailing list to get notified when we officially
-          launch. <br /> <br /> (Enter your email below to get notified
-          &#128227;)
+          <b>Hey!</b> &#128516; <br /> We&rsquo;re still getting things set up,
+          so some pages might not work quite yet. Check back here soon or join
+          our mailing list to get notified when we officially launch. <br />{" "}
+          <br /> (Enter your email below to get notified &#128227;)
         </p>
         <MailingList />
       </div>

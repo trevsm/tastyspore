@@ -4,10 +4,10 @@ form {
     border: 1px solid white;
     padding: 8px 15px;
     &:focus {
-      outline: 1px solid #fd6b6a;
+      outline: 1px solid #545485;
     }
     &:focus + button {
-      background-color: #fd6b6a;
+      background-color: #545485;
     }
   }
   button {
