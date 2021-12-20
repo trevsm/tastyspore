@@ -1,0 +1,22 @@
+.notice {
+  padding: 15px;
+  background-color: #d46262f2;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 15px;
+  color: #ffe8e8;
+  transform: translateY(-101%);
+  border-radius: 0 0 30px 30px;
+  transition: transform 1s ease;
+  max-width: calc(var(--maxWidth) - 40px);
+  margin: 0 auto;
+  a {
+    border-bottom: 1px solid;
+  }
+}
+.notice.show {
+  transform: translateY(0);
+}
