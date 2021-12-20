@@ -22,7 +22,7 @@
         width: 100%;
       }
       div:last-of-type {
-        justify-content: flex-end;
+        justify-content: center;
         display: flex;
         align-items: center;
       }
@@ -37,6 +37,19 @@
         background-color: #f7daba5e;
         border-radius: 30px;
         transform: translate(3px, 5px) rotate(1deg);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .blob.card {
+    section {
+      min-height: 310px;
+      .flex {
+        div:last-of-type {
+          padding-left: 10px;
+        }
       }
     }
   }

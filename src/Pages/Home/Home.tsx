@@ -17,7 +17,7 @@ export default function Home() {
             title="Pink Oyster Kit"
             description="Pink Oyster mushrooms aren't just strikingly beautiful. They are also succulent and savory!"
             imageSrc="/pink_oyster.png"
-            imageWidth={140}
+            imageWidth={150}
             price={{ msrp: "$30", sale: "$23" }}
           />
           <Card
@@ -25,6 +25,13 @@ export default function Home() {
             description="Golden Oyster mushrooms are aromatic, delicate, and delicious. They also have a hint of nuttiness."
             imageSrc="/golden_oyster.png"
             imageWidth={150}
+            price={{ msrp: "$30", sale: "$23" }}
+          />
+          <Card
+            title="Lion's Mane Kit"
+            description="Lion’s mane is highly versatile and can be enjoyed cooked, dried, extracted, or even steeped as a tea!"
+            imageSrc="/lions_mane.png"
+            imageWidth={160}
             price={{ msrp: "$30", sale: "$23" }}
           />
         </div>
