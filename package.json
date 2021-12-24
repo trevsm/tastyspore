@@ -6,7 +6,7 @@
   "homepage": "https://tastyspore.com",
   "scripts": {
     "start": "react-scripts start",
-    "cname:add": "echo | set /p dummyName=\"tastyspore.com\" > docs/CNAME",
+    "cname:add": "echo tastyspore.com > docs/CNAME",
     "build": "rm -rf docs && react-scripts build && mv build docs && yarn cname:add",
     "deploy": "gh-pages -b main -d docs",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
