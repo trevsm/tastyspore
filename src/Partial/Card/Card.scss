@@ -50,18 +50,6 @@
   padding: 0;
 }
 
-@media only screen and (min-width: 500px) {
-  .blob.card {
-    section {
-      min-height: 310px;
-      .flex {
-        div:last-of-type {
-          padding-left: 10px;
-        }
-      }
-    }
-  }
-}
 .cost,
 .cross {
   font-size: 15px;
