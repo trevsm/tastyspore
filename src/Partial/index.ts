@@ -1,5 +1,5 @@
 import Header from "./Header/Header"
 import Card from "./Card/Card"
-import Info from "./Info/Info"
+import Block from "./Block/Block"
 
-export { Header, Card, Info }
+export { Header, Card, Block }

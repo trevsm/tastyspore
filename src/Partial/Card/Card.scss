@@ -1,5 +1,9 @@
+@import "../../Styles/Colors.scss";
+
 .blob.card {
+  user-select: none;
   section {
+    // padding: 0;
     .next {
       padding-top: 20px;
       display: flex;
@@ -12,34 +16,38 @@
         font-weight: bold;
         color: #cb9053;
         padding-bottom: 4px;
-        border-bottom: 1px solid #c9a06a36;
       }
-      p {
+      p.description {
         padding-top: 10px;
-        font-size: 15px;
+        font-size: 14px;
+        padding-bottom: 10px;
       }
       div {
         width: 100%;
       }
-      div:last-of-type {
-        justify-content: center;
+      .image {
+        width: 70%;
+        justify-content: left;
         display: flex;
         align-items: center;
       }
-      &::after {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background-color: #f7daba5e;
-        border-radius: 30px;
-        transform: translate(3px, 5px) rotate(1deg);
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        .more-info {
+          font-size: 11px;
+          border-radius: 100px;
+          padding: 2px 5px;
+          color: $blue;
+          border: 1px solid $blue;
+        }
       }
     }
   }
+}
+
+.blob.card:not(.info) {
+  padding: 0;
 }
 
 @media only screen and (min-width: 500px) {
@@ -54,15 +62,14 @@
     }
   }
 }
-.cart {
-  width: fit-content;
-  margin-left: auto;
+.cost,
+.cross {
+  font-size: 15px;
 }
-.sale {
+.cost {
   font-weight: bold;
 }
 .ends {
-  font-size: 13px;
   font-weight: bold;
   opacity: 0.9;
   color: #545485;
@@ -73,14 +80,5 @@
   color: grey;
   display: inline-block;
   padding-right: 10px;
-}
-.cross::after {
-  content: "";
-  position: absolute;
-  left: 40%;
-  width: 1px;
-  top: -30%;
-  height: 37px;
-  transform: rotate(90deg);
-  background-color: grey;
+  text-decoration: line-through;
 }

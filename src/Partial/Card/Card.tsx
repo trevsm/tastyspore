@@ -1,45 +1,45 @@
 import React from "react"
+import { Image, Price } from "../../interface"
 import "./Card.scss"
-import Cart from "../../Icons/Cart"
 
 export default function Card({
   title,
-  description,
-  imageSrc,
-  imageWidth,
+  summary,
+  logo,
   price,
 }: {
   title: string
-  description: string
-  imageSrc: string
-  imageWidth: number
-  price: { msrp: string; sale?: string }
+  summary: string
+  logo: Image
+  price: Price
 }) {
   return (
     <div className="blob card">
       <section>
         <div className="flex">
-          <div>
+          <div className="image">
+            <img
+              src={logo.source}
+              alt={title}
+              style={{ maxWidth: logo.width }}
+            />
+          </div>
+          <div className="text">
             <h2>{title}</h2>
-            <p className="description">{description}</p>
-          </div>
-          <div>
-            <img src={imageSrc} alt={title} style={{ maxWidth: imageWidth }} />
-          </div>
-        </div>
-        <div className="next">
-          {price.sale ? (
-            <p>
-              <span className="cross">{price.msrp}</span>
-              <span className="sale">{price.sale}</span>
-              <br />
-              <span className="ends">Sale ends: 01/08/22</span>
-            </p>
-          ) : (
-            <span className="sale">{price.msrp}</span>
-          )}
-          <div className="cart">
-            <Cart color="#545485" />
+            <p className="summary">{summary}</p>
+            <div className="bottom">
+              {price.sale ? (
+                <p className="sale">
+                  <span className="cross">${price.msrp}</span>
+                  <span className="cost">${price.sale}</span>
+                </p>
+              ) : (
+                <span className="cost">{price.msrp}</span>
+              )}
+              <p className="more-info">
+                more info <span>+</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>

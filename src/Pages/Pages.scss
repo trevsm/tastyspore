@@ -1,7 +1,7 @@
 @import "../Styles/Colors.scss";
 
 .page {
-  background-color: #fffdf5;
+  // background-color: #fffdf5;
   min-height: 100vh;
   max-height: 100vh;
   overflow: auto;
@@ -23,19 +23,11 @@
     position: relative;
     z-index: 0;
     padding: 15px 20px;
-    border: 1px solid $blue;
     border-radius: 30px;
     min-height: 200px;
   }
 }
-.blob.link {
-  section {
-    background-color: #fffae7;
-    box-shadow: 2px 2px 2px #ebde8a9c;
-    border: unset;
-    min-height: unset;
-  }
-}
+
 .top {
   height: 300px;
 }

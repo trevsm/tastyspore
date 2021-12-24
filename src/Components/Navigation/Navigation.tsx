@@ -7,12 +7,12 @@ export default function Navigation() {
   return (
     <div className="navigation content">
       <nav>
-        <div className="blob link">
+        <div className="blob link shop">
           <NavLink to="/">
             <section>Shop</section>
           </NavLink>
         </div>
-        <div className="blob link">
+        <div className="blob link login">
           <NavLink to="/">
             <section>Log In</section>
           </NavLink>

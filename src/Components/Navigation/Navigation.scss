@@ -16,9 +16,22 @@ $br: 25px;
     .blob {
       text-align: center;
     }
-    .blob:last-of-type section {
+
+    .blob.link {
+      section {
+        border: unset;
+        min-height: unset;
+      }
+    }
+
+    .blob.link.shop section {
+      background-color: #f7daba;
+      box-shadow: 1px 1px 10px #cdb69d61;
+      color: #5c462d;
+    }
+    .blob.link.login section {
       background-color: #545485;
-      box-shadow: 2px 2px 2px #51518152;
+      box-shadow: 1px 1px 10px #51518152;
       color: white;
     }
   }
