@@ -12,6 +12,9 @@
   transition: transform 0.7s;
   max-width: 400px;
   margin: 0 auto;
+  button {
+    display: inline-block;
+  }
   a {
     border-bottom: 1px solid;
   }

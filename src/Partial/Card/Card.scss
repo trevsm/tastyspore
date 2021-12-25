@@ -2,6 +2,7 @@
 
 .blob.card {
   user-select: none;
+  margin-bottom: 30px;
   section {
     // padding: 0;
     .next {
@@ -17,7 +18,8 @@
         color: #cb9053;
         padding-bottom: 4px;
       }
-      p.description {
+      p.summary {
+        text-align: left;
         padding-top: 10px;
         font-size: 14px;
         padding-bottom: 10px;

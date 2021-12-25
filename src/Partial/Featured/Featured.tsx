@@ -13,6 +13,7 @@ export default function Featured() {
           m.featured && (
             <Card
               key={idx}
+              id={m.id}
               title={m.title}
               summary={m.summary}
               logo={m.logo}

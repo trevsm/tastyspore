@@ -29,7 +29,7 @@ export default function Notice() {
             setPopup(false)
           }}
         >
-          (hide popup)
+          (close)
         </button>
         <p style={{ paddingBottom: "10px" }}>
           <b style={{ fontSize: "20px" }}>Hey!</b> &#128516; <br /> We&rsquo;re
