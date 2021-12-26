@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo, useState } from "react"
 import { Routes, Route } from "react-router-dom"
-import { Navigation } from "../Components"
+import Navigation from "../Components/Navigation/Navigation"
 import Notice from "../Components/Notice/Notice"
 import { FocusPopContext } from "../Context"
 // import Footer from "../Components/Footer/Footer"

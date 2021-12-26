@@ -1,5 +1,5 @@
 import React from "react"
-import { Logo } from "../../Components"
+import Logo from "../../Components/Logo/Logo"
 import { Header, Block } from "../../Partial"
 import Featured from "../../Partial/Featured/Featured"
 

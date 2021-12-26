@@ -5,7 +5,7 @@
     "category": "mushroom_kit",
     "logo": {
       "sm_width": 100,
-      "lg_width": 150,
+      "lg_width": 170,
       "source": "/pink_oyster.png"
     },
     "price": {
@@ -23,7 +23,7 @@
     "category": "mushroom_kit",
     "logo": {
       "sm_width": 110,
-      "lg_width": 160,
+      "lg_width": 170,
       "source": "/golden_oyster.png"
     },
     "price": {
@@ -40,7 +40,7 @@
     "category": "mushroom_kit",
     "logo": {
       "sm_width": 100,
-      "lg_width": 150,
+      "lg_width": 170,
       "source": "/lions_mane.png"
     },
     "price": {
