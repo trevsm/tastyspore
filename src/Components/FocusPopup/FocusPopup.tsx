@@ -22,7 +22,7 @@ export default function FocusPopup({
   const price = (item.price.sale ? item.price.sale : item.price.msrp) * quantity
 
   const styles = useSpring({
-    bottom: open ? "0vh" : "-85vh",
+    transform: open ? "translateY(0%)" : "translateY(100%)",
     boxShadow: open ? "0 0 100px #0000004d" : "0 0 100px #00000000",
   })
 
