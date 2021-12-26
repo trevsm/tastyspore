@@ -7,7 +7,7 @@ export default function Footer() {
     <div className="footer">
       <div className="content">
         <div className="copy">
-          {year} all rights reserved. Site by Company Inc.
+          {year} all rights reserved. TastySpore <sub>©</sub>
         </div>
       </div>
     </div>

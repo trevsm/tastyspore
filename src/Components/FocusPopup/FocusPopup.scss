@@ -8,10 +8,14 @@
   bottom: 0;
   z-index: 10;
   width: 100%;
-  padding: 30px 20px;
   height: var(--height);
   background-color: #fff;
   border-radius: 30px 30px 0 0;
+
+  overflow: auto;
+  .content {
+    padding: 20px !important;
+  }
   // Class
   h1 {
     font-size: 21px;
@@ -30,17 +34,34 @@
   button.close {
     font-size: 15px;
     padding: 5px;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding: 20px;
+    border-radius: 0 0 30px 0;
+    box-shadow: 0px 0px 7px #00000017;
+  }
+  .bottom {
+    padding: 20px;
+    position: sticky;
+    bottom: 0px;
   }
   button.buy {
-    width: 100%;
     padding: 20px;
+    width: 100%;
     background: $blue;
     color: white;
     font-size: 20px;
     border-radius: 10px;
   }
-  .full-description {
-    padding-bottom: 20px;
+  p.full-description {
+    position: relative;
+    display: -webkit-box;
+    // -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .quantity-and-price {
     display: flex;
@@ -72,5 +93,25 @@
       border: 2px solid $blue;
       border-radius: 5px;
     }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .focus-popup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 100px #c7c7c7;
+    z-index: 10;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 600px;
+    padding: 30 px 20 px;
+    height: 100 vh;
+    background-color: #fff;
+    border-radius: 30px;
   }
 }

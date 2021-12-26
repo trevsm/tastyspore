@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo, useState } from "react"
 import { Routes, Route } from "react-router-dom"
 import Navigation from "../Components/Navigation/Navigation"
-import Notice from "../Components/Notice/Notice"
+// import Notice from "../Components/Notice/Notice"
 import { FocusPopContext } from "../Context"
 // import Footer from "../Components/Footer/Footer"
 import { Home, Shop } from "../Pages"
@@ -21,17 +21,23 @@ function CTXWrapper({ children }: { children: ReactNode | ReactNode[] }) {
 
 function App() {
   return (
+    <div className="App">
+      {/* <Notice /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+      </Routes>
+      <Navigation />
+    </div>
+  )
+}
+
+function Final() {
+  return (
     <CTXWrapper>
-      <div className="App">
-        <Notice />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-        </Routes>
-        <Navigation />
-      </div>
+      <App />
     </CTXWrapper>
   )
 }
 
-export default App
+export default Final

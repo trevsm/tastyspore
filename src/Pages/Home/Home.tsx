@@ -1,4 +1,5 @@
 import React from "react"
+import Footer from "../../Components/Footer/Footer"
 import Logo from "../../Components/Logo/Logo"
 import { Header, Block } from "../../Partial"
 import Featured from "../../Partial/Featured/Featured"
@@ -34,10 +35,9 @@ export default function Home() {
             </p>
           </Block>
         </div>
+        <Footer />
         {/* Bottom Spacer */}
-        <div className="blob" style={{ opacity: 0 }}>
-          <section style={{ minHeight: "100px" }}></section>
-        </div>
+        <div className="blob" style={{ opacity: 0 }}></div>
       </div>
     </div>
   )

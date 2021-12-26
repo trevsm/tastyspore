@@ -1,11 +1,12 @@
+@import "../../Styles/Colors.scss";
+
 .footer {
-  background-color: #3e3e3e;
   .content {
     text-align: center;
     padding-top: 30px !important;
     padding-bottom: 30px !important;
     .copy {
-      color: white;
+      color: $blue;
     }
   }
 }
