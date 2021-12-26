@@ -15,10 +15,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "resolutions": {
+    "react-scripts/postcss-preset-env/postcss-custom-properties": "^12.0.1"
+  },
   "dependencies": {
     "@formspree/react": "^2.2.4",
     "gh-pages": "^3.2.3",
     "minireset.css": "^0.0.7",
+    "postcss-custom-properties": "^12.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.1.1",
