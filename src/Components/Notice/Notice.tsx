@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react"
 import MailingList from "../../Components/Forms/MailingList"
+import { animated, useSpring } from "react-spring"
+
 import "./Notice.scss"
 
 export default function Notice() {
   const [popup, setPopup] = useState(false)
+
+  const styles = useSpring({
+    opacity: popup ? 1 : 0,
+  })
+
   useEffect(() => {
     setTimeout(() => {
       setPopup(true)
     }, 2000)
   }, [])
+
   return (
-    <div className="content">
-      <div className={"notice" + (popup ? " show" : "")}>
+    <div className="content" style={{ pointerEvents: popup ? "all" : "none" }}>
+      <animated.div className={"notice"} style={styles}>
         <button
           style={{
             position: "absolute",
@@ -39,7 +47,7 @@ export default function Notice() {
           notified &#128227;)
         </p>
         <MailingList />
-      </div>
+      </animated.div>
     </div>
   )
 }

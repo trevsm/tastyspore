@@ -3,6 +3,9 @@ import { FocusPopContext } from "../../Context"
 import getItem from "../../Data/getItem"
 import { readableName } from "../../Data/readableName"
 import Arrow from "../../Icons/Arrow"
+
+import { useSpring, animated } from "react-spring"
+
 import "./FocusPopup.scss"
 
 export default function FocusPopup({
@@ -18,12 +21,17 @@ export default function FocusPopup({
   const item = getItem(id)[0]
   const price = (item.price.sale ? item.price.sale : item.price.msrp) * quantity
 
+  const styles = useSpring({
+    bottom: open ? "0vh" : "-85vh",
+    boxShadow: open ? "0 0 100px #0000004d" : "0 0 100px #00000000",
+  })
+
   useEffect(() => {
     setQuantity(1)
   }, [open])
 
   return (
-    <div className={"focus-popup" + (open ? " open" : "")}>
+    <animated.div className={"focus-popup"} style={styles}>
       <button
         className="close"
         onClick={() => {
@@ -69,6 +77,6 @@ export default function FocusPopup({
         excepturi...
       </p>
       <button className="buy">Add to Cart</button>
-    </div>
+    </animated.div>
   )
 }
