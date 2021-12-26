@@ -1,9 +1,8 @@
 import React from "react"
 import { Card } from ".."
-import { MushroomData } from "../../interface"
+import { MushroomData } from "../../Interfaces"
 
-const data = require("../../data/mushrooms.json")
-console.log(data)
+const data = require("../../Data/mushrooms.json")
 
 export default function Featured() {
   return (

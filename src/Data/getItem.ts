@@ -1,4 +1,4 @@
-import { MushroomData } from "../interface"
+import { MushroomData } from "../Interfaces"
 
 const data = require("./mushrooms.json")
 

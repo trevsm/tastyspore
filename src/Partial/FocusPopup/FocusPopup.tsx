@@ -1,25 +1,25 @@
-import React, { Dispatch, SetStateAction } from "react"
-import getItem from "../../data/getItem"
+import React, { useContext } from "react"
+import { FocusPopContext } from "../../Context"
+import getItem from "../../Data/getItem"
 // import { Image } from "../../interface"
 import "./FocusPopup.scss"
 
 export default function FocusPopup({
   id,
   open,
-  setFocus,
 }: {
   id: string
   open: boolean
-  setFocus: Dispatch<SetStateAction<boolean>>
 }) {
   const item = getItem(id)[0]
+  const { setFocusId } = useContext(FocusPopContext)
 
   return (
     <div className={"focus-popup" + (open ? " open" : "")}>
       <button
         className="close"
         onClick={() => {
-          setFocus(false)
+          setFocusId("")
         }}
       >
         (close)

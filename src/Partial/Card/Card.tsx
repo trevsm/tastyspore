@@ -1,5 +1,6 @@
-import React, { useState } from "react"
-import { Image, Price } from "../../interface"
+import React, { useContext } from "react"
+import { FocusPopContext } from "../../Context"
+import { Image, Price } from "../../Interfaces"
 import FocusPopup from "../FocusPopup/FocusPopup"
 import "./Card.scss"
 
@@ -18,13 +19,13 @@ export default function Card({
   logo,
   price,
 }: CardInterface) {
-  const [focus, setFocus] = useState(false)
+  const { focusId, setFocusId } = useContext(FocusPopContext)
   return (
     <div className="blob card">
-      <FocusPopup id={id} open={focus} setFocus={setFocus} />
+      <FocusPopup id={id} open={focusId == id} />
       <button
         onClick={() => {
-          setFocus(true)
+          setFocusId(id)
         }}
       >
         <section>
