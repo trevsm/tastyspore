@@ -3,10 +3,7 @@
     "target": "ES5",
     "module": "ESNext",
     "moduleResolution": "node",
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
     "noEmit": true,
     "isolatedModules": true,
@@ -20,11 +17,6 @@
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "build"
-  ]
+  "include": ["src/**/*", "types"],
+  "exclude": ["node_modules", "build"]
 }

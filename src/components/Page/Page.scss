@@ -1,0 +1,79 @@
+@import "../../styles/Colors.scss";
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/*
+font-family: 'Comfortaa', cursive;
+font-family: 'Poppins', sans-serif;
+*/
+body,
+html {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #282828;
+}
+
+:root {
+  /* Max Width for content & header*/
+  --maxWidth: 1100px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+hr {
+  padding: 1px;
+  margin: 30px 10px;
+  border: unset;
+  background: #3f73d71c;
+  border-radius: 100%;
+}
+
+button {
+  display: block;
+  background-color: unset;
+  border: unset;
+}
+
+.App {
+  .content {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 100%;
+    max-width: var(--maxWidth);
+  }
+}
+
+.page {
+  // background-color: #fffdf5;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
+  padding: 20px 0;
+}
+
+.split {
+  display: flex;
+}
+@media only screen and (max-width: 700px) {
+  .split {
+    flex-wrap: wrap;
+  }
+}
+.blob {
+  width: 100%;
+  padding: 10px;
+  section {
+    position: relative;
+    z-index: 0;
+    padding: 15px 20px;
+    border-radius: 30px;
+    max-width: 500px;
+  }
+}
