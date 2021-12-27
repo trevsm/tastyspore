@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
-import { FocusPopContext } from "../../../context"
+import { FPContext } from "../../../context"
 // import getItem from "../../data/getItem"
 import Arrow from "../../icons/Arrow"
 import IsMobile from "../../../tools/IsMobile"
@@ -18,10 +18,12 @@ export default function FocusPopup({
   data: ProductFrontmatterFragment
   open: boolean
 }) {
+  // frontmatter
   const fm = data?.frontmatter
   if (!fm) return null
+
   // contexts, States, & Refs
-  const { setFocusId } = useContext(FocusPopContext)
+  const { setFocusId } = useContext(FPContext)
   const [quantity, setQuantity] = useState(1)
   const [scrollPos, setScroll] = useState(0)
   const mainRef = useRef<HTMLDivElement | null>(null)
@@ -34,8 +36,6 @@ export default function FocusPopup({
 
   if (!fm?.logo || !fm?.logo.source) return null
   const image = getImage(fm?.logo?.source.childImageSharp?.gatsbyImageData)
-
-  // const price = data?(data?.price.sale ? item.price.sale : item.price.msrp) * quantity:null
 
   // React-Spring Styles
   const showStyles = useSpring(
@@ -65,6 +65,9 @@ export default function FocusPopup({
     mainRef.current?.scrollTo(0, 0)
   }, [open])
 
+  const accentColor = fm?.accent_color as string
+  const mdxStyle = { "--h2Color": accentColor } as React.CSSProperties
+
   return (
     <animated.div
       className={"focus-popup"}
@@ -85,8 +88,8 @@ export default function FocusPopup({
         <div className="image">
           {image && <GatsbyImage image={image} alt={fm?.title as string} />}
         </div>
-        <h3>{fm?.category}</h3>
-        <h1>{fm?.class}</h1>
+        <h3>{fm?.readable_category}</h3>
+        <h1 style={{ color: accentColor }}>{fm?.readable_class}</h1>
         <div className="quantity-and-price">
           <div className="quantity">
             <button
@@ -107,14 +110,20 @@ export default function FocusPopup({
               -
             </button>
           </div>
-          <p className="price">${price}</p>
         </div>
-        <div className="full_description">
+        <hr />
+        <div className="full_description" style={mdxStyle}>
           <MDXRenderer>{data.body}</MDXRenderer>
         </div>
       </div>
       <div className="bottom">
-        <button className="buy">Add to Cart</button>
+        <p className="price" style={{ color: accentColor }}>
+          <span>$</span>
+          {price}
+        </p>
+        <button className="buy" style={{ backgroundColor: accentColor }}>
+          Add to Cart
+        </button>
       </div>
     </animated.div>
   )

@@ -30,7 +30,7 @@ export default function Home({ data }: { data: MDXQuery }) {
           <Featured nodes={nodes} />
         </div>
         <hr />
-        <Header title="Introduction:" subtitle="Welcome to TastySpore!" />
+        <Header title="Hello!" subtitle="Welcome to TastySpore." />
         <br />
         <div className="split">
           <Block>

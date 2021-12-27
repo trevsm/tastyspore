@@ -5,8 +5,11 @@ export const query = graphql`
     body
     frontmatter {
       category
+      readable_category
       class
+      readable_class
       featured
+      accent_color
       id
       logo {
         source {

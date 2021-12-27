@@ -247,8 +247,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   jsxRuntime?: Maybe<Scalars['String']>;
@@ -604,9 +602,12 @@ export type MdxFrontmatter = {
   title: Scalars['String'];
   id?: Maybe<Scalars['String']>;
   class?: Maybe<Scalars['String']>;
+  readable_class?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
+  readable_category?: Maybe<Scalars['String']>;
   logo?: Maybe<MdxFrontmatterLogo>;
   price?: Maybe<MdxFrontmatterPrice>;
+  accent_color?: Maybe<Scalars['String']>;
   summary?: Maybe<Scalars['String']>;
   featured?: Maybe<Scalars['Boolean']>;
 };
@@ -800,8 +801,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
-  port?: InputMaybe<IntQueryOperatorInput>;
-  host?: InputMaybe<StringQueryOperatorInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -1122,9 +1121,12 @@ export type MdxFrontmatterFilterInput = {
   title?: InputMaybe<StringQueryOperatorInput>;
   id?: InputMaybe<StringQueryOperatorInput>;
   class?: InputMaybe<StringQueryOperatorInput>;
+  readable_class?: InputMaybe<StringQueryOperatorInput>;
   category?: InputMaybe<StringQueryOperatorInput>;
+  readable_category?: InputMaybe<StringQueryOperatorInput>;
   logo?: InputMaybe<MdxFrontmatterLogoFilterInput>;
   price?: InputMaybe<MdxFrontmatterPriceFilterInput>;
+  accent_color?: InputMaybe<StringQueryOperatorInput>;
   summary?: InputMaybe<StringQueryOperatorInput>;
   featured?: InputMaybe<BooleanQueryOperatorInput>;
 };
@@ -1435,9 +1437,12 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___title'
   | 'childrenMdx___frontmatter___id'
   | 'childrenMdx___frontmatter___class'
+  | 'childrenMdx___frontmatter___readable_class'
   | 'childrenMdx___frontmatter___category'
+  | 'childrenMdx___frontmatter___readable_category'
   | 'childrenMdx___frontmatter___price___msrp'
   | 'childrenMdx___frontmatter___price___sale'
+  | 'childrenMdx___frontmatter___accent_color'
   | 'childrenMdx___frontmatter___summary'
   | 'childrenMdx___frontmatter___featured'
   | 'childrenMdx___slug'
@@ -1496,9 +1501,12 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___title'
   | 'childMdx___frontmatter___id'
   | 'childMdx___frontmatter___class'
+  | 'childMdx___frontmatter___readable_class'
   | 'childMdx___frontmatter___category'
+  | 'childMdx___frontmatter___readable_category'
   | 'childMdx___frontmatter___price___msrp'
   | 'childMdx___frontmatter___price___sale'
+  | 'childMdx___frontmatter___accent_color'
   | 'childMdx___frontmatter___summary'
   | 'childMdx___frontmatter___featured'
   | 'childMdx___slug'
@@ -1993,8 +2001,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2129,8 +2135,6 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
-  port?: InputMaybe<IntQueryOperatorInput>;
-  host?: InputMaybe<StringQueryOperatorInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -3245,7 +3249,9 @@ export type MdxFieldsEnum =
   | 'frontmatter___title'
   | 'frontmatter___id'
   | 'frontmatter___class'
+  | 'frontmatter___readable_class'
   | 'frontmatter___category'
+  | 'frontmatter___readable_category'
   | 'frontmatter___logo___source___sourceInstanceName'
   | 'frontmatter___logo___source___absolutePath'
   | 'frontmatter___logo___source___relativePath'
@@ -3286,6 +3292,7 @@ export type MdxFieldsEnum =
   | 'frontmatter___logo___source___children'
   | 'frontmatter___price___msrp'
   | 'frontmatter___price___sale'
+  | 'frontmatter___accent_color'
   | 'frontmatter___summary'
   | 'frontmatter___featured'
   | 'slug'
@@ -3434,12 +3441,12 @@ export type MdxSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type ProductFrontmatterFragment = { body: string, frontmatter?: { category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined };
+export type ProductFrontmatterFragment = { body: string, frontmatter?: { category?: string | null | undefined, readable_category?: string | null | undefined, class?: string | null | undefined, readable_class?: string | null | undefined, featured?: boolean | null | undefined, accent_color?: string | null | undefined, id?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined };
 
 export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyQueryQuery = { allMdx: { edges: Array<{ node: { body: string, frontmatter?: { category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined } }> } };
+export type MyQueryQuery = { allMdx: { edges: Array<{ node: { body: string, frontmatter?: { category?: string | null | undefined, readable_category?: string | null | undefined, class?: string | null | undefined, readable_class?: string | null | undefined, featured?: boolean | null | undefined, accent_color?: string | null | undefined, id?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined } }> } };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null | undefined, width: number, height: number, src: string, srcSet: string };
 
