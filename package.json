@@ -10,7 +10,8 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "cname:add": "echo tastyspore.com > docs/CNAME",
+    "build": "rm -rf docs && gatsby build && mv public docs && yarn cname:add",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
