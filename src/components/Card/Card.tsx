@@ -2,7 +2,7 @@ import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
 import React, { useContext } from "react"
 import { FocusPopContext } from "../../context"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
-import FocusPopup from "../FocusPopup/FocusPopup"
+import FocusPopup from "./FocusPopup/FocusPopup"
 import "./Card.scss"
 
 export default function Card({ data }: { data: ProductFrontmatterFragment }) {

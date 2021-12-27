@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import MailingList from "../Forms/MailingList"
+import MailingList from "../../Forms/MailingList"
 import { animated, useSpring } from "react-spring"
 
 import "./Notice.scss"

@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
-import { FocusPopContext } from "../../context"
+import { FocusPopContext } from "../../../context"
 // import getItem from "../../data/getItem"
-import { readableName } from "../../data/readableName"
 import Arrow from "../../icons/Arrow"
-import IsMobile from "../../tools/IsMobile"
+import IsMobile from "../../../tools/IsMobile"
 
 import { useSpring, animated } from "react-spring"
 
 import "./FocusPopup.scss"
-import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "../../../../types/gatsby-graphql"
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
@@ -86,8 +85,8 @@ export default function FocusPopup({
         <div className="image">
           {image && <GatsbyImage image={image} alt={fm?.title as string} />}
         </div>
-        <h3>{readableName(fm?.category as string)}</h3>
-        <h1>{readableName(fm?.class as string)}</h1>
+        <h3>{fm?.category}</h3>
+        <h1>{fm?.class}</h1>
         <div className="quantity-and-price">
           <div className="quantity">
             <button

@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo, useState } from "react"
 import "minireset.css"
 import "./Page.scss"
-import { FocusPopContext } from "../../context"
+import { FocusPopContext } from "../../../context"
 import Navigation from "../Navigation/Navigation"
 import Notice from "../Notice/Notice"
 
