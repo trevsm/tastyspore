@@ -38,6 +38,8 @@ export default function FocusPopup({
   const image = getImage(fm?.logo?.source.childImageSharp?.gatsbyImageData)
 
   // React-Spring Styles
+  console.log(IsMobile())
+
   const showStyles = useSpring(
     IsMobile()
       ? {
@@ -66,12 +68,16 @@ export default function FocusPopup({
   }, [open])
 
   const accentColor = fm?.accent_color as string
-  const mdxStyle = { "--h2Color": accentColor } as React.CSSProperties
+  const mdxStyle = { "--accentColor": accentColor } as React.CSSProperties
 
   return (
     <animated.div
       className={"focus-popup"}
-      style={{ ...showStyles, pointerEvents: open ? "all" : "none" }}
+      style={{
+        ...showStyles,
+        ...mdxStyle,
+        pointerEvents: open ? "all" : "none",
+      }}
       ref={mainRef}
       onScroll={setScrollPos}
     >
@@ -90,6 +96,29 @@ export default function FocusPopup({
         </div>
         <h3>{fm?.readable_category}</h3>
         <h1 style={{ color: accentColor }}>{fm?.readable_class}</h1>
+        <p className="select-size-label">(select a size)</p>
+        <div className="sizes">
+          <div className="small selected">
+            <p>small</p>
+            1.5<span className="unit">lbs</span>
+          </div>
+          <div className="medium">
+            <p>medium</p>3<span className="unit">lbs</span>
+          </div>
+          <div className="large">
+            <p>large</p>5<span className="unit">lbs</span>
+          </div>
+        </div>
+        <hr />
+        <div className="full_description">
+          <MDXRenderer>{data.body}</MDXRenderer>
+        </div>
+      </div>
+      <div className="bottom">
+        <p className="price" style={{ color: accentColor }}>
+          <span>$</span>
+          {price}
+        </p>
         <div className="quantity-and-price">
           <div className="quantity">
             <button
@@ -111,16 +140,6 @@ export default function FocusPopup({
             </button>
           </div>
         </div>
-        <hr />
-        <div className="full_description" style={mdxStyle}>
-          <MDXRenderer>{data.body}</MDXRenderer>
-        </div>
-      </div>
-      <div className="bottom">
-        <p className="price" style={{ color: accentColor }}>
-          <span>$</span>
-          {price}
-        </p>
         <button className="buy" style={{ backgroundColor: accentColor }}>
           Add to Cart
         </button>

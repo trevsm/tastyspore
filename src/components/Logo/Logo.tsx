@@ -33,7 +33,7 @@ export default function Logo() {
         src="../../images/tastyspore.png"
         alt="TastySpore Logo"
         placeholder="none"
-        quality={40}
+        quality={70}
         width={300}
       />
     </div>
