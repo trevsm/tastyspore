@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
 import { FPContext } from "../../../context"
-// import getItem from "../../data/getItem"
 import Arrow from "../../icons/Arrow"
 import IsMobile from "../../../tools/IsMobile"
 
@@ -8,7 +7,7 @@ import { useSpring, animated } from "react-spring"
 
 import "./FocusPopup.scss"
 import { ProductFrontmatterFragment } from "../../../../types/gatsby-graphql"
-import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default function FocusPopup({
@@ -25,21 +24,21 @@ export default function FocusPopup({
   // contexts, States, & Refs
   const { setFocusId } = useContext(FPContext)
   const [quantity, setQuantity] = useState(1)
+  const defaultSize = "medium"
+  const [size, setSize] = useState(defaultSize)
   const [scrollPos, setScroll] = useState(0)
   const mainRef = useRef<HTMLDivElement | null>(null)
-
-  // Price & Image
-  if (!fm.price) return null
-  const price =
-    (fm.price.sale ? (fm?.price.sale as number) : (fm?.price?.msrp as number)) *
-    quantity
 
   if (!fm?.logo || !fm?.logo.source) return null
   const image = getImage(fm?.logo?.source.childImageSharp?.gatsbyImageData)
 
-  // React-Spring Styles
-  console.log(IsMobile())
+  if (!fm?.inventory) return null
+  const itemData = fm?.inventory.filter((item) => item?.size == size)[0]
+  const price = itemData?.price?.sale
+    ? itemData.price.sale * quantity
+    : itemData?.price?.msrp * quantity
 
+  // React-Spring Styles
   const showStyles = useSpring(
     IsMobile()
       ? {
@@ -62,10 +61,25 @@ export default function FocusPopup({
     setScroll(elem.scrollTop)
   }
 
+  // set quantity to 1, reset to default size,
+  // and reset scroll if switching products
   useEffect(() => {
     setQuantity(1)
-    mainRef.current?.scrollTo(0, 0)
+    setSize(defaultSize)
+    if (mainRef.current.scrollTop !== 0)
+      setTimeout(() => {
+        mainRef.current?.scrollTo({
+          top: 0,
+        })
+      }, 500)
   }, [open])
+
+  // check quantity when user switches sizes
+  useEffect(() => {
+    if (quantity > itemData.quantity) {
+      setQuantity(itemData.quantity)
+    }
+  }, [size])
 
   const accentColor = fm?.accent_color as string
   const mdxStyle = { "--accentColor": accentColor } as React.CSSProperties
@@ -98,16 +112,26 @@ export default function FocusPopup({
         <h1 style={{ color: accentColor }}>{fm?.readable_class}</h1>
         <p className="select-size-label">(select a size)</p>
         <div className="sizes">
-          <div className="small selected">
-            <p>small</p>
-            1.5<span className="unit">lbs</span>
-          </div>
-          <div className="medium">
-            <p>medium</p>3<span className="unit">lbs</span>
-          </div>
-          <div className="large">
-            <p>large</p>5<span className="unit">lbs</span>
-          </div>
+          {fm?.inventory &&
+            fm.inventory.map((item) => (
+              <div
+                className={
+                  item?.size +
+                  (item?.size == size ? " selected" : "") +
+                  (item.quantity == 0 ? " out-of-stock" : "")
+                }
+                onClick={() => {
+                  setSize(item?.size as string)
+                }}
+              >
+                <p>{item?.size}</p>
+                {item?.weight}
+                <span className="unit">lbs</span>
+                {item.quantity == 0 && (
+                  <p className="out-label">out of stock</p>
+                )}
+              </div>
+            ))}
         </div>
         <hr />
         <div className="full_description">
@@ -116,15 +140,17 @@ export default function FocusPopup({
       </div>
       <div className="bottom">
         <p className="price" style={{ color: accentColor }}>
-          <span>$</span>
           {price}
+          <span>$</span>
         </p>
         <div className="quantity-and-price">
           <div className="quantity">
             <button
               className="add"
               onClick={() => {
-                setQuantity((prev) => (prev < 10 ? prev + 1 : 10))
+                setQuantity((prev) =>
+                  prev < itemData.quantity ? prev + 1 : itemData.quantity
+                )
               }}
             >
               +
@@ -140,8 +166,15 @@ export default function FocusPopup({
             </button>
           </div>
         </div>
-        <button className="buy" style={{ backgroundColor: accentColor }}>
-          Add to Cart
+        <button
+          className={"buy" + (itemData.quantity == 0 ? " out-of-stock" : "")}
+          style={{ backgroundColor: accentColor }}
+        >
+          {itemData.quantity == 0 ? (
+            <span>Out of Stock</span>
+          ) : (
+            <span>Add to Cart</span>
+          )}
         </button>
       </div>
     </animated.div>

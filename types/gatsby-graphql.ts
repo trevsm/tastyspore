@@ -606,7 +606,7 @@ export type MdxFrontmatter = {
   category?: Maybe<Scalars['String']>;
   readable_category?: Maybe<Scalars['String']>;
   logo?: Maybe<MdxFrontmatterLogo>;
-  price?: Maybe<MdxFrontmatterPrice>;
+  inventory?: Maybe<Array<Maybe<MdxFrontmatterInventory>>>;
   accent_color?: Maybe<Scalars['String']>;
   summary?: Maybe<Scalars['String']>;
   featured?: Maybe<Scalars['Boolean']>;
@@ -616,7 +616,15 @@ export type MdxFrontmatterLogo = {
   source?: Maybe<File>;
 };
 
-export type MdxFrontmatterPrice = {
+export type MdxFrontmatterInventory = {
+  type?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['String']>;
+  weight?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Int']>;
+  price?: Maybe<MdxFrontmatterInventoryPrice>;
+};
+
+export type MdxFrontmatterInventoryPrice = {
   msrp?: Maybe<Scalars['Int']>;
   sale?: Maybe<Scalars['Int']>;
 };
@@ -1125,7 +1133,7 @@ export type MdxFrontmatterFilterInput = {
   category?: InputMaybe<StringQueryOperatorInput>;
   readable_category?: InputMaybe<StringQueryOperatorInput>;
   logo?: InputMaybe<MdxFrontmatterLogoFilterInput>;
-  price?: InputMaybe<MdxFrontmatterPriceFilterInput>;
+  inventory?: InputMaybe<MdxFrontmatterInventoryFilterListInput>;
   accent_color?: InputMaybe<StringQueryOperatorInput>;
   summary?: InputMaybe<StringQueryOperatorInput>;
   featured?: InputMaybe<BooleanQueryOperatorInput>;
@@ -1180,7 +1188,19 @@ export type FileFilterInput = {
   internal?: InputMaybe<InternalFilterInput>;
 };
 
-export type MdxFrontmatterPriceFilterInput = {
+export type MdxFrontmatterInventoryFilterListInput = {
+  elemMatch?: InputMaybe<MdxFrontmatterInventoryFilterInput>;
+};
+
+export type MdxFrontmatterInventoryFilterInput = {
+  type?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<StringQueryOperatorInput>;
+  weight?: InputMaybe<FloatQueryOperatorInput>;
+  quantity?: InputMaybe<IntQueryOperatorInput>;
+  price?: InputMaybe<MdxFrontmatterInventoryPriceFilterInput>;
+};
+
+export type MdxFrontmatterInventoryPriceFilterInput = {
   msrp?: InputMaybe<IntQueryOperatorInput>;
   sale?: InputMaybe<IntQueryOperatorInput>;
 };
@@ -1440,8 +1460,11 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___readable_class'
   | 'childrenMdx___frontmatter___category'
   | 'childrenMdx___frontmatter___readable_category'
-  | 'childrenMdx___frontmatter___price___msrp'
-  | 'childrenMdx___frontmatter___price___sale'
+  | 'childrenMdx___frontmatter___inventory'
+  | 'childrenMdx___frontmatter___inventory___type'
+  | 'childrenMdx___frontmatter___inventory___size'
+  | 'childrenMdx___frontmatter___inventory___weight'
+  | 'childrenMdx___frontmatter___inventory___quantity'
   | 'childrenMdx___frontmatter___accent_color'
   | 'childrenMdx___frontmatter___summary'
   | 'childrenMdx___frontmatter___featured'
@@ -1504,8 +1527,11 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___readable_class'
   | 'childMdx___frontmatter___category'
   | 'childMdx___frontmatter___readable_category'
-  | 'childMdx___frontmatter___price___msrp'
-  | 'childMdx___frontmatter___price___sale'
+  | 'childMdx___frontmatter___inventory'
+  | 'childMdx___frontmatter___inventory___type'
+  | 'childMdx___frontmatter___inventory___size'
+  | 'childMdx___frontmatter___inventory___weight'
+  | 'childMdx___frontmatter___inventory___quantity'
   | 'childMdx___frontmatter___accent_color'
   | 'childMdx___frontmatter___summary'
   | 'childMdx___frontmatter___featured'
@@ -3290,8 +3316,13 @@ export type MdxFieldsEnum =
   | 'frontmatter___logo___source___childrenMdx'
   | 'frontmatter___logo___source___id'
   | 'frontmatter___logo___source___children'
-  | 'frontmatter___price___msrp'
-  | 'frontmatter___price___sale'
+  | 'frontmatter___inventory'
+  | 'frontmatter___inventory___type'
+  | 'frontmatter___inventory___size'
+  | 'frontmatter___inventory___weight'
+  | 'frontmatter___inventory___quantity'
+  | 'frontmatter___inventory___price___msrp'
+  | 'frontmatter___inventory___price___sale'
   | 'frontmatter___accent_color'
   | 'frontmatter___summary'
   | 'frontmatter___featured'
@@ -3441,12 +3472,12 @@ export type MdxSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type ProductFrontmatterFragment = { body: string, frontmatter?: { category?: string | null | undefined, readable_category?: string | null | undefined, class?: string | null | undefined, readable_class?: string | null | undefined, featured?: boolean | null | undefined, accent_color?: string | null | undefined, id?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined };
+export type ProductFrontmatterFragment = { body: string, frontmatter?: { accent_color?: string | null | undefined, category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, readable_category?: string | null | undefined, readable_class?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, inventory?: Array<{ type?: string | null | undefined, weight?: number | null | undefined, size?: string | null | undefined, quantity?: number | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined };
 
 export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyQueryQuery = { allMdx: { edges: Array<{ node: { body: string, frontmatter?: { category?: string | null | undefined, readable_category?: string | null | undefined, class?: string | null | undefined, readable_class?: string | null | undefined, featured?: boolean | null | undefined, accent_color?: string | null | undefined, id?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined } }> } };
+export type MyQueryQuery = { allMdx: { edges: Array<{ node: { body: string, frontmatter?: { accent_color?: string | null | undefined, category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, readable_category?: string | null | undefined, readable_class?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, inventory?: Array<{ type?: string | null | undefined, weight?: number | null | undefined, size?: string | null | undefined, quantity?: number | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined } }> } };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null | undefined, width: number, height: number, src: string, srcSet: string };
 

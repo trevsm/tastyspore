@@ -12,6 +12,8 @@ export default function Card({ data }: { data: ProductFrontmatterFragment }) {
   if (!fm?.logo?.source) return null
   const image = getImage(fm?.logo?.source?.childImageSharp?.gatsbyImageData)
 
+  const price = fm?.inventory[1].price
+
   return (
     <div className="blob card">
       <FocusPopup data={data} open={focusId == fm.id} />
@@ -29,13 +31,13 @@ export default function Card({ data }: { data: ProductFrontmatterFragment }) {
               <h2>{fm?.title}</h2>
               <p className="summary">{fm?.summary}</p>
               <div className="bottom">
-                {fm?.price?.sale ? (
+                {price.sale ? (
                   <p className="sale">
-                    <span className="cross">${fm?.price.msrp}</span>
-                    <span className="cost">${fm?.price.sale}</span>
+                    <span className="cross">${price.msrp}</span>
+                    <span className="cost">${price.sale}</span>
                   </p>
                 ) : (
-                  <span className="cost">${fm?.price?.msrp}</span>
+                  <span className="cost">${price.msrp}</span>
                 )}
                 <p className="more-info">
                   more info <span>+</span>

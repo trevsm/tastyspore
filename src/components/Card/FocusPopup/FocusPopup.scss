@@ -65,6 +65,10 @@
     border-radius: 100px;
     margin-left: auto;
   }
+  button.buy.out-of-stock {
+    opacity: 0.5;
+    pointer-events: none;
+  }
   .full_description {
     position: relative;
     display: -webkit-box;
@@ -100,9 +104,17 @@
       margin: 10px;
       border-radius: 10px;
       border: 2px dashed #ededed;
+      min-height: 90px;
     }
     div.selected {
       border: 2px dashed var(--accentColor);
+    }
+    .out-of-stock {
+      color: #bdbdbd;
+      pointer-events: none;
+      .out-label {
+        font-size: 15px;
+      }
     }
   }
   .price {

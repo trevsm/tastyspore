@@ -4,31 +4,37 @@ export const query = graphql`
   fragment ProductFrontmatter on Mdx {
     body
     frontmatter {
-      category
-      readable_category
-      class
-      readable_class
-      featured
       accent_color
+      category
+      class
+      featured
       id
+      readable_category
+      readable_class
+      summary
+      title
       logo {
         source {
           childImageSharp {
             gatsbyImageData(
-              width: 180
+              width: 170
               placeholder: NONE
-              formats: [AUTO, WEBP, AVIF]
-              quality: 50
+              formats: [WEBP, AVIF]
+              quality: 70
             )
           }
         }
       }
-      price {
-        msrp
-        sale
+      inventory {
+        type
+        weight
+        size
+        quantity
+        price {
+          msrp
+          sale
+        }
       }
-      summary
-      title
     }
   }
 `
