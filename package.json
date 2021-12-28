@@ -8,8 +8,8 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
+    "start": "gatsby develop -H 0.0.0.0",
     "cname:add": "echo tastyspore.com > docs/CNAME",
     "build": "yarn clean && rm -rf docs && gatsby build && mv public docs && yarn cname:add",
     "serve": "gatsby serve",

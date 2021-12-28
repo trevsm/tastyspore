@@ -51,7 +51,7 @@ export default function Home({ data }: { data: MDXQuery }) {
           </div>
           <Footer />
           {/* Bottom Spacer */}
-          <div className="blob" style={{ opacity: 0 }}></div>
+          <div className="blob" style={{ opacity: 0, height: "100px" }}></div>
         </div>
       </Page>
     </PageWrappers>

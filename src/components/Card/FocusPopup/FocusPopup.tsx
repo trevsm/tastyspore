@@ -41,7 +41,6 @@ export default function FocusPopup({
     : itemData?.price?.msrp * quantity
 
   // React-Spring Styles
-
   const showStyles = useSpring(
     breakpoints.sm
       ? {
@@ -115,29 +114,7 @@ export default function FocusPopup({
         <h3>{fm?.readable_category}</h3>
         <h1 style={{ color: accentColor }}>{fm?.readable_class}</h1>
         <p className="select-size-label">(select a size)</p>
-        <div className="sizes">
-          {fm?.inventory &&
-            fm.inventory.map((item, idx) => (
-              <div
-                key={idx}
-                className={
-                  item?.size +
-                  (item?.size == size ? " selected" : "") +
-                  (item.quantity == 0 ? " out-of-stock" : "")
-                }
-                onClick={() => {
-                  setSize(item?.size as string)
-                }}
-              >
-                <p>{item?.size}</p>
-                {item?.weight}
-                <span className="unit">lbs</span>
-                {item.quantity == 0 && (
-                  <p className="out-label">out of stock</p>
-                )}
-              </div>
-            ))}
-        </div>
+        {Sizes(fm, size, setSize)}
         <hr />
         <div className="full_description">
           <MDXRenderer>{data.body}</MDXRenderer>
@@ -145,32 +122,10 @@ export default function FocusPopup({
       </div>
       <div className="bottom">
         <p className="price" style={{ color: accentColor }}>
-          {price}
           <span>$</span>
+          {price}
         </p>
-        <div className="quantity-and-price">
-          <div className="quantity">
-            <button
-              className="add"
-              onClick={() => {
-                setQuantity((prev) =>
-                  prev < itemData.quantity ? prev + 1 : itemData.quantity
-                )
-              }}
-            >
-              +
-            </button>
-            <span className="num">{quantity}</span>
-            <button
-              className="minus"
-              onClick={() => {
-                setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
-              }}
-            >
-              -
-            </button>
-          </div>
-        </div>
+        {QuantityPrice(setQuantity, itemData, quantity)}
         <button
           className={"buy" + (itemData.quantity == 0 ? " out-of-stock" : "")}
           style={{ backgroundColor: accentColor }}
@@ -183,5 +138,79 @@ export default function FocusPopup({
         </button>
       </div>
     </animated.div>
+  )
+}
+function Sizes(
+  fm: any,
+  size: string,
+  setSize: React.Dispatch<React.SetStateAction<string>>
+) {
+  return (
+    <div className="sizes">
+      {fm?.inventory &&
+        fm.inventory.map((item: any, idx: any) => (
+          <div
+            key={idx}
+            className={
+              item?.size +
+              (item?.size == size ? " selected" : "") +
+              (item.quantity == 0 ? " out-of-stock" : "")
+            }
+            onClick={() => {
+              setSize(item?.size as string)
+            }}
+          >
+            <p className="size-label">{item?.size}</p>
+            {item?.weight}
+            <span className="unit">lbs</span>
+            {item.quantity == 0 ? (
+              <p className="out-label">out of stock</p>
+            ) : (
+              <p className="price-label">
+                <span>$</span>
+                {item.price.msrp}
+              </p>
+            )}
+          </div>
+        ))}
+    </div>
+  )
+}
+
+function QuantityPrice(
+  setQuantity: React.Dispatch<React.SetStateAction<number>>,
+  itemData: {
+    type?: string
+    weight?: number
+    size?: string
+    quantity?: number
+    price?: { msrp?: number; sale?: number }
+  },
+  quantity: number
+) {
+  return (
+    <div className="quantity-and-price">
+      <div className="quantity">
+        <button
+          className="add"
+          onClick={() => {
+            setQuantity((prev) =>
+              prev < itemData.quantity ? prev + 1 : itemData.quantity
+            )
+          }}
+        >
+          +
+        </button>
+        <span className="num">{quantity}</span>
+        <button
+          className="minus"
+          onClick={() => {
+            setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
+          }}
+        >
+          -
+        </button>
+      </div>
+    </div>
   )
 }

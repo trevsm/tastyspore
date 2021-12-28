@@ -52,9 +52,9 @@ button {
 .page {
   // background-color: #fffdf5;
   min-height: 100vh;
+  height: 100vh;
   max-height: 100vh;
   overflow: auto;
-  padding: 20px 0;
 }
 .page.hide-overflow {
   overflow: hidden;
