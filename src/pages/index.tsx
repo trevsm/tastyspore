@@ -21,34 +21,46 @@ export default function Home({ data }: { data: MDXQuery }) {
           />
           <link rel="canonical" href="https://tastyspore.com/" />
         </Helmet>
-        <div className="content">
-          <div className="top">
+        <div className="top">
+          <section>
             <Logo />
-          </div>
-          <Header title="Today's Featured:" subtitle="" />
+            <h1>
+              Discover delicious mushrooms <br />& tasty new recipes.
+            </h1>
+            <p>
+              Our kits are designed to be easy to use, and contain a complete
+              list of what you will need to get started.
+              <br /> <br />
+              With a <b>100% guarantee</b>, we are confident you will love our
+              mushrooms as much as we do!
+            </p>
+            <div className="buttons">
+              <button className="recipies">Explore Recipes</button>
+              <button className="mushrooms">Find Mushrooms</button>
+            </div>
+          </section>
+        </div>
+        <svg width="0" height="0">
+          <defs>
+            <clipPath id="myCurve" clipPathUnits="objectBoundingBox">
+              <path
+                d="M 0,1
+									L 0,0
+									L 1,0
+									L 1,.9
+									C .9 1, .35 .8, 0 .9
+									Z"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+        <div className="content">
+          <Header title="Today's Menu:" subtitle="" />
           <br />
           <div className="split">
             <Featured nodes={nodes} />
           </div>
           <hr />
-          <Header title="Hello!" subtitle="Welcome to TastySpore." />
-          <br />
-          <div className="split">
-            <Block>
-              <p>
-                The only thing better than eating mushrooms is growing them
-                yourself. Our Mushrooms grow kits are the best kits available
-                for growing gourmet mushrooms indoors.
-              </p>
-              <p>
-                Our kits are designed to be easy to use, and contain a complete
-                list of what you will need to grow your own mushrooms. We strive
-                to provide premium quality at an affordable price. With a{" "}
-                <b> 100% guarantee </b>, we are confident you will love our
-                mushrooms as much as we do!
-              </p>
-            </Block>
-          </div>
           <Footer />
           {/* Bottom Spacer */}
           <div className="blob" style={{ opacity: 0, height: "100px" }}></div>

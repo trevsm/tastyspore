@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
 @import "../../../styles/Colors.scss";
 
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  color: #443d34;
 }
 
 /*
@@ -13,7 +15,7 @@ body,
 html {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  color: #282828;
+  background-color: #fffdfc;
 }
 
 :root {
@@ -63,6 +65,57 @@ button {
 .split {
   display: flex;
 }
+.top {
+  position: relative;
+  background-color: #fff0e4;
+  padding: 30px;
+  padding-top: 0;
+  padding-bottom: 150px;
+  margin-bottom: -50px;
+
+  clip-path: url(#myCurve);
+  &:after {
+    content: "🍄";
+    position: absolute;
+    bottom: 10vh;
+    right: 10vw;
+  }
+  section {
+    max-width: var(--maxWidth);
+    margin: 0 auto;
+  }
+  .buttons {
+    display: flex;
+    margin-top: 20px;
+    button {
+      padding: 5px 0;
+      font-size: 18px;
+      margin-right: 15px;
+      color: #443e34;
+      border-bottom: 2px dashed #443e34;
+    }
+  }
+  .logo {
+    padding: 30px 0;
+    img {
+      background: #ffe6d2;
+      border: 2px dashed #f1d9c6;
+      padding: 10px;
+      border-radius: 200px;
+    }
+  }
+  h1 {
+    font-family: "Forum", cursive;
+    color: #564d42;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  p {
+    color: #8f847b;
+    line-height: 28px;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .split {
     flex-wrap: wrap;

@@ -9,8 +9,8 @@ export default function Logo() {
         src="../../images/tastyspore.png"
         alt="TastySpore Logo"
         placeholder="none"
-        quality={70}
-        width={300}
+        quality={80}
+        width={180}
       />
     </div>
   )

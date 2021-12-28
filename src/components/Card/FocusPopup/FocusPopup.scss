@@ -59,10 +59,12 @@
   button.buy {
     padding: 10px 20px;
     background-color: $blue;
-    color: white;
     font-size: 20px;
     border-radius: 100px;
     margin-left: auto;
+    span {
+      color: white;
+    }
   }
   button.buy.out-of-stock {
     opacity: 0.5;

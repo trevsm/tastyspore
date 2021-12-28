@@ -15,7 +15,7 @@
         width: fit-content;
         font-size: 18px;
         font-weight: bold;
-        color: #cb9053;
+        color: $blue;
         padding-bottom: 4px;
       }
       p.summary {
@@ -59,6 +59,7 @@
 }
 .cost {
   font-weight: bold;
+  color: $blue;
 }
 .ends {
   font-weight: bold;
