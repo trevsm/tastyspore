@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
 import { FPContext } from "../../../context"
 import Arrow from "../../icons/Arrow"
-import IsMobile from "../../../tools/IsMobile"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
 
 import { useSpring, animated } from "react-spring"
 
@@ -29,6 +29,8 @@ export default function FocusPopup({
   const [scrollPos, setScroll] = useState(0)
   const mainRef = useRef<HTMLDivElement | null>(null)
 
+  const breakpoints = useBreakpoint()
+
   if (!fm?.logo || !fm?.logo.source) return null
   const image = getImage(fm?.logo?.source.childImageSharp?.gatsbyImageData)
 
@@ -39,11 +41,13 @@ export default function FocusPopup({
     : itemData?.price?.msrp * quantity
 
   // React-Spring Styles
+
   const showStyles = useSpring(
-    IsMobile()
+    breakpoints.sm
       ? {
           transform: open ? "translateY(0%)" : "translateY(101%)",
           boxShadow: open ? "0 0 100px #0000004d" : "0 0 100px #00000000",
+          opacity: 1,
         }
       : {
           opacity: open ? 1 : 0,
@@ -113,8 +117,9 @@ export default function FocusPopup({
         <p className="select-size-label">(select a size)</p>
         <div className="sizes">
           {fm?.inventory &&
-            fm.inventory.map((item) => (
+            fm.inventory.map((item, idx) => (
               <div
+                key={idx}
                 className={
                   item?.size +
                   (item?.size == size ? " selected" : "") +

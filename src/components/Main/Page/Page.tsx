@@ -1,20 +1,30 @@
-import React, { ReactNode, useMemo, useState } from "react"
-import { FPWrapper } from "../../../context" // focus pop context wrapper
+import React, { ReactNode, useContext, useMemo, useState } from "react"
+import { FPContext, FPWrapper } from "../../../context" // focus pop context wrapper
 import Navigation from "../Navigation/Navigation"
 import Notice from "../Notice/Notice"
 import "minireset.css"
 import "./Page.scss"
 
-function Page({ children }: { children: ReactNode | ReactNode[] }) {
+interface ChildrenInterface {
+  children: ReactNode | ReactNode[]
+}
+
+function PageWrappers({ children }: ChildrenInterface) {
+  return <FPWrapper>{children}</FPWrapper>
+}
+
+function Page({ children }: ChildrenInterface) {
+  const { focusId } = useContext(FPContext)
+
   return (
-    <FPWrapper>
-      <div className="App">
-        <Notice />
-        <div className="page">{children}</div>
-        <Navigation />
+    <div className="App">
+      <Notice />
+      <div className={"page" + (focusId ? " hide-overflow" : "")}>
+        {children}
       </div>
-    </FPWrapper>
+      <Navigation />
+    </div>
   )
 }
 
-export default Page
+export { Page, PageWrappers }
