@@ -18,7 +18,7 @@ function Page({ children }: ChildrenInterface) {
 
   return (
     <div className="App">
-      {/* <Notice /> */}
+      <Notice />
       <div className={"page" + (focusId ? " hide-overflow" : "")}>
         {children}
       </div>
