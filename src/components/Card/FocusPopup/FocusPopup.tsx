@@ -130,11 +130,7 @@ export default function FocusPopup({
           className={"buy" + (itemData.quantity == 0 ? " out-of-stock" : "")}
           style={{ backgroundColor: accentColor }}
         >
-          {itemData.quantity == 0 ? (
-            <span>Out of Stock</span>
-          ) : (
-            <span>Add to Cart</span>
-          )}
+          {itemData.quantity == 0 ? <span>No Stock</span> : <span>+</span>}
         </button>
       </div>
     </animated.div>
