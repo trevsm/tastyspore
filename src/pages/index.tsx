@@ -14,10 +14,12 @@ export default function Home({ data }: { data: MDXQuery }) {
     <PageWrappers>
       <Page>
         <Helmet>
-          <title>Fresh Gourmet Mushrooms | TastySpore</title>
+          <title>
+            Discover delicious mushrooms & tasty new recipes! | TastySpore
+          </title>
           <meta
             name="description"
-            content="The only thing better than eating mushrooms is growing them yourself. Our Mushrooms grow kits are the best kits available for growing mushrooms indoors. Our kits are designed to be easy to use, and contain a complete list of what you will need to grow your own mushrooms. We strive to provide premium quality at an affordable price. With a 100% guarantee, we are confident you will love our product. Don't miss out on our Christmas half-off sale!"
+            content="Our Mushrooms grow kits are the best kits available for growing mushrooms indoors. With a 100% guarantee, we know you will love our mushrooms as much as we do."
           />
           <link rel="canonical" href="https://tastyspore.com/" />
         </Helmet>
