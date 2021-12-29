@@ -10,7 +10,7 @@ export default function Header({
 }) {
   return (
     <div className="header">
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <h3>{subtitle}</h3>
     </div>
   )

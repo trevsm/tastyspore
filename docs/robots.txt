@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.tastyspore.com/sitemap/sitemap-index.xml
+Host: https://www.tastyspore.com

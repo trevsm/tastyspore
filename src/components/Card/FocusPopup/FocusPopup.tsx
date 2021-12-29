@@ -112,7 +112,7 @@ export default function FocusPopup({
           {image && <GatsbyImage image={image} alt={fm?.title as string} />}
         </div>
         <h3>{fm?.readable_category}</h3>
-        <h1 style={{ color: accentColor }}>{fm?.readable_class}</h1>
+        <h2 style={{ color: accentColor }}>{fm?.readable_class}</h2>
         <p className="select-size-label">(select a size)</p>
         {Sizes(fm, size, setSize)}
         <hr />

@@ -12,6 +12,14 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-breakpoints",
     {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.tastyspore.com",
+        sitemap: "https://www.tastyspore.com/sitemap/sitemap-index.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "G-643TTLK24R",
