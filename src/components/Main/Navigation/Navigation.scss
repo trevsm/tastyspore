@@ -8,6 +8,10 @@ $br: 25px;
   bottom: 0;
   right: 0;
   left: 0;
+  * {
+    color: white !important;
+  }
+
   nav {
     display: flex;
     align-items: center;
