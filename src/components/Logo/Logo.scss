@@ -1,4 +1,12 @@
 .logo {
   position: relative;
   width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+  .logo {
+    text-align: left;
+  }
 }
