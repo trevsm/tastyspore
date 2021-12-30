@@ -32,7 +32,7 @@ export default function CartTab({
       : "rgb(0 0 0 / 30%) 0px 0px 100px",
   })
 
-  const { items } = useContext(CartContext)
+  const { items, setItems } = useContext(CartContext)
 
   const sub_total = !items
     ? 0
@@ -50,13 +50,20 @@ export default function CartTab({
     opacity: showNotification ? 1 : 0,
   })
 
+  const removeItem = (id: string, size: string) => {
+    setItems((prev) => {
+      return prev.filter((e) => e.data.id !== id)
+      // return prev.filter((e) => e.data.id !== id)
+    })
+  }
+
   useEffect(() => {
     setCartAnimate(true)
     setTimeout(() => {
       setCartAnimate(false)
     }, 200)
 
-    if (items) {
+    if (items && !open) {
       setShowNotification(true)
       setTimeout(() => {
         setShowNotification(false)
@@ -72,18 +79,20 @@ export default function CartTab({
           setOpen(true)
         }}
       >
-        {items && (
+        {items && items.length ? (
           <span className="item-count">
             {items.length <= 9 ? items.length : "+"}
           </span>
+        ) : (
+          ""
         )}
         <Cart color="#545485" width={30} />
       </button>
-      <animated.div style={notificationSpring} className="notification-popup">
-        <p>
-          Added [{items && items[items.length - 1].data.title}] to your cart!
-        </p>
-      </animated.div>
+      {!open && items && (
+        <animated.div style={notificationSpring} className="notification-popup">
+          <p>Added [{items[items.length - 1]?.data?.title}] to your cart!</p>
+        </animated.div>
+      )}
       <animated.div className="cart-tab" style={showSpring}>
         <button
           className="back-button"
@@ -95,16 +104,18 @@ export default function CartTab({
         </button>
         <h3 className="cart">My Cart</h3>
         <section>
-          {!items ? (
+          {items && items.length ? (
+            items.map((e, idx) => (
+              <CartItem item={e} removeItem={removeItem} key={idx} />
+            ))
+          ) : (
             <div className="no-items">
               <Cart color="#dddddd" width={150} />
               <p>No Items In Cart</p>
             </div>
-          ) : (
-            items.map((e, idx) => <CartItem item={e} key={idx} />)
           )}
         </section>
-        {items && (
+        {items && items.length ? (
           <div className="nav">
             <p className="sub">
               Sub total: <span>${sub_total}</span>
@@ -117,6 +128,8 @@ export default function CartTab({
             </p>
             <button>Continue to shipping</button>
           </div>
+        ) : (
+          ""
         )}
       </animated.div>
     </>
