@@ -1,11 +1,11 @@
 import React from "react"
 
-function Icon({ color }: { color: string }) {
+function Icon({ color, width }: { color: string; width: number }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={30}
-      height={30}
+      width={width}
+      height={width}
       viewBox="0 0 1200 1200"
     >
       <g fill={color}>

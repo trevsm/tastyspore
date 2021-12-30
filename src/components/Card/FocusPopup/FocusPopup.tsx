@@ -74,6 +74,7 @@ export default function FocusPopup({
           title: fm.title,
           class: fm.readable_class,
           category: fm.readable_category,
+          image: fm.logo.source.childImageSharp.gatsbyImageData,
         },
         quantity,
       }

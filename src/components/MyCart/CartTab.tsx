@@ -3,7 +3,14 @@ import { animated, useSpring } from "react-spring"
 import Cart from "../icons/Cart"
 import Arrow from "../icons/Arrow"
 import "./CartTab.scss"
-import { CartContext } from "../../context"
+import { CartContext, PIInterface } from "../../context"
+import CartItem from "./CartItem/CartItem"
+
+function addZeroes(num: string) {
+  const dec = num.split(".")[1]
+  const len = dec && dec.length > 2 ? dec.length : 2
+  return Number(num).toFixed(len)
+}
 
 export default function CartTab({
   open,
@@ -21,6 +28,14 @@ export default function CartTab({
 
   const { items } = useContext(CartContext)
 
+  const sub_total = !items
+    ? 0
+    : items
+        .map((e) => e.quantity * e.data.price.msrp)
+        .reduce((a, b) => a + b, 0)
+  const sales_tax = +(sub_total * 0.16).toFixed(2)
+  const total = (sales_tax + sub_total).toFixed(2)
+
   return (
     <>
       <button
@@ -34,7 +49,7 @@ export default function CartTab({
             {items.length <= 9 ? items.length : "+"}
           </span>
         )}
-        <Cart color="#545485" />
+        <Cart color="#545485" width={30} />
       </button>
       <animated.div className="cart-tab" style={showSpring}>
         <button
@@ -47,31 +62,29 @@ export default function CartTab({
         </button>
         <h3 className="cart">My Cart</h3>
         <section>
-          {!items
-            ? "none"
-            : items.map((e, idx) => (
-                <div className="item" key={idx}>
-                  <div className="image"></div>
-                  <div className="info">
-                    <h2>Title: {e.data.title}</h2>
-                    <p className="price">Price: ${e.data.price.msrp}</p>
-                    <p className="size">Size: {e.data.size}</p>
-                  </div>
-                  <div className="quantity">Quantity: {e.quantity}</div>
-                </div>
-              ))}
+          {!items ? (
+            <div className="no-items">
+              <Cart color="#dddddd" width={150} />
+              <p>No Items In Cart</p>
+            </div>
+          ) : (
+            items.map((e, idx) => <CartItem item={e} key={idx} />)
+          )}
         </section>
-        <div className="nav">
-          <p className="price">
-            Total: $
-            {!items
-              ? 0
-              : items
-                  .map((e) => e.quantity * e.data.price.msrp)
-                  .reduce((a, b) => a + b, 0)}
-          </p>
-          <button>checkout</button>
-        </div>
+        {items && (
+          <div className="nav">
+            <p className="sub">
+              Sub total: <span>${sub_total}</span>
+            </p>
+            <p className="sub">
+              Tax: <span>${addZeroes(sales_tax + "")}</span>
+            </p>
+            <p className="price">
+              Total: <span>${total}</span>
+            </p>
+            <button>Continue to shipping</button>
+          </div>
+        )}
       </animated.div>
     </>
   )

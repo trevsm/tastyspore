@@ -1,0 +1,23 @@
+.cart-tab .item {
+  position: relative;
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: rgb(0 0 0 / 6%) 2px 1px 7px;
+  margin-bottom: 20px;
+  img {
+    width: 65px;
+    margin-right: 20px;
+  }
+  .flex {
+    display: flex;
+  }
+  .size {
+    text-transform: capitalize;
+    color: #b1b1b1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+  }
+}

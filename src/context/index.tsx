@@ -10,6 +10,7 @@ interface PIInterface {
     class: string
     category: string
     size?: string
+    image: any
     quantity?: number
     price?: {
       msrp?: number
