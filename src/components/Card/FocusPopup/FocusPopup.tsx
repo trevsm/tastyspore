@@ -81,6 +81,8 @@ export default function FocusPopup({
       if (prev !== undefined) return prev.concat(newElem)
       return [newElem]
     })
+    //reset picked quantity
+    setQuantity(1)
   }
 
   // set quantity to 1, reset to default size,

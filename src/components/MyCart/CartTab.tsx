@@ -1,4 +1,10 @@
-import React, { Dispatch, SetStateAction, useContext } from "react"
+import React, {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 import { animated, useSpring } from "react-spring"
 import Cart from "../icons/Cart"
 import Arrow from "../icons/Arrow"
@@ -36,10 +42,32 @@ export default function CartTab({
   const sales_tax = +(sub_total * 0.16).toFixed(2)
   const total = (sales_tax + sub_total).toFixed(2)
 
+  const [cartAnimate, setCartAnimate] = useState(false)
+  const [showNotification, setShowNotification] = useState(false)
+
+  const notificationSpring = useSpring({
+    transform: !showNotification ? "translateY(-101%)" : "translateY(0%)",
+    opacity: showNotification ? 1 : 0,
+  })
+
+  useEffect(() => {
+    setCartAnimate(true)
+    setTimeout(() => {
+      setCartAnimate(false)
+    }, 200)
+
+    if (items) {
+      setShowNotification(true)
+      setTimeout(() => {
+        setShowNotification(false)
+      }, 2000)
+    }
+  }, [items])
+
   return (
     <>
       <button
-        className={"cart-icon"}
+        className={"cart-icon" + (cartAnimate ? " animate" : "")}
         onClick={() => {
           setOpen(true)
         }}
@@ -51,6 +79,11 @@ export default function CartTab({
         )}
         <Cart color="#545485" width={30} />
       </button>
+      <animated.div style={notificationSpring} className="notification-popup">
+        <p>
+          Added [{items && items[items.length - 1].data.title}] to your cart!
+        </p>
+      </animated.div>
       <animated.div className="cart-tab" style={showSpring}>
         <button
           className="back-button"

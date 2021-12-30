@@ -96,6 +96,7 @@
   right: 0;
   z-index: 10;
   padding: 10px;
+  transition: transform 0.2s ease-out;
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
   span.item-count {
     display: inline-block;
@@ -103,10 +104,26 @@
     width: 15px;
     border-radius: 100%;
     color: white;
-    background-color: #f95052;
-    z-index: 10;
+    background-color: #f36766;
     margin-right: -5px;
   }
+}
+.cart-icon.animate {
+  transform: scale(1.1);
+}
+
+.notification-popup {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  padding: 10px;
+  background: #fffdfc;
+  border: 2px dashed #545485;
+  border-top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 0 0 20px 20px;
+  text-align: center;
 }
 
 @media only screen and (min-width: 600px) {

@@ -63,8 +63,14 @@
     font-size: 20px;
     border-radius: 100px;
     margin-left: auto;
+    transition: all 0.07s ease;
+    user-select: none;
     span {
       color: white;
+    }
+    &:active {
+      transform: scale(0.9);
+      opacity: 0.7;
     }
   }
   button.buy.out-of-stock {
