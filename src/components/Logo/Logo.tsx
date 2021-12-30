@@ -13,7 +13,7 @@ export default function Logo() {
           alt="TastySpore Logo"
           placeholder="none"
           quality={80}
-          width={100}
+          width={120}
         />
       ) : (
         <StaticImage
@@ -21,7 +21,7 @@ export default function Logo() {
           alt="TastySpore Logo"
           placeholder="none"
           quality={80}
-          width={180}
+          width={200}
         />
       )}
     </div>

@@ -2,17 +2,28 @@ import React, { createContext, useMemo, ReactNode, useState } from "react"
 
 // Purchase Item interface
 interface PIInterface {
-  id: string
+  data: {
+    id: string
+    type?: string
+    weight?: number
+    title: string
+    class: string
+    category: string
+    size?: string
+    quantity?: number
+    price?: {
+      msrp?: number
+      sale?: number
+    }
+  }
   quantity: number
 }
 
-// Cart Interface
+// Cart Interface & Context
 interface CartInterface {
   items: PIInterface[]
-  setItems: React.Dispatch<React.SetStateAction<PIInterface>>
+  setItems: React.Dispatch<React.SetStateAction<PIInterface[]>>
 }
-
-// Cart Context
 const CartContext = createContext<CartInterface>({
   items: [],
   setItems: () => {
@@ -20,13 +31,20 @@ const CartContext = createContext<CartInterface>({
   },
 })
 
-// Focus Pop Interface
+// Cart Context Wrapper
+function CCWrapper({ children }: { children: ReactNode | ReactNode[] }) {
+  const [items, setItems] = useState<PIInterface[]>()
+
+  const value = useMemo(() => ({ items, setItems }), [items])
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+}
+
+// Focus Pop Interface & Context
 interface FPInterface {
   focusId: string
   setFocusId: React.Dispatch<React.SetStateAction<string>>
 }
-
-// Focus Pop Context
 const FPContext = createContext<FPInterface>({
   focusId: "",
   setFocusId: () => {
@@ -43,4 +61,5 @@ function FPWrapper({ children }: { children: ReactNode | ReactNode[] }) {
   return <FPContext.Provider value={value}>{children}</FPContext.Provider>
 }
 
-export { CartContext, FPWrapper, FPContext }
+export { CartContext, CCWrapper, FPWrapper, FPContext }
+export type { PIInterface }

@@ -23,7 +23,7 @@ export default function Home({ data }: { data: MDXQuery }) {
           />
           <link rel="canonical" href="https://tastyspore.com/" />
         </Helmet>
-        <div className="top">
+        <div className="main-top">
           <section>
             <Logo />
             <h1>

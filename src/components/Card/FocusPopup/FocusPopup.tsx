@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
-import { FPContext } from "../../../context"
+import { CartContext, FPContext, PIInterface } from "../../../context"
 import Arrow from "../../icons/Arrow"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
 
@@ -23,6 +23,7 @@ export default function FocusPopup({
 
   // contexts, States, & Refs
   const { setFocusId } = useContext(FPContext)
+  const { setItems } = useContext(CartContext)
   const [quantity, setQuantity] = useState(1)
   const defaultSize = "medium"
   const [size, setSize] = useState(defaultSize)
@@ -62,6 +63,23 @@ export default function FocusPopup({
   const setScrollPos = (e: React.UIEvent) => {
     const elem = e.target as HTMLDivElement
     setScroll(elem.scrollTop)
+  }
+
+  const setCartItems = () => {
+    setItems((prev) => {
+      const newElem = {
+        data: {
+          ...itemData,
+          id: fm.id,
+          title: fm.title,
+          class: fm.readable_class,
+          category: fm.readable_category,
+        },
+        quantity,
+      }
+      if (prev !== undefined) return prev.concat(newElem)
+      return [newElem]
+    })
   }
 
   // set quantity to 1, reset to default size,
@@ -129,6 +147,7 @@ export default function FocusPopup({
         <button
           className={"buy" + (itemData.quantity == 0 ? " out-of-stock" : "")}
           style={{ backgroundColor: accentColor }}
+          onClick={setCartItems}
         >
           {itemData.quantity == 0 ? <span>No Stock</span> : <span>+</span>}
         </button>
