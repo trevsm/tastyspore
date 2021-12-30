@@ -44,16 +44,19 @@ export default function CartTab({
 
   const [cartAnimate, setCartAnimate] = useState(false)
   const [showNotification, setShowNotification] = useState(false)
+  const [showNav, setShowNav] = useState(false)
 
   const notificationSpring = useSpring({
     transform: !showNotification ? "translateY(-101%)" : "translateY(0%)",
     opacity: showNotification ? 1 : 0,
   })
+  const navStyle = useSpring({
+    transform: !showNav ? "translateY(101%)" : "translateY(0%)",
+  })
 
   const removeItem = (id: string, size: string) => {
     setItems((prev) => {
-      return prev.filter((e) => e.data.id !== id)
-      // return prev.filter((e) => e.data.id !== id)
+      return prev.filter((e) => e.data.id + e.data.size !== id + size)
     })
   }
 
@@ -68,6 +71,11 @@ export default function CartTab({
       setTimeout(() => {
         setShowNotification(false)
       }, 2000)
+    }
+    if (items && items.length) {
+      setShowNav(true)
+    } else {
+      setShowNav(false)
     }
   }, [items])
 
@@ -115,22 +123,18 @@ export default function CartTab({
             </div>
           )}
         </section>
-        {items && items.length ? (
-          <div className="nav">
-            <p className="sub">
-              Sub total: <span>${sub_total}</span>
-            </p>
-            <p className="sub">
-              Tax: <span>${addZeroes(sales_tax + "")}</span>
-            </p>
-            <p className="price">
-              Total: <span>${total}</span>
-            </p>
-            <button>Continue to shipping</button>
-          </div>
-        ) : (
-          ""
-        )}
+        <animated.div className="nav" style={navStyle}>
+          <p className="sub">
+            Sub total: <span>${sub_total}</span>
+          </p>
+          <p className="sub">
+            Tax: <span>${addZeroes(sales_tax + "")}</span>
+          </p>
+          <p className="price">
+            Total: <span>${total}</span>
+          </p>
+          <button>Continue to shipping</button>
+        </animated.div>
       </animated.div>
     </>
   )
