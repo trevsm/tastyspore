@@ -23,6 +23,8 @@ export default function Home({ data }: { data: MDXQuery }) {
         </Helmet>
         <div className="main-top">
           <section>
+            <br />
+            <br />
             <h1>
               Delicious mushrooms <br />& tasty recipes.
             </h1>
