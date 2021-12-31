@@ -1,11 +1,20 @@
 @import "../../../styles/Colors.scss";
 
 .footer {
+  padding: 30px;
+  background-color: #fee5d1;
   .content {
-    text-align: center;
-    padding-bottom: 30px !important;
-    .copy {
-      color: $blue;
+    a:not(.social a) {
+      border-bottom: 2px dashed;
+    }
+    .social {
+      a {
+        margin-right: 10px;
+      }
+    }
+    * {
+      color: #8f847b;
+      line-height: 25px;
     }
   }
 }

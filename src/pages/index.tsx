@@ -14,9 +14,7 @@ export default function Home({ data }: { data: MDXQuery }) {
     <PageWrappers>
       <Page>
         <Helmet>
-          <title>
-            Discover delicious mushrooms & tasty new recipes! | TastySpore
-          </title>
+          <title>Delicious Mushrooms & Tasty Recipes! | TastySpore</title>
           <meta
             name="description"
             content="Our Mushrooms grow kits are the best kits available for growing mushrooms indoors. With a 100% guarantee, we know you will love our mushrooms as much as we do."
@@ -25,9 +23,8 @@ export default function Home({ data }: { data: MDXQuery }) {
         </Helmet>
         <div className="main-top">
           <section>
-            <Logo />
             <h1>
-              Discover delicious mushrooms <br />& tasty new recipes.
+              Delicious mushrooms <br />& tasty recipes.
             </h1>
             <p>
               Our kits are designed to be easy to use, and contain a complete
@@ -36,10 +33,6 @@ export default function Home({ data }: { data: MDXQuery }) {
               With a <b>100% guarantee</b>, we are confident you will love our
               mushrooms as much as we do!
             </p>
-            <div className="buttons">
-              <button className="recipies">Explore Recipes</button>
-              <button className="mushrooms">Find Mushrooms</button>
-            </div>
           </section>
         </div>
         <svg width="0" height="0">
@@ -57,15 +50,10 @@ export default function Home({ data }: { data: MDXQuery }) {
           </defs>
         </svg>
         <div className="content">
-          <Header title="Today's Menu:" subtitle="" />
           <br />
           <div className="split">
             <Featured nodes={nodes} />
           </div>
-          <hr />
-          <Footer />
-          {/* Bottom Spacer */}
-          <div className="blob" style={{ opacity: 0, height: "100px" }}></div>
         </div>
       </Page>
     </PageWrappers>

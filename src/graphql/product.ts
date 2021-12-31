@@ -19,8 +19,8 @@ export const query = graphql`
             gatsbyImageData(
               width: 170
               placeholder: DOMINANT_COLOR
-              formats: [AUTO, WEBP]
-              quality: 70
+              formats: [PNG, AVIF]
+              quality: 80
             )
           }
         }

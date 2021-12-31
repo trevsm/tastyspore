@@ -5,6 +5,7 @@ import Notice from "../Notice/Notice"
 import CartTab from "../../MyCart/CartTab"
 import "minireset.css"
 import "./Page.scss"
+import Footer from "../Footer/Footer"
 // import { animated, useSpring } from "react-spring"
 
 interface ChildrenInterface {
@@ -29,6 +30,7 @@ function Page({ children }: ChildrenInterface) {
       <CartTab open={cartOpen} setOpen={setCartOpen} />
       <div className={"page" + (focusId ? " hide-overflow" : "")}>
         {children}
+        <Footer />
       </div>
       <Navigation />
     </div>

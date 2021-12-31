@@ -42,6 +42,14 @@ button {
   border: unset;
 }
 
+/* Use -webkit- only if supporting: Chrome < 54, iOS < 9.3, Android < 4.4.4 */
+
+.shadow {
+  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  /* Similar syntax to box-shadow */
+}
+
 .App {
   .content {
     margin: 0 auto;
@@ -73,7 +81,7 @@ button {
   position: relative;
   background-color: #fff0e4;
   padding: 30px;
-  padding-top: 0;
+  padding-top: 40px;
   padding-bottom: 150px;
   margin-bottom: -50px;
 
@@ -88,22 +96,12 @@ button {
     max-width: var(--maxWidth);
     margin: 0 auto;
   }
-  .buttons {
-    display: flex;
-    margin-top: 20px;
-    button {
-      padding: 5px 0;
-      font-size: 18px;
-      margin-right: 15px;
-      color: #443e34;
-      border-bottom: 2px dashed #443e34;
-    }
-  }
   h1 {
     font-family: "Forum", cursive;
     color: #564d42;
-    font-size: 28px;
+    font-size: 45px;
     margin-bottom: 10px;
+    text-transform: capitalize;
   }
   p {
     color: #8f847b;
