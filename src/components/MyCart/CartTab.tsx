@@ -146,7 +146,15 @@ export default function CartTab({
           <p className="price">
             Total: <span>${total}</span>
           </p>
-          <button>Continue to shipping</button>
+          <button
+            onClick={() => {
+              alert(
+                "Thank you for your interest! Orders are currently disabled until we officially launch. Check back here soon for updates!"
+              )
+            }}
+          >
+            Continue to shipping
+          </button>
         </animated.div>
       </animated.div>
     </>
