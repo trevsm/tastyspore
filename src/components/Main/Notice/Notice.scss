@@ -1,6 +1,8 @@
+@import "../../../styles/Colors.scss";
+
 .notice {
   padding: 15px;
-  background-color: #545485f5;
+  background-color: $blue;
   position: fixed;
   width: 100%;
   z-index: 100;

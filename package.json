@@ -11,7 +11,7 @@
     "develop": "gatsby develop -H 0.0.0.0",
     "start": "gatsby develop -H 0.0.0.0",
     "cname:add": "echo tastyspore.com > docs/CNAME",
-    "build": "yarn clean && rm -rf docs && gatsby build && mv public docs && yarn cname:add",
+    "build": "yarn clean && rm -rf docs && gatsby build && mv public docs && yarn cname:add && pushbuild",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },

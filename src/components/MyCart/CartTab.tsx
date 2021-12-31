@@ -3,6 +3,7 @@ import React, {
   SetStateAction,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react"
 import { animated, useSpring } from "react-spring"
@@ -46,6 +47,9 @@ export default function CartTab({
   const [showNotification, setShowNotification] = useState(false)
   const [showNav, setShowNav] = useState(false)
 
+  const cartTimeoutRef = useRef(null)
+  const notifyTimeoutRef = useRef(null)
+
   const notificationSpring = useSpring({
     transform: !showNotification ? "translateY(-101%)" : "translateY(0%)",
     opacity: showNotification ? 1 : 0,
@@ -62,13 +66,15 @@ export default function CartTab({
 
   useEffect(() => {
     setCartAnimate(true)
-    setTimeout(() => {
+    clearTimeout(cartTimeoutRef.current)
+    cartTimeoutRef.current = setTimeout(() => {
       setCartAnimate(false)
     }, 200)
 
     if (items && !open) {
       setShowNotification(true)
-      setTimeout(() => {
+      clearTimeout(notifyTimeoutRef.current)
+      notifyTimeoutRef.current = setTimeout(() => {
         setShowNotification(false)
       }, 2000)
     }
@@ -78,6 +84,8 @@ export default function CartTab({
       setShowNav(false)
     }
   }, [items])
+
+  const lastItem = items ? items[items.length - 1] : null
 
   return (
     <>
@@ -98,7 +106,12 @@ export default function CartTab({
       </button>
       {!open && items && (
         <animated.div style={notificationSpring} className="notification-popup">
-          <p>Added [{items[items.length - 1]?.data?.title}] to your cart!</p>
+          <p>
+            Added [{lastItem?.data?.title}] to your cart!{" "}
+            {lastItem?.quantity == lastItem?.data?.quantity && (
+              <span className="max-10">[Max: {lastItem?.data?.quantity}]</span>
+            )}
+          </p>
         </animated.div>
       )}
       <animated.div className="cart-tab" style={showSpring}>

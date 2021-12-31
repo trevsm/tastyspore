@@ -66,19 +66,43 @@ export default function FocusPopup({
   }
 
   const setCartItems = () => {
+    const newElem = {
+      data: {
+        ...itemData,
+        id: fm.id,
+        title: fm.title,
+        class: fm.readable_class,
+        category: fm.readable_category,
+        image: fm.logo.source.childImageSharp.gatsbyImageData,
+      },
+      quantity,
+    }
+    const maxQuantity = fm.inventory.filter(
+      (e) => e.size == newElem.data.size
+    )[0].quantity
+
     setItems((prev) => {
-      const newElem = {
-        data: {
-          ...itemData,
-          id: fm.id,
-          title: fm.title,
-          class: fm.readable_class,
-          category: fm.readable_category,
-          image: fm.logo.source.childImageSharp.gatsbyImageData,
-        },
-        quantity,
+      if (prev !== undefined) {
+        let prevQuantity = 0
+        return prev
+          .filter((e) => {
+            if (
+              e.data.id + e.data.size !==
+              newElem.data.id + newElem.data.size
+            ) {
+              return true
+            } else {
+              prevQuantity = e.quantity
+            }
+          })
+          .concat({
+            data: newElem.data,
+            quantity:
+              quantity + prevQuantity <= maxQuantity
+                ? quantity + prevQuantity
+                : maxQuantity,
+          })
       }
-      if (prev !== undefined) return prev.concat(newElem)
       return [newElem]
     })
     //reset picked quantity

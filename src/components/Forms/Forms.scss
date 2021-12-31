@@ -1,13 +1,14 @@
+@import "../../styles/Colors.scss";
 form {
   input {
     border-radius: 20px 0 0 20px;
     border: 1px solid white;
     padding: 8px 15px;
     &:focus {
-      outline: 1px solid #545485;
+      outline: 1px solid $blue;
     }
     &:focus + button {
-      background-color: #545485;
+      background-color: $blue;
     }
   }
   button {
