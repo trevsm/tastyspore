@@ -25,6 +25,11 @@ export default function Footer() {
           </a>
         </div>
         <br />
+        <p>
+          TastySpore <br />
+          Salt Lake City, UT
+        </p>
+        <br />
         <div className="copy">
           {year} all rights reserved. TastySpore <sub>©</sub>
         </div>
