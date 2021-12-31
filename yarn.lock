@@ -6037,6 +6037,14 @@ gatsby-plugin-google-analytics@^4.4.0:
     minimatch "3.0.4"
     web-vitals "^1.1.2"
 
+gatsby-plugin-google-tagmanager@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-4.4.0.tgz#f3b7b8882bcd3995a4db3f587b7dac86083f1997"
+  integrity sha512-Yr8ySTlFwGr1/c+hf+2h6GyFXzT4JiR+VdF+f4qzCcVclywr7Gi0672TzMdNtNZY+X+bZ2UPP2mj8KVsd/Fd6w==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    web-vitals "^1.1.2"
+
 gatsby-plugin-graphql-codegen@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-graphql-codegen/-/gatsby-plugin-graphql-codegen-3.1.0.tgz#349933ae3ad95a60870b2d991f69cdf22164eff6"
