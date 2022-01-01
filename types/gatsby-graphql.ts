@@ -247,6 +247,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   jsxRuntime?: Maybe<Scalars['String']>;
@@ -605,11 +607,19 @@ export type MdxFrontmatter = {
   readable_class?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
   readable_category?: Maybe<Scalars['String']>;
+  scientific_name?: Maybe<Scalars['String']>;
+  aka?: Maybe<Array<Maybe<Scalars['String']>>>;
   logo?: Maybe<MdxFrontmatterLogo>;
   inventory?: Maybe<Array<Maybe<MdxFrontmatterInventory>>>;
   accent_color?: Maybe<Scalars['String']>;
   summary?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
   featured?: Maybe<Scalars['Boolean']>;
+  profile?: Maybe<MdxFrontmatterProfile>;
+  shelf_life?: Maybe<MdxFrontmatterShelf_Life>;
+  grow?: Maybe<MdxFrontmatterGrow>;
+  benefits?: Maybe<Array<Maybe<Scalars['String']>>>;
+  nutrition?: Maybe<MdxFrontmatterNutrition>;
 };
 
 export type MdxFrontmatterLogo = {
@@ -627,6 +637,50 @@ export type MdxFrontmatterInventory = {
 export type MdxFrontmatterInventoryPrice = {
   msrp?: Maybe<Scalars['Int']>;
   sale?: Maybe<Scalars['Int']>;
+};
+
+export type MdxFrontmatterProfile = {
+  flavor?: Maybe<Array<Maybe<Scalars['String']>>>;
+  texture?: Maybe<Array<Maybe<Scalars['String']>>>;
+  aroma?: Maybe<Array<Maybe<Scalars['String']>>>;
+  similar?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MdxFrontmatterShelf_Life = {
+  fresh?: Maybe<Scalars['String']>;
+  dried?: Maybe<Scalars['String']>;
+};
+
+export type MdxFrontmatterGrow = {
+  temp?: Maybe<MdxFrontmatterGrowTemp>;
+  size?: Maybe<Scalars['Int']>;
+  time?: Maybe<Scalars['String']>;
+  humidity?: Maybe<Scalars['Int']>;
+};
+
+export type MdxFrontmatterGrowTemp = {
+  degrees?: Maybe<MdxFrontmatterGrowTempDegrees>;
+  readable?: Maybe<Scalars['String']>;
+};
+
+export type MdxFrontmatterGrowTempDegrees = {
+  min?: Maybe<Scalars['Int']>;
+  max?: Maybe<Scalars['Int']>;
+};
+
+export type MdxFrontmatterNutrition = {
+  calories?: Maybe<Scalars['Float']>;
+  carbs?: Maybe<Scalars['Float']>;
+  protein?: Maybe<Scalars['Float']>;
+  fat?: Maybe<Scalars['Float']>;
+  fiber?: Maybe<Scalars['Float']>;
+  vitamins?: Maybe<Array<Maybe<MdxFrontmatterNutritionVitamins>>>;
+};
+
+export type MdxFrontmatterNutritionVitamins = {
+  type?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
 };
 
 export type MdxHeadingMdx = {
@@ -683,6 +737,109 @@ export type MdxTableOfContentsArgs = {
   maxDepth?: InputMaybe<Scalars['Int']>;
 };
 
+export type StaticImage = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  sourceInstanceName?: Maybe<Scalars['String']>;
+  relativePath?: Maybe<Scalars['String']>;
+  extension?: Maybe<Scalars['String']>;
+  prettySize?: Maybe<Scalars['String']>;
+  modifiedTime?: Maybe<Scalars['Date']>;
+  accessTime?: Maybe<Scalars['Date']>;
+  changeTime?: Maybe<Scalars['Date']>;
+  birthTime?: Maybe<Scalars['Date']>;
+  root?: Maybe<Scalars['String']>;
+  dir?: Maybe<Scalars['String']>;
+  base?: Maybe<Scalars['String']>;
+  ext?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  absolutePath?: Maybe<Scalars['String']>;
+  relativeDirectory?: Maybe<Scalars['String']>;
+  dev?: Maybe<Scalars['Int']>;
+  mode?: Maybe<Scalars['Int']>;
+  nlink?: Maybe<Scalars['Int']>;
+  uid?: Maybe<Scalars['Int']>;
+  rdev?: Maybe<Scalars['Int']>;
+  blksize?: Maybe<Scalars['Int']>;
+  ino?: Maybe<Scalars['Int']>;
+  size?: Maybe<Scalars['Int']>;
+  blocks?: Maybe<Scalars['Int']>;
+  atimeMs?: Maybe<Scalars['Float']>;
+  mtimeMs?: Maybe<Scalars['Float']>;
+  ctimeMs?: Maybe<Scalars['Float']>;
+  birthtimeMs?: Maybe<Scalars['Float']>;
+  atime?: Maybe<Scalars['Date']>;
+  mtime?: Maybe<Scalars['Date']>;
+  ctime?: Maybe<Scalars['Date']>;
+  birthtime?: Maybe<Scalars['Date']>;
+};
+
+
+export type StaticImageModifiedTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StaticImageAccessTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StaticImageChangeTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StaticImageBirthTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StaticImageAtimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StaticImageMtimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StaticImageCtimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type StaticImageBirthtimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
 export type Query = {
   file?: Maybe<File>;
   allFile: FileConnection;
@@ -702,6 +859,8 @@ export type Query = {
   allImageSharp: ImageSharpConnection;
   mdx?: Maybe<Mdx>;
   allMdx: MdxConnection;
+  staticImage?: Maybe<StaticImage>;
+  allStaticImage: StaticImageConnection;
 };
 
 
@@ -809,6 +968,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -959,6 +1120,54 @@ export type QueryMdxArgs = {
 export type QueryAllMdxArgs = {
   filter?: InputMaybe<MdxFilterInput>;
   sort?: InputMaybe<MdxSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryStaticImageArgs = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  blksize?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<IntQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  blocks?: InputMaybe<IntQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+};
+
+
+export type QueryAllStaticImageArgs = {
+  filter?: InputMaybe<StaticImageFilterInput>;
+  sort?: InputMaybe<StaticImageSortInput>;
   skip?: InputMaybe<Scalars['Int']>;
   limit?: InputMaybe<Scalars['Int']>;
 };
@@ -1132,11 +1341,19 @@ export type MdxFrontmatterFilterInput = {
   readable_class?: InputMaybe<StringQueryOperatorInput>;
   category?: InputMaybe<StringQueryOperatorInput>;
   readable_category?: InputMaybe<StringQueryOperatorInput>;
+  scientific_name?: InputMaybe<StringQueryOperatorInput>;
+  aka?: InputMaybe<StringQueryOperatorInput>;
   logo?: InputMaybe<MdxFrontmatterLogoFilterInput>;
   inventory?: InputMaybe<MdxFrontmatterInventoryFilterListInput>;
   accent_color?: InputMaybe<StringQueryOperatorInput>;
   summary?: InputMaybe<StringQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
   featured?: InputMaybe<BooleanQueryOperatorInput>;
+  profile?: InputMaybe<MdxFrontmatterProfileFilterInput>;
+  shelf_life?: InputMaybe<MdxFrontmatterShelf_LifeFilterInput>;
+  grow?: InputMaybe<MdxFrontmatterGrowFilterInput>;
+  benefits?: InputMaybe<StringQueryOperatorInput>;
+  nutrition?: InputMaybe<MdxFrontmatterNutritionFilterInput>;
 };
 
 export type MdxFrontmatterLogoFilterInput = {
@@ -1203,6 +1420,54 @@ export type MdxFrontmatterInventoryFilterInput = {
 export type MdxFrontmatterInventoryPriceFilterInput = {
   msrp?: InputMaybe<IntQueryOperatorInput>;
   sale?: InputMaybe<IntQueryOperatorInput>;
+};
+
+export type MdxFrontmatterProfileFilterInput = {
+  flavor?: InputMaybe<StringQueryOperatorInput>;
+  texture?: InputMaybe<StringQueryOperatorInput>;
+  aroma?: InputMaybe<StringQueryOperatorInput>;
+  similar?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type MdxFrontmatterShelf_LifeFilterInput = {
+  fresh?: InputMaybe<StringQueryOperatorInput>;
+  dried?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type MdxFrontmatterGrowFilterInput = {
+  temp?: InputMaybe<MdxFrontmatterGrowTempFilterInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  time?: InputMaybe<StringQueryOperatorInput>;
+  humidity?: InputMaybe<IntQueryOperatorInput>;
+};
+
+export type MdxFrontmatterGrowTempFilterInput = {
+  degrees?: InputMaybe<MdxFrontmatterGrowTempDegreesFilterInput>;
+  readable?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type MdxFrontmatterGrowTempDegreesFilterInput = {
+  min?: InputMaybe<IntQueryOperatorInput>;
+  max?: InputMaybe<IntQueryOperatorInput>;
+};
+
+export type MdxFrontmatterNutritionFilterInput = {
+  calories?: InputMaybe<FloatQueryOperatorInput>;
+  carbs?: InputMaybe<FloatQueryOperatorInput>;
+  protein?: InputMaybe<FloatQueryOperatorInput>;
+  fat?: InputMaybe<FloatQueryOperatorInput>;
+  fiber?: InputMaybe<FloatQueryOperatorInput>;
+  vitamins?: InputMaybe<MdxFrontmatterNutritionVitaminsFilterListInput>;
+};
+
+export type MdxFrontmatterNutritionVitaminsFilterListInput = {
+  elemMatch?: InputMaybe<MdxFrontmatterNutritionVitaminsFilterInput>;
+};
+
+export type MdxFrontmatterNutritionVitaminsFilterInput = {
+  type?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type MdxHeadingMdxFilterListInput = {
@@ -1460,6 +1725,8 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___readable_class'
   | 'childrenMdx___frontmatter___category'
   | 'childrenMdx___frontmatter___readable_category'
+  | 'childrenMdx___frontmatter___scientific_name'
+  | 'childrenMdx___frontmatter___aka'
   | 'childrenMdx___frontmatter___inventory'
   | 'childrenMdx___frontmatter___inventory___type'
   | 'childrenMdx___frontmatter___inventory___size'
@@ -1467,7 +1734,24 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___inventory___quantity'
   | 'childrenMdx___frontmatter___accent_color'
   | 'childrenMdx___frontmatter___summary'
+  | 'childrenMdx___frontmatter___description'
   | 'childrenMdx___frontmatter___featured'
+  | 'childrenMdx___frontmatter___profile___flavor'
+  | 'childrenMdx___frontmatter___profile___texture'
+  | 'childrenMdx___frontmatter___profile___aroma'
+  | 'childrenMdx___frontmatter___profile___similar'
+  | 'childrenMdx___frontmatter___shelf_life___fresh'
+  | 'childrenMdx___frontmatter___shelf_life___dried'
+  | 'childrenMdx___frontmatter___grow___size'
+  | 'childrenMdx___frontmatter___grow___time'
+  | 'childrenMdx___frontmatter___grow___humidity'
+  | 'childrenMdx___frontmatter___benefits'
+  | 'childrenMdx___frontmatter___nutrition___calories'
+  | 'childrenMdx___frontmatter___nutrition___carbs'
+  | 'childrenMdx___frontmatter___nutrition___protein'
+  | 'childrenMdx___frontmatter___nutrition___fat'
+  | 'childrenMdx___frontmatter___nutrition___fiber'
+  | 'childrenMdx___frontmatter___nutrition___vitamins'
   | 'childrenMdx___slug'
   | 'childrenMdx___body'
   | 'childrenMdx___excerpt'
@@ -1527,6 +1811,8 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___readable_class'
   | 'childMdx___frontmatter___category'
   | 'childMdx___frontmatter___readable_category'
+  | 'childMdx___frontmatter___scientific_name'
+  | 'childMdx___frontmatter___aka'
   | 'childMdx___frontmatter___inventory'
   | 'childMdx___frontmatter___inventory___type'
   | 'childMdx___frontmatter___inventory___size'
@@ -1534,7 +1820,24 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___inventory___quantity'
   | 'childMdx___frontmatter___accent_color'
   | 'childMdx___frontmatter___summary'
+  | 'childMdx___frontmatter___description'
   | 'childMdx___frontmatter___featured'
+  | 'childMdx___frontmatter___profile___flavor'
+  | 'childMdx___frontmatter___profile___texture'
+  | 'childMdx___frontmatter___profile___aroma'
+  | 'childMdx___frontmatter___profile___similar'
+  | 'childMdx___frontmatter___shelf_life___fresh'
+  | 'childMdx___frontmatter___shelf_life___dried'
+  | 'childMdx___frontmatter___grow___size'
+  | 'childMdx___frontmatter___grow___time'
+  | 'childMdx___frontmatter___grow___humidity'
+  | 'childMdx___frontmatter___benefits'
+  | 'childMdx___frontmatter___nutrition___calories'
+  | 'childMdx___frontmatter___nutrition___carbs'
+  | 'childMdx___frontmatter___nutrition___protein'
+  | 'childMdx___frontmatter___nutrition___fat'
+  | 'childMdx___frontmatter___nutrition___fiber'
+  | 'childMdx___frontmatter___nutrition___vitamins'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -2027,6 +2330,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2161,6 +2466,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -3278,6 +3585,8 @@ export type MdxFieldsEnum =
   | 'frontmatter___readable_class'
   | 'frontmatter___category'
   | 'frontmatter___readable_category'
+  | 'frontmatter___scientific_name'
+  | 'frontmatter___aka'
   | 'frontmatter___logo___source___sourceInstanceName'
   | 'frontmatter___logo___source___absolutePath'
   | 'frontmatter___logo___source___relativePath'
@@ -3325,7 +3634,28 @@ export type MdxFieldsEnum =
   | 'frontmatter___inventory___price___sale'
   | 'frontmatter___accent_color'
   | 'frontmatter___summary'
+  | 'frontmatter___description'
   | 'frontmatter___featured'
+  | 'frontmatter___profile___flavor'
+  | 'frontmatter___profile___texture'
+  | 'frontmatter___profile___aroma'
+  | 'frontmatter___profile___similar'
+  | 'frontmatter___shelf_life___fresh'
+  | 'frontmatter___shelf_life___dried'
+  | 'frontmatter___grow___temp___readable'
+  | 'frontmatter___grow___size'
+  | 'frontmatter___grow___time'
+  | 'frontmatter___grow___humidity'
+  | 'frontmatter___benefits'
+  | 'frontmatter___nutrition___calories'
+  | 'frontmatter___nutrition___carbs'
+  | 'frontmatter___nutrition___protein'
+  | 'frontmatter___nutrition___fat'
+  | 'frontmatter___nutrition___fiber'
+  | 'frontmatter___nutrition___vitamins'
+  | 'frontmatter___nutrition___vitamins___type'
+  | 'frontmatter___nutrition___vitamins___name'
+  | 'frontmatter___nutrition___vitamins___value'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -3472,12 +3802,262 @@ export type MdxSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type ProductFrontmatterFragment = { body: string, frontmatter?: { accent_color?: string | null | undefined, category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, readable_category?: string | null | undefined, readable_class?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, inventory?: Array<{ type?: string | null | undefined, weight?: number | null | undefined, size?: string | null | undefined, quantity?: number | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+export type StaticImageConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<StaticImageEdge>;
+  nodes: Array<StaticImage>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<StaticImageGroupConnection>;
+};
+
+
+export type StaticImageConnectionDistinctArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageConnectionMaxArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageConnectionMinArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageConnectionSumArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: StaticImageFieldsEnum;
+};
+
+export type StaticImageEdge = {
+  next?: Maybe<StaticImage>;
+  node: StaticImage;
+  previous?: Maybe<StaticImage>;
+};
+
+export type StaticImageFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'sourceInstanceName'
+  | 'relativePath'
+  | 'extension'
+  | 'prettySize'
+  | 'modifiedTime'
+  | 'accessTime'
+  | 'changeTime'
+  | 'birthTime'
+  | 'root'
+  | 'dir'
+  | 'base'
+  | 'ext'
+  | 'name'
+  | 'absolutePath'
+  | 'relativeDirectory'
+  | 'dev'
+  | 'mode'
+  | 'nlink'
+  | 'uid'
+  | 'rdev'
+  | 'blksize'
+  | 'ino'
+  | 'size'
+  | 'blocks'
+  | 'atimeMs'
+  | 'mtimeMs'
+  | 'ctimeMs'
+  | 'birthtimeMs'
+  | 'atime'
+  | 'mtime'
+  | 'ctime'
+  | 'birthtime';
+
+export type StaticImageGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<StaticImageEdge>;
+  nodes: Array<StaticImage>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<StaticImageGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type StaticImageGroupConnectionDistinctArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageGroupConnectionMaxArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageGroupConnectionMinArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageGroupConnectionSumArgs = {
+  field: StaticImageFieldsEnum;
+};
+
+
+export type StaticImageGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: StaticImageFieldsEnum;
+};
+
+export type StaticImageFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  blksize?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<IntQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  blocks?: InputMaybe<IntQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+};
+
+export type StaticImageSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<StaticImageFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type ProductFrontmatterFragment = { frontmatter?: { accent_color?: string | null | undefined, category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, readable_category?: string | null | undefined, readable_class?: string | null | undefined, summary?: string | null | undefined, title: string, scientific_name?: string | null | undefined, description?: string | null | undefined, benefits?: Array<string | null | undefined> | null | undefined, aka?: Array<string | null | undefined> | null | undefined, inventory?: Array<{ type?: string | null | undefined, weight?: number | null | undefined, size?: string | null | undefined, quantity?: number | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined> | null | undefined, profile?: { aroma?: Array<string | null | undefined> | null | undefined, flavor?: Array<string | null | undefined> | null | undefined, similar?: Array<string | null | undefined> | null | undefined, texture?: Array<string | null | undefined> | null | undefined } | null | undefined, nutrition?: { calories?: number | null | undefined, fat?: number | null | undefined, carbs?: number | null | undefined, fiber?: number | null | undefined, protein?: number | null | undefined, vitamins?: Array<{ name?: string | null | undefined, type?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined, grow?: { humidity?: number | null | undefined, size?: number | null | undefined, time?: string | null | undefined, temp?: { readable?: string | null | undefined, degrees?: { max?: number | null | undefined, min?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, shelf_life?: { dried?: string | null | undefined, fresh?: string | null | undefined } | null | undefined } | null | undefined };
 
 export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyQueryQuery = { allMdx: { edges: Array<{ node: { body: string, frontmatter?: { accent_color?: string | null | undefined, category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, readable_category?: string | null | undefined, readable_class?: string | null | undefined, summary?: string | null | undefined, title: string, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, inventory?: Array<{ type?: string | null | undefined, weight?: number | null | undefined, size?: string | null | undefined, quantity?: number | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined } }> } };
+export type MyQueryQuery = { allMdx: { edges: Array<{ node: { frontmatter?: { accent_color?: string | null | undefined, category?: string | null | undefined, class?: string | null | undefined, featured?: boolean | null | undefined, id?: string | null | undefined, readable_category?: string | null | undefined, readable_class?: string | null | undefined, summary?: string | null | undefined, title: string, scientific_name?: string | null | undefined, description?: string | null | undefined, benefits?: Array<string | null | undefined> | null | undefined, aka?: Array<string | null | undefined> | null | undefined, inventory?: Array<{ type?: string | null | undefined, weight?: number | null | undefined, size?: string | null | undefined, quantity?: number | null | undefined, price?: { msrp?: number | null | undefined, sale?: number | null | undefined } | null | undefined } | null | undefined> | null | undefined, profile?: { aroma?: Array<string | null | undefined> | null | undefined, flavor?: Array<string | null | undefined> | null | undefined, similar?: Array<string | null | undefined> | null | undefined, texture?: Array<string | null | undefined> | null | undefined } | null | undefined, nutrition?: { calories?: number | null | undefined, fat?: number | null | undefined, carbs?: number | null | undefined, fiber?: number | null | undefined, protein?: number | null | undefined, vitamins?: Array<{ name?: string | null | undefined, type?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined, grow?: { humidity?: number | null | undefined, size?: number | null | undefined, time?: string | null | undefined, temp?: { readable?: string | null | undefined, degrees?: { max?: number | null | undefined, min?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined, logo?: { source?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, shelf_life?: { dried?: string | null | undefined, fresh?: string | null | undefined } | null | undefined } | null | undefined } }> } };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null | undefined, width: number, height: number, src: string, srcSet: string };
 

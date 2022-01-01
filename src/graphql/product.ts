@@ -2,7 +2,6 @@ import { graphql } from "gatsby"
 
 export const query = graphql`
   fragment ProductFrontmatter on Mdx {
-    body
     frontmatter {
       accent_color
       category
@@ -13,18 +12,6 @@ export const query = graphql`
       readable_class
       summary
       title
-      logo {
-        source {
-          childImageSharp {
-            gatsbyImageData(
-              width: 170
-              placeholder: DOMINANT_COLOR
-              formats: [PNG, AVIF]
-              quality: 80
-            )
-          }
-        }
-      }
       inventory {
         type
         weight
@@ -34,6 +21,55 @@ export const query = graphql`
           msrp
           sale
         }
+      }
+      scientific_name
+      profile {
+        aroma
+        flavor
+        similar
+        texture
+      }
+      nutrition {
+        calories
+        fat
+        carbs
+        fiber
+        protein
+        vitamins {
+          name
+          type
+          value
+        }
+      }
+      description
+      benefits
+      aka
+      grow {
+        humidity
+        size
+        temp {
+          degrees {
+            max
+            min
+          }
+          readable
+        }
+        time
+      }
+      logo {
+        source {
+          childImageSharp {
+            gatsbyImageData(
+              width: 170
+              placeholder: DOMINANT_COLOR
+              quality: 80
+            )
+          }
+        }
+      }
+      shelf_life {
+        dried
+        fresh
       }
     }
   }

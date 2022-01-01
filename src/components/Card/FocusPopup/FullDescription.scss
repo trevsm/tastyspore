@@ -1,0 +1,46 @@
+.full_description {
+  div {
+    margin-bottom: 30px;
+  }
+  .profile {
+    h3 {
+      margin-left: 10px;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      li {
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        background-color: #f7f7f7;
+        box-shadow: 1px 1px 3px #e3e3e3;
+      }
+    }
+  }
+  .benefits {
+    ul {
+      padding: 0 10px;
+      li {
+        margin-bottom: 10px;
+        &::before {
+          content: "✓ ";
+        }
+      }
+    }
+  }
+  .nutrition {
+    h3,
+    i {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    ul {
+      padding: 0 10px;
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
