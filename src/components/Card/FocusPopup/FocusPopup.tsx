@@ -2,13 +2,10 @@ import React, { useContext, useEffect, useState, useRef } from "react"
 import { CartContext, FPContext, PIInterface } from "../../../context"
 import Arrow from "../../icons/Arrow"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
-
 import { useSpring, animated } from "react-spring"
-
 import "./FocusPopup.scss"
 import { ProductFrontmatterFragment } from "../../../../types/gatsby-graphql"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { FullDescription } from "./FullDescription"
 import { Sizes } from "./Sizes"
 import { QuantityPrice } from "./QuantityPrice"

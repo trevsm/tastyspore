@@ -11,40 +11,49 @@ export function FullDescription({
   if (!fm) return null
   return (
     <div className="full_description">
+      <h2>Profile </h2>
       <div className="profile">
-        <h2>Profile </h2>
-        <h3>Flavor: </h3>
-        <ul>
-          {fm.profile.flavor.map((e, key) => (
-            <li key={key}>{e}</li>
-          ))}
-        </ul>
-        <h3>Texture: </h3>
-        <ul>
-          {fm.profile.texture.map((e, key) => (
-            <li key={key}>{e}</li>
-          ))}
-        </ul>
-        <h3>Aroma: </h3>
-        <ul>
-          {fm.profile.aroma.map((e, key) => (
-            <li key={key}>{e}</li>
-          ))}
-        </ul>
-        <hr />
-        <h3>Similar flavor to: </h3>
-        <ul>
-          {fm.profile.similar.map((e, key) => (
-            <li key={key}>{e}</li>
-          ))}
-        </ul>
+        <div className="flavor">
+          <h3>Flavor: </h3>
+          <ul>
+            {fm.profile.flavor.map((e, key) => (
+              <li key={key}>{e}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="texture">
+          <h3>Texture: </h3>
+          <ul>
+            {fm.profile.texture.map((e, key) => (
+              <li key={key}>{e}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="aroma">
+          <h3>Aroma: </h3>
+          <ul>
+            {fm.profile.aroma.map((e, key) => (
+              <li key={key}>{e}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="similar" style={{ minWidth: "200px" }}>
+          <h3>Similar flavor to: </h3>
+          <ul>
+            {fm.profile.similar.map((e, key) => (
+              <li key={key}>{e}</li>
+            ))}
+          </ul>
+        </div>
       </div>
       <div className="description">
         <h2>Description</h2>
-        {fm.description} They prefer {fm.grow.temp.readable} temperatures of
-        around {fm.grow.temp.degrees.min}°F ~{fm.grow.temp.degrees.max}°F at a
-        humidity of {fm.grow.humidity}% and take approximatly {fm.grow.time} to
-        mature to the size of around {fm.grow.size}in.
+        <p>
+          {fm.description} They prefer {fm.grow.temp.readable} temperatures of
+          around {fm.grow.temp.degrees.min}°F ~{fm.grow.temp.degrees.max}°F at a
+          humidity of {fm.grow.humidity}% and take approximatly {fm.grow.time}{" "}
+          to mature to the size of around {fm.grow.size}in.
+        </p>
       </div>
       <div className="benefits">
         <h2>Benefits</h2>
