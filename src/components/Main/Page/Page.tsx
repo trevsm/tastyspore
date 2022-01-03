@@ -13,15 +13,14 @@ function Page({ children }: ChildrenInterface) {
   useEffect(() => {
     setIsClient(true)
   }, [])
+  if (!isClient) return null
   return (
-    isClient && (
-      <div className="App">
-        <div className={"page"}>
-          {children}
-          {/* <Footer /> */}
-        </div>
+    <div className="App">
+      <div className={"page"}>
+        {children}
+        {/* <Footer /> */}
       </div>
-    )
+    </div>
   )
 }
 
