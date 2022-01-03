@@ -1,14 +1,19 @@
 import React from "react"
 
-export function Sizes(
-  fm: any,
-  size: string,
+export function Sizes({
+  inventory,
+  size,
+  setSize,
+}: {
+  inventory: any
+  size: string
   setSize: React.Dispatch<React.SetStateAction<string>>
-) {
+}) {
+  if (!inventory || !size || !setSize) return null
   return (
     <div className="sizes">
-      {fm?.inventory &&
-        fm.inventory.map((item: any, idx: any) => (
+      {inventory &&
+        inventory.map((item: any, idx: number) => (
           <div
             key={idx}
             className={

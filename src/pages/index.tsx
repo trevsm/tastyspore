@@ -1,26 +1,29 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Footer from "../components/Main/Footer/Footer"
-import Logo from "../components/Logo/Logo"
 import { Page, PageWrappers } from "../components/Main/Page/Page"
-import { Header, Block } from "../components/partials"
 import Featured from "../components/partials/Featured/Featured"
 import { MDXQuery } from "../../types"
-import { Helmet } from "react-helmet"
+import Helmet from "../components/Main/Helmet/Helmet"
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
   return (
     <PageWrappers>
       <Page>
-        <Helmet>
-          <title>Delicious Mushrooms & Tasty Recipes! | TastySpore</title>
-          <meta
-            name="description"
-            content="Our Mushrooms grow kits are the best kits available for growing mushrooms indoors. With a 100% guarantee, we know you will love our mushrooms as much as we do."
-          />
-          <link rel="canonical" href="https://tastyspore.com/" />
-        </Helmet>
+        <Helmet
+          title="Delicious Mushrooms & Tasty Recipes! | TastySpore"
+          description="Our Mushrooms grow kits are the best kits available for growing mushrooms indoors. With a 100% guarantee, we know you will love our mushrooms as much as we do."
+          keywords={[
+            "mushroom",
+            "mushroom growing kit",
+            "mushroom drawing",
+            "mushroom menu",
+            "lion's mane mushroom",
+            "shiitake mushroom",
+            "enoki mushroom",
+            "reishi mushroom",
+          ]}
+        />
         <div className="main-top">
           <section>
             <br />
@@ -63,7 +66,7 @@ export default function Home({ data }: { data: MDXQuery }) {
 }
 
 export const query = graphql`
-  query MyQuery {
+  query {
     allMdx(sort: { order: DESC, fields: frontmatter___title }) {
       edges {
         node {

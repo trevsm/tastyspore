@@ -1,4 +1,5 @@
-.full_description {
+.full-description {
+  padding-bottom: 100px;
   div {
     margin-bottom: 30px;
   }
@@ -11,7 +12,7 @@
     ul {
       display: flex;
       flex-wrap: wrap;
-      padding: 10px;
+      padding: 0 20px;
       li {
         padding: 10px;
         margin: 10px 10px 0 0;
@@ -21,28 +22,41 @@
       }
     }
   }
-  .benefits {
+  .benefits,
+  .nutrition,
+  .aliases,
+  .description {
+    p {
+      padding: 0 10px;
+    }
     ul {
       padding: 0 10px;
       li {
         margin-bottom: 10px;
-        &::before {
-          content: "✓ ";
-        }
+      }
+    }
+  }
+  .aliases {
+    li {
+      width: fit-content;
+      border-bottom: 1px solid grey;
+    }
+  }
+  .benefits {
+    li {
+      &::before {
+        content: "✓ ";
       }
     }
   }
   .nutrition {
+    padding: 20px;
+    border: 1px solid var(--accentColor);
+    border-radius: 25px;
     h3,
     i {
       display: inline-block;
       margin-bottom: 10px;
-    }
-    ul {
-      padding: 0 10px;
-      li {
-        margin-bottom: 10px;
-      }
     }
   }
 }

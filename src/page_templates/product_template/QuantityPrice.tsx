@@ -2,13 +2,7 @@ import React from "react"
 
 export function QuantityPrice(
   setQuantity: React.Dispatch<React.SetStateAction<number>>,
-  itemData: {
-    type?: string
-    weight?: number
-    size?: string
-    quantity?: number
-    price?: { msrp?: number; sale?: number }
-  },
+  maxQuantity: number,
   quantity: number
 ) {
   return (
@@ -17,9 +11,7 @@ export function QuantityPrice(
         <button
           className="add"
           onClick={() => {
-            setQuantity((prev) =>
-              prev < itemData.quantity ? prev + 1 : itemData.quantity
-            )
+            setQuantity((prev) => (prev < maxQuantity ? prev + 1 : maxQuantity))
           }}
         >
           +

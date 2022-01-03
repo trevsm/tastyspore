@@ -1,12 +1,10 @@
+import React from "react"
 import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
-import React, { useContext } from "react"
-import { FPContext } from "../../context"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
-import FocusPopup from "./FocusPopup/FocusPopup"
 import "./Card.scss"
+import { Link } from "gatsby"
 
 export default function Card({ data }: { data: ProductFrontmatterFragment }) {
-  const { focusId, setFocusId } = useContext(FPContext)
   const fm = data.frontmatter
 
   if (!fm?.logo?.source) return null
@@ -16,12 +14,7 @@ export default function Card({ data }: { data: ProductFrontmatterFragment }) {
 
   return (
     <div className="blob card">
-      <FocusPopup data={data} open={focusId == fm.id} />
-      <button
-        onClick={() => {
-          setFocusId(fm?.id as string)
-        }}
-      >
+      <Link to={data.frontmatter.id}>
         <section>
           <div className="flex">
             <div className="image">
@@ -46,7 +39,7 @@ export default function Card({ data }: { data: ProductFrontmatterFragment }) {
             </div>
           </div>
         </section>
-      </button>
+      </Link>
     </div>
   )
 }

@@ -1,38 +1,30 @@
-import React, { ReactNode, useContext, useMemo, useState } from "react"
-import { CCWrapper, FPContext, FPWrapper } from "../../../context" // focus pop context wrapper
-import Navigation from "../Navigation/Navigation"
+import React, { ReactNode, useState } from "react"
+import { CCWrapper } from "../../../context" // focus pop context wrapper
 import Notice from "../Notice/Notice"
 import CartTab from "../../MyCart/CartTab"
 import "minireset.css"
 import "./Page.scss"
 import Footer from "../Footer/Footer"
-// import { animated, useSpring } from "react-spring"
 
 interface ChildrenInterface {
   children: ReactNode | ReactNode[]
 }
 
 function PageWrappers({ children }: ChildrenInterface) {
-  return (
-    <FPWrapper>
-      <CCWrapper>{children}</CCWrapper>
-    </FPWrapper>
-  )
+  return <CCWrapper>{children}</CCWrapper>
 }
 
 function Page({ children }: ChildrenInterface) {
-  const { focusId } = useContext(FPContext)
   const [cartOpen, setCartOpen] = useState(false)
 
   return (
     <div className="App">
-      <Notice />
+      {/* <Notice /> */}
       <CartTab open={cartOpen} setOpen={setCartOpen} />
-      <div className={"page" + (focusId ? " hide-overflow" : "")}>
+      <div className={"page"}>
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </div>
-      <Navigation />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import { ProductFrontmatterFragment } from "../../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
 import "./FullDescription.scss"
 
 export function FullDescription({
@@ -8,9 +8,10 @@ export function FullDescription({
   data: ProductFrontmatterFragment
 }) {
   const fm = data?.frontmatter
+
   if (!fm) return null
   return (
-    <div className="full_description">
+    <div className="full-description">
       <h2>Profile </h2>
       <div className="profile">
         <div className="flavor">
@@ -45,6 +46,14 @@ export function FullDescription({
             ))}
           </ul>
         </div>
+      </div>
+      <div className="aliases">
+        <h2>Common Names</h2>
+        <ul>
+          {fm.aka.map((e, key) => (
+            <li key={key}>{e}</li>
+          ))}
+        </ul>
       </div>
       <div className="description">
         <h2>Description</h2>
