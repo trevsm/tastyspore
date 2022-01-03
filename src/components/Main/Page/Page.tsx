@@ -9,11 +9,8 @@ interface ChildrenInterface {
 }
 
 function Page({ children }: ChildrenInterface) {
-  const [cartOpen, setCartOpen] = useState(false)
-
   return (
     <div className="App">
-      {/* <Notice /> */}
       <div className={"page"}>
         {children}
         {/* <Footer /> */}

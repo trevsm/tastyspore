@@ -5,6 +5,8 @@ import Featured from "../components/partials/Featured/Featured"
 import { MDXQuery } from "../../types"
 import Helmet from "../components/Main/Helmet/Helmet"
 import CartIcon from "../components/MyCart/CartIcon"
+import Notice from "../components/Main/Notice/Notice"
+import Footer from "../components/Main/Footer/Footer"
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
@@ -24,7 +26,8 @@ export default function Home({ data }: { data: MDXQuery }) {
           "reishi mushroom",
         ]}
       />
-      <CartIcon />
+      <CartIcon d={data} />
+      <Notice />
       <div className="main-top">
         <section>
           <br />
@@ -61,6 +64,7 @@ export default function Home({ data }: { data: MDXQuery }) {
           <Featured nodes={nodes} />
         </div>
       </div>
+      <Footer />
     </Page>
   )
 }

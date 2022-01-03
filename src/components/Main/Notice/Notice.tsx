@@ -3,8 +3,13 @@ import MailingList from "../../Forms/MailingList"
 import { animated, useSpring } from "react-spring"
 
 import "./Notice.scss"
+import { useLocalStorage } from "usehooks-ts"
 
 export default function Notice() {
+  const [userNotified, setUserNotified] = useLocalStorage<boolean>(
+    "user-notified",
+    false
+  )
   const [popup, setPopup] = useState(false)
 
   const styles = useSpring({
@@ -12,9 +17,11 @@ export default function Notice() {
   })
 
   useEffect(() => {
-    setTimeout(() => {
-      setPopup(true)
-    }, 2000)
+    if (!userNotified)
+      setTimeout(() => {
+        setUserNotified(true)
+        setPopup(true)
+      }, 2000)
   }, [])
 
   return (

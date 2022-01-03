@@ -76,13 +76,7 @@ export function Template({ d }: { d: any }) {
   }, [size])
 
   return (
-    <div
-      className="product-page"
-      style={{
-        ...mdxStyle,
-        pointerEvents: open ? "all" : "none",
-      }}
-    >
+    <div className="product-page" style={mdxStyle}>
       <Helmet
         title={fm.readable_class + " " + fm.readable_category + " | TastySpore"}
         description={fm.description}
