@@ -22,6 +22,11 @@
       }
     }
   }
+  .aliases,
+  .benefits,
+  .profile {
+    text-transform: capitalize;
+  }
   .benefits,
   .nutrition,
   .aliases,

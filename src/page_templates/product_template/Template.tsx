@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useRef, useContext } from "react"
+import React, { useEffect, useState } from "react"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import { CartContext } from "../../context"
-
 import Arrow from "../../components/icons/Arrow"
-import { FullDescription } from "./FullDescription"
-import { Sizes } from "./Sizes"
-import { QuantityPrice } from "./QuantityPrice"
+import { FullDescription } from "./components/FullDescription"
+import { Sizes } from "./components/Sizes"
+import { QuantityPrice } from "./components/QuantityPrice"
 
 import "./Template.scss"
 import { navigate } from "gatsby"
 import Helmet from "../../components/Main/Helmet/Helmet"
+import { PIInterface } from "../../../types"
+import { useLocalStorage } from "usehooks-ts"
 
 export function Template({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
@@ -23,7 +23,8 @@ export function Template({ d }: { d: any }) {
   const [quantity, setQuantity] = useState(1)
 
   // items in cart
-  const { setItems } = useContext(CartContext)
+  const [_, setItems] = useLocalStorage<PIInterface[]>("my_cart", null)
+
   const selectedItem = fm?.inventory.filter(
     (item: any) => item?.size == size
   )[0]
@@ -41,6 +42,8 @@ export function Template({ d }: { d: any }) {
 
   const setCartItems = (id: string, size: string, quantity: number) => {
     setItems((prev) => {
+      console.log(prev)
+
       if (prev == undefined) {
         return [{ id, size, quantity }]
       }
@@ -63,6 +66,7 @@ export function Template({ d }: { d: any }) {
               : maxQuantity,
         })
     })
+    setQuantity(1)
   }
 
   useEffect(() => {

@@ -31,7 +31,7 @@ export function Sizes({
             {item.quantity == 0 ? (
               <p className="out-label">out of stock</p>
             ) : (
-              <p className="price-label">
+              <p className="price price-label">
                 <span>$</span>
                 {item.price.msrp}
               </p>

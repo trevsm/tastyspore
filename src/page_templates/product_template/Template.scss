@@ -119,14 +119,28 @@
     }
     div.selected {
       border: 2px dashed var(--accentColor);
+      &:after {
+        position: relative;
+        display: inline-block;
+        content: "(selected)";
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+        color: #9d9c9c;
+      }
     }
     .size-label {
       text-transform: capitalize;
     }
     .price-label {
       text-align: center;
+      padding: 0;
+      line-height: unset;
       padding-top: 10px;
       margin-right: 10px;
+      font-size: 25px;
+      font-weight: inherit;
       span {
         color: #363636;
         padding-right: 2px;

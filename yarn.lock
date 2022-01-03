@@ -12593,6 +12593,11 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
+usehooks-ts@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.1.1.tgz#0415d0e9e55e5f675b6f7161d0c5b105084ed2c0"
+  integrity sha512-tyG2D2tUVb8V3eJ4b34dyiAdUHFjXg/Sphqu4jtm2B46fbZbsKCvLgZIfIm0X8GtXJituuXxcRIvU4Bk8QI52g==
+
 utif@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/utif/-/utif-2.0.1.tgz#9e1582d9bbd20011a6588548ed3266298e711759"

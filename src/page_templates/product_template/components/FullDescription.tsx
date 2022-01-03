@@ -1,5 +1,5 @@
 import React from "react"
-import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "../../../../types/gatsby-graphql"
 import "./FullDescription.scss"
 
 export function FullDescription({
@@ -17,7 +17,7 @@ export function FullDescription({
         <div className="flavor">
           <h3>Flavor: </h3>
           <ul>
-            {fm.profile.flavor.map((e, key) => (
+            {fm.profile.flavor.map((e: string, key: number) => (
               <li key={key}>{e}</li>
             ))}
           </ul>
@@ -25,7 +25,7 @@ export function FullDescription({
         <div className="texture">
           <h3>Texture: </h3>
           <ul>
-            {fm.profile.texture.map((e, key) => (
+            {fm.profile.texture.map((e: string, key: number) => (
               <li key={key}>{e}</li>
             ))}
           </ul>
@@ -33,7 +33,7 @@ export function FullDescription({
         <div className="aroma">
           <h3>Aroma: </h3>
           <ul>
-            {fm.profile.aroma.map((e, key) => (
+            {fm.profile.aroma.map((e: string, key: number) => (
               <li key={key}>{e}</li>
             ))}
           </ul>
@@ -82,6 +82,7 @@ export function FullDescription({
           <li>fat: {fm.nutrition.fat}</li>
           <li>fiber: {fm.nutrition.fiber}</li>
         </ul>
+        <hr />
         <h3>Vitamins</h3>
         <ul className="vitamins">
           {fm.nutrition.vitamins.map((e, key) => (
