@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import Notice from "../Notice/Notice"
 import "minireset.css"
 import "./Page.scss"
@@ -9,13 +9,19 @@ interface ChildrenInterface {
 }
 
 function Page({ children }: ChildrenInterface) {
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   return (
-    <div className="App">
-      <div className={"page"}>
-        {children}
-        {/* <Footer /> */}
+    isClient && (
+      <div className="App">
+        <div className={"page"}>
+          {children}
+          {/* <Footer /> */}
+        </div>
       </div>
-    </div>
+    )
   )
 }
 
