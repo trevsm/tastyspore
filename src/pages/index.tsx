@@ -30,18 +30,19 @@ export default function Home({ data }: { data: MDXQuery }) {
       <Notice />
       <div className="main-top">
         <section>
-          <br />
-          <br />
-          <h1>
-            Delicious mushrooms <br />& tasty recipes.
-          </h1>
-          <p>
-            Our kits are designed to be easy to use, and contain a complete list
-            of what you will need to get started.
-            <br /> <br />
-            With a <b>100% guarantee</b>, we are confident you will love our
-            mushrooms as much as we do!
-          </p>
+          <div className="left">
+            <h1>Delicious Mushrooms & Tasty Recipies</h1>
+            <p>
+              Grow and cook <b>gourmet</b> mushrooms at home with confidence!
+            </p>
+            <button>Go Foraging!</button>
+            <button>Browse Recipes</button>
+            <br />
+            <br />
+            <a href="#">instagram.</a>
+            <a href="#">facebook.</a>
+            <a href="#">youtube.</a>
+          </div>
         </section>
       </div>
       <svg width="0" height="0">

@@ -13,6 +13,7 @@ font-family: 'Poppins', sans-serif;
 */
 body,
 html {
+  height: 100%;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   background-color: #fffdfc;
@@ -89,32 +90,86 @@ button {
 .main-top {
   position: relative;
   background-color: #fff0e4;
-  padding: 30px;
-  padding-top: 0;
+  padding: 40px 25px;
   padding-bottom: 150px;
   margin-bottom: -50px;
 
+  min-height: 720px;
+  height: 90vh;
+  max-height: 900px;
+
   clip-path: url(#myCurve);
-  &:after {
-    content: "🍳🍄";
-    position: absolute;
-    bottom: 10vh;
-    right: 10vw;
+  .left {
+    width: 50%;
+    max-width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  button {
+    cursor: pointer;
+    position: relative;
+    font-size: 18px;
+    padding: 18px 30px;
+    border: 2px dashed;
+    color: #564d42;
+    letter-spacing: 2px;
+    border-radius: 40px 40px 40px 7px;
+    margin-top: 30px;
+    width: fit-content;
+    &:last-of-type {
+      margin-top: 10px;
+      border-radius: 7px 40px 40px;
+      background-color: transparent;
+      border-color: #ffccb4;
+    }
+    &:first-of-type:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      background: #ffccb4;
+      border-radius: 40px 40px 40px 7px;
+      transform: translate(3px, 3px);
+      z-index: -1;
+    }
   }
   section {
     max-width: var(--maxWidth);
     margin: 0 auto;
+    height: 100%;
   }
   h1 {
     font-family: "Forum", cursive;
     color: #564d42;
-    font-size: 45px;
-    margin-bottom: 10px;
+    font-size: 55px;
+    margin-bottom: 20px;
     text-transform: capitalize;
   }
   p {
+    font-size: 17px;
     color: #8f847b;
-    line-height: 28px;
+    line-height: 30px;
+  }
+  a {
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-size: 11px;
+    text-align: right;
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-top {
+    .left {
+      width: 100%;
+      justify-content: initial;
+    }
   }
 }
 
