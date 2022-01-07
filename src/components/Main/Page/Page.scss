@@ -91,7 +91,6 @@ button {
   position: relative;
   background-color: #fff0e4;
   padding: 40px 25px;
-  padding-bottom: 150px;
   margin-bottom: -50px;
 
   min-height: 720px;
@@ -99,13 +98,20 @@ button {
   max-height: 900px;
 
   clip-path: url(#myCurve);
-  .left {
-    width: 50%;
-    max-width: 500px;
-    height: 100%;
+  section {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    .left {
+      width: 50%;
+      max-width: 500px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .right {
+      width: 50%;
+      overflow: hidden;
+    }
   }
   button {
     cursor: pointer;
@@ -142,16 +148,20 @@ button {
     margin: 0 auto;
     height: 100%;
   }
+  h1,
+  p,
+  a {
+    color: #564d42;
+    text-shadow: 0 0 12px #fff0e4;
+  }
   h1 {
     font-family: "Forum", cursive;
-    color: #564d42;
     font-size: 55px;
     margin-bottom: 20px;
     text-transform: capitalize;
   }
   p {
     font-size: 17px;
-    color: #8f847b;
     line-height: 30px;
   }
   a {
@@ -163,16 +173,6 @@ button {
     padding: 5px;
   }
 }
-
-@media only screen and (max-width: 600px) {
-  .main-top {
-    .left {
-      width: 100%;
-      justify-content: initial;
-    }
-  }
-}
-
 .cart-tab .item {
   position: relative;
   background: white;
@@ -336,15 +336,37 @@ button {
   }
 }
 
+//Desktop
 @media only screen and (min-width: 600px) {
   .cart-icon {
     margin-right: 30px;
   }
 }
 
+//Mobile
 @media only screen and (max-width: 700px) {
   .split {
     flex-wrap: wrap;
+  }
+  .main-top {
+    section {
+      .left {
+        width: 100%;
+        justify-content: initial;
+      }
+      .right {
+        svg {
+          transform: scale(1.2);
+        }
+        opacity: 0.7;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -5;
+      }
+    }
   }
 }
 .blob {

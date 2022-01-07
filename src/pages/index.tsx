@@ -7,6 +7,7 @@ import Helmet from "../components/Main/Helmet/Helmet"
 import CartIcon from "../components/MyCart/CartIcon"
 import Notice from "../components/Main/Notice/Notice"
 import Footer from "../components/Main/Footer/Footer"
+import ShiitakeTree from "../components/Media/ShiitakeTree"
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
@@ -42,6 +43,9 @@ export default function Home({ data }: { data: MDXQuery }) {
             <a href="#">instagram.</a>
             <a href="#">facebook.</a>
             <a href="#">youtube.</a>
+          </div>
+          <div className="right">
+            <ShiitakeTree />
           </div>
         </section>
       </div>
