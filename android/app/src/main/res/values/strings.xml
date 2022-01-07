@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">tastyspore</string>
+    <string name="title_activity_main">tastyspore</string>
+    <string name="package_name">com.tastyspore.app</string>
+    <string name="custom_url_scheme">com.tastyspore.app</string>
+</resources>

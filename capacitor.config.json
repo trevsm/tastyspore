@@ -1,0 +1,6 @@
+{
+  "appId": "com.tastyspore.app",
+  "appName": "tastyspore",
+  "webDir": "public",
+  "bundledWebRuntime": false
+}

@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-404-tsx-781ca11f7ddfdf5d4d2e.js","mappings":"kIAOA,UAJqB,WACnB,OAAO","sources":["webpack://tastyspore/./src/pages/404.tsx"],"sourcesContent":["import * as React from \"react\"\r\n\r\n// markup\r\nconst NotFoundPage = () => {\r\n  return <div>404</div>\r\n}\r\n\r\nexport default NotFoundPage\r\n"],"names":[],"sourceRoot":""}
