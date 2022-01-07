@@ -110,9 +110,10 @@ button {
     }
     .right {
       width: 50%;
+      padding-top: 10px;
       overflow: hidden;
       svg {
-        min-width: 460px;
+        min-width: 510px;
       }
     }
   }
