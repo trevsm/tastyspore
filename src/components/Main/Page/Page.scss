@@ -90,7 +90,6 @@ button {
 .main-top {
   position: relative;
   background-color: #fff0e4;
-  padding: 40px 25px;
   margin-bottom: -50px;
 
   min-height: 720px;
@@ -104,6 +103,7 @@ button {
       width: 50%;
       max-width: 500px;
       height: 100%;
+      padding: 5px 40px 25px 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -111,15 +111,20 @@ button {
     .right {
       width: 50%;
       overflow: hidden;
+      svg {
+        min-width: 460px;
+      }
     }
   }
   button {
+    --bgColor: #f3d7c4;
+    --color: #282624;
     cursor: pointer;
     position: relative;
     font-size: 18px;
     padding: 18px 30px;
     border: 2px dashed;
-    color: #564d42;
+    color: var(--color);
     letter-spacing: 2px;
     border-radius: 40px 40px 40px 7px;
     margin-top: 30px;
@@ -128,19 +133,23 @@ button {
       margin-top: 10px;
       border-radius: 7px 40px 40px;
       background-color: transparent;
-      border-color: #ffccb4;
     }
-    &:first-of-type:after {
+    &:after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
       right: 0;
       top: 0;
-      background: #ffccb4;
-      border-radius: 40px 40px 40px 7px;
+      background: var(--bgColor);
       transform: translate(3px, 3px);
       z-index: -1;
+    }
+    &:first-of-type:after {
+      border-radius: 40px 40px 40px 7px;
+    }
+    &:last-of-type:after {
+      border-radius: 7px 40px 40px;
     }
   }
   section {
@@ -349,6 +358,7 @@ button {
     flex-wrap: wrap;
   }
   .main-top {
+    padding-top: 40px;
     section {
       .left {
         width: 100%;
