@@ -19,17 +19,20 @@ export default function Home({ data }: { data: MDXQuery }) {
     return 6
   }
 
+  const points = 10
   const sinPath = (A: number, B: number, C: number, D: number) =>
     "polygon(100% 0%, 0% 0%," +
-    Array(101)
+    Array(points)
       .fill(null)
-      .map((_, i) => `${i}% ${A * Math.sin((101 - i) * B + C) + D}%`)
+      .map((_, i) => {
+        const max = (i * (101 + points * 2)) / points
+        return `${max}% ${A * Math.sin((max - i) * B + C) + D}%`
+      })
       .join(", ") +
     ")"
   const clipStyles = {
-    clipPath: sinPath(amp(), 0.04, 7, 90),
-    WebkitClipPath: sinPath(amp(), 0.04, 7, 90),
-  }
+    "--clipPath": sinPath(amp(), 0.04, 7, 90),
+  } as React.CSSProperties
 
   return (
     <Page>

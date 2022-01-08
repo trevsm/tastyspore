@@ -96,6 +96,7 @@ button {
   min-height: 700px;
   height: 90vh;
   max-height: 900px;
+  clip-path: var(--clipPath);
   section {
     display: flex;
     .left {
