@@ -8,9 +8,29 @@ import CartIcon from "../components/MyCart/CartIcon"
 import Notice from "../components/Main/Notice/Notice"
 import Footer from "../components/Main/Footer/Footer"
 import ShiitakeTree from "../components/Media/ShiitakeTree"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
+  const bp = useBreakpoint()
+  const amp = () => {
+    if (bp.xs) return 2
+    if (bp.sm) return 3
+    return 6
+  }
+
+  const sinPath = (A: number, B: number, C: number, D: number) =>
+    "polygon(100% 0%, 0% 0%," +
+    Array(101)
+      .fill(null)
+      .map((_, i) => `${i}% ${A * Math.sin((101 - i) * B + C) + D}%`)
+      .join(", ") +
+    ")"
+  const clipStyles = {
+    clipPath: sinPath(amp(), 0.04, 7, 90),
+    WebkitClipPath: sinPath(amp(), 0.04, 7, 90),
+  }
+
   return (
     <Page>
       <Helmet
@@ -29,7 +49,7 @@ export default function Home({ data }: { data: MDXQuery }) {
       />
       <CartIcon d={data} />
       <Notice />
-      <div className="main-top">
+      <div className={"main-top"} style={clipStyles}>
         <section>
           <div className="left">
             <h1>Delicious Mushrooms & Tasty Recipies</h1>
@@ -40,29 +60,25 @@ export default function Home({ data }: { data: MDXQuery }) {
             <button>Browse Recipes</button>
             <br />
             <br />
-            <a href="#">instagram.</a>
-            <a href="#">facebook.</a>
-            <a href="#">youtube.</a>
+            {!bp.xs && (
+              <>
+                <a href="#">
+                  <span>instagra</span>m
+                </a>
+                <a href="#">
+                  <span>faceboo</span>k
+                </a>
+                <a href="#">
+                  <span>youtub</span>e
+                </a>
+              </>
+            )}
           </div>
           <div className="right">
             <ShiitakeTree />
           </div>
         </section>
       </div>
-      <svg width="0" height="0">
-        <defs>
-          <clipPath id="myCurve" clipPathUnits="objectBoundingBox">
-            <path
-              d="M 0,1
-									L 0,0
-									L 1,0
-									L 1,.9
-									C .9 1, .35 .8, 0 .9
-									Z"
-            />
-          </clipPath>
-        </defs>
-      </svg>
       <div className="content">
         <br />
         <div className="split">

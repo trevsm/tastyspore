@@ -104,6 +104,9 @@ export function Template({ d }: { d: any }) {
         <Sizes inventory={fm.inventory} size={size} setSize={setSize} />
         <hr />
         <FullDescription data={data} />
+        <br />
+        <br />
+        <br />
       </div>
       <div className="bottom">
         <p className="price" style={{ color: accentColor }}>

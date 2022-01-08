@@ -5,10 +5,10 @@ form {
     border: 1px solid white;
     padding: 8px 15px;
     &:focus {
-      outline: 1px solid $blue;
+      outline: 1px solid $brown;
     }
     &:focus + button {
-      background-color: $blue;
+      background-color: $brown;
     }
   }
   button {

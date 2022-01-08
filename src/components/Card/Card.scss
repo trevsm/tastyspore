@@ -13,9 +13,9 @@
       display: flex;
       h2 {
         width: fit-content;
+        color: #5c5c5c;
         font-size: 18px;
         font-weight: bold;
-        color: $blue;
         padding-bottom: 4px;
       }
       p.summary {
@@ -41,8 +41,7 @@
           font-size: 13px;
           border-radius: 100px;
           padding: 2px 5px;
-          color: $blue;
-          border: 1px solid $blue;
+          border: 1px solid;
         }
       }
     }
@@ -59,17 +58,16 @@
 }
 .cost {
   font-weight: bold;
-  color: $blue;
+  color: #5c5c5c;
 }
 .ends {
   font-weight: bold;
   opacity: 0.9;
-  color: $blue;
   margin-top: 3px;
 }
 .cross {
   position: relative;
-  color: grey;
+  color: #5c5c5c;
   display: inline-block;
   padding-right: 10px;
   text-decoration: line-through;

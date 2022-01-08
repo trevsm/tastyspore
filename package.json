@@ -14,7 +14,10 @@
     "build": "yarn clean && gatsby build && yarn cname:add",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "publish": "gh-pages -d public"
+    "publish": "gh-pages -d public",
+    "cap:update": "npx cap update android",
+    "cap:open": "npx cap open android",
+    "android": "yarn cap:update && yarn cap:open"
   },
   "dependencies": {
     "@capacitor/android": "^3.3.4",

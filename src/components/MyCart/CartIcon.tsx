@@ -27,6 +27,9 @@ export default function CartIcon({ d }: { d: any }) {
     }, 2000)
   })
 
+  let itemCount = 0
+  items.forEach((e) => (itemCount += e.quantity))
+
   const lastItem = items && items.length ? items[items.length - 1] : null
   const maxQuantity =
     lastItem && data
@@ -48,13 +51,11 @@ export default function CartIcon({ d }: { d: any }) {
       )}
       <Link to="/my_cart" className={"cart-icon"}>
         {items && items.length ? (
-          <span className="item-count">
-            {items.length <= 9 ? items.length : "+"}
-          </span>
+          <span className="item-count">{itemCount <= 9 ? itemCount : "+"}</span>
         ) : (
           ""
         )}
-        <Cart color="#545485" width={30} />
+        <Cart color="#3e3e3e" width={30} />
       </Link>
     </>
   )
