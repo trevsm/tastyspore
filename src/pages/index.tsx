@@ -31,7 +31,7 @@ export default function Home({ data }: { data: MDXQuery }) {
       .join(", ") +
     ")"
   const clipStyles = {
-    "--clipPath": sinPath(amp(), 0.04, 7, 90),
+    "--clipPath": sinPath(amp(), 0.04, 5, 90),
   } as React.CSSProperties
 
   return (

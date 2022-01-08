@@ -28,7 +28,7 @@ export default function CartIcon({ d }: { d: any }) {
   })
 
   let itemCount = 0
-  items.forEach((e) => (itemCount += e.quantity))
+  items && items.forEach((e) => (itemCount += e.quantity))
 
   const lastItem = items && items.length ? items[items.length - 1] : null
   const maxQuantity =
