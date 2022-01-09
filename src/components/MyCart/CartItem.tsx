@@ -1,11 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Trash from "../icons/Trash"
 import "./CartItem.scss"
 import { CIInterface } from "../../../types"
 import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { animated } from "react-spring"
+import { animated, useSpring } from "react-spring"
 
 export default function CartItem({
   item,
@@ -16,9 +16,36 @@ export default function CartItem({
   styles: any
   removeItem: (id: string, size: string) => void
 }) {
+  const [confirmDelete, setConfirmDelete] = useState(false)
+
+  const fade = useSpring({
+    opacity: confirmDelete ? 1 : 0,
+    pointerEvents: confirmDelete ? "auto" : "none",
+  })
+
   return (
-    <animated.div style={styles} className="item">
-      <div className="flex">
+    <animated.div style={styles} className={"item"}>
+      <animated.div className="confirm-delete" style={fade}>
+        <p>Remove this item?</p>
+        <button
+          onClick={() => {
+            setConfirmDelete(false)
+          }}
+          className="no"
+        >
+          Cancel
+        </button>
+        <button
+          className="yes"
+          onClick={() => {
+            setConfirmDelete(false)
+            removeItem(item.id, item.size)
+          }}
+        >
+          Remove
+        </button>
+      </animated.div>
+      <div className={"flex"}>
         <AniLink paintDrip hex={item.accent_color} to={"/" + item.id}>
           <GatsbyImage image={getImage(item.image)} alt={item.title} />
         </AniLink>
@@ -32,7 +59,7 @@ export default function CartItem({
           <button
             className="delete"
             onClick={() => {
-              removeItem(item.id, item.size)
+              setConfirmDelete(true)
             }}
           >
             <Trash color="#f36766" width={30} />

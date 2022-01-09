@@ -8,6 +8,7 @@ import { Page } from "../components/Main/Page/Page"
 import { useLocalStorage } from "usehooks-ts"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { useTransition } from "react-spring"
+import Cart from "../components/icons/Cart"
 
 function addZeroes(num: string) {
   const dec = num.split(".")[1]
@@ -137,12 +138,12 @@ export default function MyCart({ data }: { data: MDXQuery }) {
               />
             ))}
 
-            {/*
+            {!items.length && (
               <div className="no-items">
                 <Cart color="#dddddd" width={150} />
                 <p>No Items In Cart</p>
               </div>
-            */}
+            )}
           </section>
           {items && items.length && (
             <div className="nav">

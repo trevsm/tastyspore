@@ -27,4 +27,44 @@
     margin: 12px;
     padding: 0;
   }
+  .confirm-delete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    p,
+    button {
+      color: white;
+      font-size: 18px;
+    }
+    p {
+      width: 100%;
+      color: #313439;
+      text-align: center;
+    }
+
+    .no,
+    .yes {
+      padding: 10px;
+      height: 100%;
+    }
+    .no {
+      background-color: white;
+      color: #313439;
+      border-left: 2px solid #f7f7f7;
+    }
+    .yes {
+      background-color: #f36766;
+      border-radius: 0 20px 20px 0;
+    }
+  }
 }
