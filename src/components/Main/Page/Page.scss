@@ -33,7 +33,7 @@ hr {
   padding: 1px;
   margin: 30px 10px;
   border: unset;
-  background: #3f73d71c;
+  background: #1e1e1e21;
   border-radius: 100%;
 }
 
@@ -318,24 +318,24 @@ button {
   position: fixed;
   right: 0;
   z-index: 10;
-  padding: 20px;
+  padding: 12px;
   transition: transform 0.2s ease-out;
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+  background-color: white;
+  border-radius: 0 0 0 30px;
+  box-shadow: 0px 0px 7px #00000017;
   span.item-count {
+    position: absolute;
+    right: 12px;
+    top: 12px;
     display: inline-block;
-    text-align: center;
-    font-family: monospace;
     border-radius: 100%;
-    width: 17px;
-    height: 17px;
+    width: 13px;
+    height: 13px;
     font-size: 15.5px;
-    color: white;
+    border: 2px solid white;
     background-color: #f36766;
     margin-right: -5px;
   }
-}
-.cart-icon.animate {
-  transform: scale(1.1);
 }
 
 .notification-popup {
@@ -352,13 +352,6 @@ button {
   text-align: center;
   .max-10 {
     color: $pink;
-  }
-}
-
-//Desktop
-@media only screen and (min-width: 600px) {
-  .cart-icon {
-    margin-right: 30px;
   }
 }
 

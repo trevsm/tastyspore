@@ -113,7 +113,7 @@
       margin: 10px;
       border-radius: 10px;
       border: 2px dashed #ededed;
-      min-height: 90px;
+      min-height: 100%;
     }
     div.selected {
       border: 2px dashed var(--accentColor);
@@ -180,6 +180,7 @@
     }
     .add,
     .minus {
+      max-width: 30px;
       border: 2px solid #383838;
       border-radius: 5px;
     }

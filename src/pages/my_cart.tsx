@@ -124,7 +124,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
       />
       <div className="cart-tab">
         <AniLink paintDrip hex="#fff0e4" to="/" className="back-button">
-          <Home color="#3e3e3e" width={40} />
+          <Home color="#3e3e3e" width={35} />
         </AniLink>
         <h3 className="cart">My Cart</h3>
         <section>

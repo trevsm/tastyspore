@@ -91,7 +91,7 @@ export function Template({ d }: { d: any }) {
         ]}
       />
       <AniLink paintDrip hex="#fff0e4" className="close" to="/">
-        <Home color="#3e3e3e" width={40} />
+        <Home color="#3e3e3e" width={35} />
       </AniLink>
       <div className="content">
         <div className="image">
@@ -109,7 +109,7 @@ export function Template({ d }: { d: any }) {
         <br />
         <br />
       </div>
-      <div className="bottom">
+      <div className="bottom content">
         <p className="price" style={{ color: accentColor }}>
           <span>$</span>
           {price}
