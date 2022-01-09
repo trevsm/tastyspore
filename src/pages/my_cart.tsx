@@ -138,12 +138,13 @@ export default function MyCart({ data }: { data: MDXQuery }) {
               />
             ))}
 
-            {!items.length && (
-              <div className="no-items">
-                <Cart color="#dddddd" width={150} />
-                <p>No Items In Cart</p>
-              </div>
-            )}
+            {!items ||
+              (!items.length && (
+                <div className="no-items">
+                  <Cart color="#dddddd" width={150} />
+                  <p>No Items In Cart</p>
+                </div>
+              ))}
           </section>
           {items && items.length && (
             <div className="nav">
