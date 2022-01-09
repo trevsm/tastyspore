@@ -5,16 +5,19 @@ import "./CartItem.scss"
 import { CIInterface } from "../../../types"
 import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { animated } from "react-spring"
 
 export default function CartItem({
   item,
+  styles,
   removeItem,
 }: {
   item: CIInterface
+  styles: any
   removeItem: (id: string, size: string) => void
 }) {
   return (
-    <div className="item">
+    <animated.div style={styles} className="item">
       <div className="flex">
         <AniLink paintDrip hex={item.accent_color} to={"/" + item.id}>
           <GatsbyImage image={getImage(item.image)} alt={item.title} />
@@ -36,6 +39,6 @@ export default function CartItem({
           </button>
         </div>
       </div>
-    </div>
+    </animated.div>
   )
 }

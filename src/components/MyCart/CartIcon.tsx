@@ -50,7 +50,7 @@ export default function CartIcon({ d }: { d: any }) {
           </p>
         </animated.div>
       )}
-      <AniLink paintDrip hex="##fbfbfb" to="/my_cart" className={"cart-icon"}>
+      <AniLink paintDrip hex="#fbfbfb" to="/my_cart" className={"cart-icon"}>
         {items && items.length ? (
           <span className="item-count">{itemCount <= 9 ? itemCount : "+"}</span>
         ) : (
