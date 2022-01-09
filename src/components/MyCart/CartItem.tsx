@@ -11,16 +11,18 @@ export default function CartItem({
   item,
   styles,
   removeItem,
+  setItemQuantity,
 }: {
   item: CIInterface
   styles: any
   removeItem: (id: string, size: string) => void
+  setItemQuantity: (item: CIInterface, newQuantity: number) => void
 }) {
   const [confirmDelete, setConfirmDelete] = useState(false)
 
   const fade = useSpring({
     opacity: confirmDelete ? 1 : 0,
-    pointerEvents: confirmDelete ? "auto" : "none",
+    pointerEvents: confirmDelete ? "all" : "none",
   })
 
   return (
@@ -28,8 +30,10 @@ export default function CartItem({
       style={styles}
       className={"item"}
       tabIndex={0}
-      onBlur={() => {
-        setConfirmDelete(false)
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setConfirmDelete(false)
+        }
       }}
     >
       <animated.div className="confirm-delete" style={fade}>
@@ -59,7 +63,28 @@ export default function CartItem({
         <div className="info">
           <h2>{item.title}</h2>
           <p className="price">${item.price.msrp}</p>
-          <div className="quantity">Quantity: {item.quantity}</div>
+          <div className="quantity">
+            <button
+              className="add"
+              onClick={() =>
+                setItemQuantity(
+                  item,
+                  item.quantity < 10 ? item.quantity + 1 : 10
+                )
+              }
+            >
+              +
+            </button>
+            <span className="num">{item.quantity}</span>
+            <button
+              className="minus"
+              onClick={() =>
+                setItemQuantity(item, item.quantity > 1 ? item.quantity - 1 : 1)
+              }
+            >
+              -
+            </button>
+          </div>
           <p className="size">
             {item.size[0]} : {item.weight}lbs
           </p>

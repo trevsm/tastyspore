@@ -90,7 +90,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
       from: { opacity: 0 },
       enter: {
         opacity: 1,
-        height: "100px",
+        height: "110px",
         paddingTop: "15px",
         paddingBottom: "15px",
         marginBottom: "20px",
@@ -105,6 +105,14 @@ export default function MyCart({ data }: { data: MDXQuery }) {
       },
     }
   )
+
+  const setItemQuantity = (item: CIInterface, newQuantity: number) => {
+    const index = items.findIndex((e) => e.id + e.size == item.id + item.size)
+    const newItem = { ...items[index], quantity: newQuantity }
+
+    items[index] = newItem
+    setItems(items)
+  }
 
   return (
     <Page>
@@ -122,7 +130,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
           "reishi mushroom",
         ]}
       />
-      <div className="cart-tab">
+      <div className="cart-tab content">
         <AniLink paintDrip hex="#fff0e4" to="/" className="back-button">
           <Home color="#3e3e3e" width={35} />
         </AniLink>
@@ -133,6 +141,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
               item={item}
               styles={props}
               removeItem={removeItem}
+              setItemQuantity={setItemQuantity}
               key={key}
             />
           ))}
@@ -146,7 +155,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
             ))}
         </section>
         {items && items.length && (
-          <div className="nav">
+          <div className="nav content">
             <p className="sub">
               Sub total: <span>${sub_total}</span>
             </p>

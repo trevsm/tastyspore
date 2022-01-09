@@ -86,6 +86,28 @@ button {
   overflow: hidden;
 }
 
+.quantity {
+  font-family: monospace;
+  line-height: 27px;
+  .add,
+  .minus,
+  .num {
+    color: #383838;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .add,
+  .minus {
+    max-width: 30px;
+    border: 2px solid #383838;
+    border-radius: 5px;
+  }
+}
+
 .split {
   display: flex;
   flex-wrap: wrap;
@@ -210,6 +232,17 @@ button {
   .flex {
     display: flex;
   }
+  .quantity {
+    margin-top: 10px;
+    * {
+      font-size: 15px;
+    }
+    .add,
+    .minus {
+      width: 23px;
+      height: 23px;
+    }
+  }
   .size {
     text-transform: capitalize;
     color: #b1b1b1;
@@ -231,6 +264,7 @@ button {
   height: 100%;
   background-color: white;
   z-index: 11;
+  padding: 0 !important;
   a.back-button {
     position: absolute;
     left: 20px;

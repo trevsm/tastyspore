@@ -164,25 +164,4 @@
       padding-right: 3px;
     }
   }
-  .quantity {
-    font-family: monospace;
-    line-height: 27px;
-    .add,
-    .minus,
-    .num {
-      color: #383838;
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .add,
-    .minus {
-      max-width: 30px;
-      border: 2px solid #383838;
-      border-radius: 5px;
-    }
-  }
 }
