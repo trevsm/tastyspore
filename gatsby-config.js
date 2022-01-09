@@ -12,6 +12,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-breakpoints",
     "gatsby-plugin-htaccess",
+    "gatsby-plugin-transition-link",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {

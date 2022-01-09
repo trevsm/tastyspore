@@ -3,10 +3,11 @@ import { graphql, navigate } from "gatsby"
 import { CIInterface, MDXQuery, PIInterface } from "../../types"
 import Helmet from "../components/Main/Helmet/Helmet"
 import CartItem from "../components/MyCart/CartItem"
-import Arrow from "../components/icons/Arrow"
+import Home from "../components/icons/Home"
 import Cart from "../components/icons/Cart"
 import { Page } from "../components/Main/Page/Page"
 import { useLocalStorage } from "usehooks-ts"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 function addZeroes(num: string) {
   const dec = num.split(".")[1]
@@ -38,6 +39,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
                 price: { msrp: inventoryItem.price.msrp },
                 image: cfm.logo.source.childImageSharp,
                 weight: inventoryItem.weight,
+                accent_color: cfm.accent_color,
               })
           })
         }
@@ -76,9 +78,9 @@ export default function MyCart({ data }: { data: MDXQuery }) {
       />
       <div>
         <div className="cart-tab">
-          <button className="back-button" onClick={() => navigate(-1)}>
-            <Arrow color="#3e3e3e" width={20} />
-          </button>
+          <AniLink paintDrip hex="#fff0e4" to="/" className="back-button">
+            <Home color="#3e3e3e" width={40} />
+          </AniLink>
           <h3 className="cart">My Cart</h3>
           <section>
             {itemsWithData && itemsWithData.length ? (

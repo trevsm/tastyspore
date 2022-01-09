@@ -24,6 +24,7 @@ interface CIInterface {
   price: { msrp: number; sale?: number }
   image: any
   weight: number
+  accent_color: string
 }
 
 // Cart Interface & Context

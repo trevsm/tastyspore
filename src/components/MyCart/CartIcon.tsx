@@ -5,6 +5,7 @@ import Cart from "../icons/Cart"
 import { animated, useSpring } from "react-spring"
 import { useLocalStorage, useEventListener } from "usehooks-ts"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function CartIcon({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
@@ -49,14 +50,14 @@ export default function CartIcon({ d }: { d: any }) {
           </p>
         </animated.div>
       )}
-      <Link to="/my_cart" className={"cart-icon"}>
+      <AniLink paintDrip hex="##fbfbfb" to="/my_cart" className={"cart-icon"}>
         {items && items.length ? (
           <span className="item-count">{itemCount <= 9 ? itemCount : "+"}</span>
         ) : (
           ""
         )}
         <Cart color="#3e3e3e" width={30} />
-      </Link>
+      </AniLink>
     </>
   )
 }

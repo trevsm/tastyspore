@@ -4,6 +4,7 @@ import Trash from "../icons/Trash"
 import "./CartItem.scss"
 import { CIInterface } from "../../../types"
 import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function CartItem({
   item,
@@ -15,9 +16,9 @@ export default function CartItem({
   return (
     <div className="item">
       <div className="flex">
-        <Link to={"/" + item.id}>
+        <AniLink paintDrip hex={item.accent_color} to={"/" + item.id}>
           <GatsbyImage image={getImage(item.image)} alt={item.title} />
-        </Link>
+        </AniLink>
         <div className="info">
           <h2>{item.title}</h2>
           <p className="price">${item.price.msrp}</p>

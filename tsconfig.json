@@ -16,7 +16,8 @@
     "allowJs": true,
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "no-submodule-imports": [true, "gatsby-plugin-transition-link"]
   },
   "include": ["src/**/*", "types"],
   "exclude": ["node_modules", "build"]

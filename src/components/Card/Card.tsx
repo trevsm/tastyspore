@@ -3,6 +3,7 @@ import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
 import "./Card.scss"
 import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function Card({ data }: { data: ProductFrontmatterFragment }) {
   const fm = data.frontmatter
@@ -14,7 +15,7 @@ export default function Card({ data }: { data: ProductFrontmatterFragment }) {
 
   return (
     <div className="blob card">
-      <Link to={data.frontmatter.id}>
+      <AniLink paintDrip hex={fm.accent_color} to={data.frontmatter.id}>
         <section>
           <div className="flex">
             <div className="image">
@@ -39,7 +40,7 @@ export default function Card({ data }: { data: ProductFrontmatterFragment }) {
             </div>
           </div>
         </section>
-      </Link>
+      </AniLink>
     </div>
   )
 }

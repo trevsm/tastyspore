@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import Arrow from "../../components/icons/Arrow"
+import Home from "../../components/icons/Home"
 import { FullDescription } from "./components/FullDescription"
 import { Sizes } from "./components/Sizes"
 import { QuantityPrice } from "./components/QuantityPrice"
@@ -12,6 +12,7 @@ import { navigate } from "gatsby"
 import Helmet from "../../components/Main/Helmet/Helmet"
 import { PIInterface } from "../../../types"
 import { useLocalStorage } from "usehooks-ts"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export function Template({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
@@ -89,9 +90,9 @@ export function Template({ d }: { d: any }) {
           ...fm.benefits,
         ]}
       />
-      <button className="close" onClick={() => navigate(-1)}>
-        <Arrow color="#3e3e3e" width={20} />
-      </button>
+      <AniLink paintDrip hex="#fff0e4" className="close" to="/">
+        <Home color="#3e3e3e" width={40} />
+      </AniLink>
       <div className="content">
         <div className="image">
           {image && <GatsbyImage image={image} alt={fm?.title as string} />}
