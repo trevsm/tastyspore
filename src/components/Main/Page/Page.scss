@@ -52,6 +52,12 @@ button {
   border: unset;
 }
 
+// - removes small movements after page transition
+// - fixes bottom navbars being hidden by OS nav
+.tl-wrapper {
+  transform: unset !important;
+}
+
 /* Use -webkit- only if supporting: Chrome < 54, iOS < 9.3, Android < 4.4.4 */
 
 .shadow {
@@ -222,11 +228,7 @@ button {
 }
 
 .cart-tab {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  height: 100%;
   background-color: white;
   z-index: 11;
   a.back-button {
@@ -254,7 +256,7 @@ button {
   overflow: hidden;
 
   .nav {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     padding: 30px;
     background: #fffffff2;

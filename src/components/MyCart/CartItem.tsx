@@ -24,7 +24,14 @@ export default function CartItem({
   })
 
   return (
-    <animated.div style={styles} className={"item"}>
+    <animated.div
+      style={styles}
+      className={"item"}
+      tabIndex={0}
+      onBlur={() => {
+        setConfirmDelete(false)
+      }}
+    >
       <animated.div className="confirm-delete" style={fade}>
         <p>Remove this item?</p>
         <button
