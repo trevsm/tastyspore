@@ -6,6 +6,7 @@ import { animated, useSpring } from "react-spring"
 import { useLocalStorage, useEventListener } from "usehooks-ts"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import ClientRender from "../../tools/ClientRender"
 
 export default function CartIcon({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
@@ -39,7 +40,7 @@ export default function CartIcon({ d }: { d: any }) {
       : 0
 
   return (
-    <>
+    <ClientRender>
       {items && items.length > 0 && (
         <animated.div style={notificationSpring} className="notification-popup">
           <p>
@@ -54,6 +55,6 @@ export default function CartIcon({ d }: { d: any }) {
         {items && items.length ? <span className="item-count"></span> : ""}
         <Cart color="#3e3e3e" width={30} />
       </AniLink>
-    </>
+    </ClientRender>
   )
 }

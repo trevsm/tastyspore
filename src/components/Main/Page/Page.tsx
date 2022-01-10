@@ -1,19 +1,12 @@
-import React, { ReactNode, useEffect, useState } from "react"
-import Notice from "../Notice/Notice"
+import React, { ReactNode } from "react"
 import "minireset.css"
 import "./Page.scss"
-import Footer from "../Footer/Footer"
 
 interface ChildrenInterface {
   children: ReactNode | ReactNode[]
 }
 
 function Page({ children }: ChildrenInterface) {
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  if (!isClient) return null
   return (
     <div className="App">
       <div className={"page"}>

@@ -9,6 +9,7 @@ import { useLocalStorage } from "usehooks-ts"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { useTransition } from "react-spring"
 import Cart from "../components/icons/Cart"
+import ClientRender from "../tools/ClientRender"
 
 function addZeroes(num: string) {
   const dec = num.split(".")[1]
@@ -130,53 +131,55 @@ export default function MyCart({ data }: { data: MDXQuery }) {
           "reishi mushroom",
         ]}
       />
-      <div className="cart-tab content">
-        <AniLink paintDrip hex="#fff0e4" to="/" className="back-button">
-          <Home color="#3e3e3e" width={35} />
-        </AniLink>
-        <h3 className="cart">My Cart</h3>
-        <section>
-          {transitions.map(({ item, props, key }, index) => (
-            <CartItem
-              item={item}
-              styles={props}
-              removeItem={removeItem}
-              setItemQuantity={setItemQuantity}
-              key={key}
-            />
-          ))}
-
-          {!items ||
-            (!items.length && (
-              <div className="no-items">
-                <Cart color="#dddddd" width={150} />
-                <p>No Items In Cart</p>
-              </div>
+      <ClientRender>
+        <div className="cart-tab content">
+          <AniLink paintDrip hex="#fff0e4" to="/" className="back-button">
+            <Home color="#3e3e3e" width={35} />
+          </AniLink>
+          <h3 className="cart">My Cart</h3>
+          <section>
+            {transitions.map(({ item, props, key }, index) => (
+              <CartItem
+                item={item}
+                styles={props}
+                removeItem={removeItem}
+                setItemQuantity={setItemQuantity}
+                key={key}
+              />
             ))}
-        </section>
-        {items && items.length && (
-          <div className="nav content">
-            <p className="sub">
-              Sub total: <span>${sub_total}</span>
-            </p>
-            <p className="sub">
-              Tax: <span>${addZeroes(sales_tax + "")}</span>
-            </p>
-            <p className="price">
-              Total: <span>${total}</span>
-            </p>
-            <button
-              onClick={() => {
-                alert(
-                  "Thank you for your interest! Orders are currently disabled until we officially launch. Check back here soon for updates!"
-                )
-              }}
-            >
-              Continue to shipping
-            </button>
-          </div>
-        )}
-      </div>
+
+            {!items ||
+              (!items.length && (
+                <div className="no-items">
+                  <Cart color="#dddddd" width={150} />
+                  <p>No Items In Cart</p>
+                </div>
+              ))}
+          </section>
+          {items && items.length && (
+            <div className="nav content">
+              <p className="sub">
+                Sub total: <span>${sub_total}</span>
+              </p>
+              <p className="sub">
+                Tax: <span>${addZeroes(sales_tax + "")}</span>
+              </p>
+              <p className="price">
+                Total: <span>${total}</span>
+              </p>
+              <button
+                onClick={() => {
+                  alert(
+                    "Thank you for your interest! Orders are currently disabled until we officially launch. Check back here soon for updates!"
+                  )
+                }}
+              >
+                Continue to shipping
+              </button>
+            </div>
+          )}
+        </div>
+      </ClientRender>
     </Page>
   )
 }

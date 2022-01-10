@@ -4,6 +4,7 @@ import { animated, useSpring } from "react-spring"
 
 import "./Notice.scss"
 import { useLocalStorage } from "usehooks-ts"
+import ClientRender from "../../../tools/ClientRender"
 
 export default function Notice() {
   const [userNotified, setUserNotified] = useLocalStorage<boolean>(
@@ -25,36 +26,41 @@ export default function Notice() {
   }, [])
 
   return (
-    <div className="content" style={{ pointerEvents: popup ? "all" : "none" }}>
-      <animated.div className={"notice"} style={styles}>
-        <button
-          style={{
-            position: "absolute",
-            right: "0",
-            top: "0",
-            padding: "10px",
-            opacity: ".5",
-            background: "none",
-            border: "none",
-            fontSize: "15px",
-            color: "inherit",
-            cursor: "pointer",
-          }}
-          onClick={() => {
-            setPopup(false)
-          }}
-        >
-          (close)
-        </button>
-        <p style={{ paddingBottom: "10px" }}>
-          <b style={{ fontSize: "20px" }}>Hey!</b> &#128516; <br /> We&rsquo;re
-          still getting things set up, so some pages might not work quite yet.
-          Check back here soon or join our mailing list to get notified when we
-          officially launch. <br /> <br /> (Enter your email below to get
-          notified &#128227;)
-        </p>
-        <MailingList />
-      </animated.div>
-    </div>
+    <ClientRender>
+      <div
+        className="content"
+        style={{ pointerEvents: popup ? "all" : "none" }}
+      >
+        <animated.div className={"notice"} style={styles}>
+          <button
+            style={{
+              position: "absolute",
+              right: "0",
+              top: "0",
+              padding: "10px",
+              opacity: ".5",
+              background: "none",
+              border: "none",
+              fontSize: "15px",
+              color: "inherit",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setPopup(false)
+            }}
+          >
+            (close)
+          </button>
+          <p style={{ paddingBottom: "10px" }}>
+            <b style={{ fontSize: "20px" }}>Hey!</b> &#128516; <br />{" "}
+            We&rsquo;re still getting things set up, so some pages might not
+            work quite yet. Check back here soon or join our mailing list to get
+            notified when we officially launch. <br /> <br /> (Enter your email
+            below to get notified &#128227;)
+          </p>
+          <MailingList />
+        </animated.div>
+      </div>
+    </ClientRender>
   )
 }
