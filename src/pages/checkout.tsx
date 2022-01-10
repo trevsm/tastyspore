@@ -6,7 +6,6 @@ import CartItem from "../components/MyCart/CartItem"
 import Home from "../components/icons/Home"
 import { Page } from "../components/Main/Page/Page"
 import { useLocalStorage } from "usehooks-ts"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { useTransition } from "react-spring"
 import Cart from "../components/icons/Cart"
 import ClientRender from "../tools/ClientRender"
@@ -116,7 +115,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
   }
 
   return (
-    <Page>
+    <Page navigation={{ home: true }}>
       <Helmet
         title="Delicious Mushrooms & Tasty Recipes! | TastySpore"
         description="Our Mushrooms grow kits are the best kits available for growing mushrooms indoors. With a 100% guarantee, we know you will love our mushrooms as much as we do."
@@ -133,9 +132,6 @@ export default function MyCart({ data }: { data: MDXQuery }) {
       />
       <ClientRender>
         <div className="cart-tab content">
-          <AniLink paintDrip hex="#fff0e4" to="/" className="back-button">
-            <Home color="#3e3e3e" width={35} />
-          </AniLink>
           <h3 className="cart">My Cart</h3>
           <section>
             {transitions.map(({ item, props, key }, index) => (
@@ -148,13 +144,12 @@ export default function MyCart({ data }: { data: MDXQuery }) {
               />
             ))}
 
-            {!items ||
-              (!items.length && (
-                <div className="no-items">
-                  <Cart color="#dddddd" width={150} />
-                  <p>No Items In Cart</p>
-                </div>
-              ))}
+            {(!items || !items.length) && (
+              <div className="no-items">
+                <Cart color="#dddddd" width={150} />
+                <p>No Items In Cart</p>
+              </div>
+            )}
           </section>
           {items && items.length && (
             <div className="nav content">

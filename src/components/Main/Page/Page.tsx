@@ -1,17 +1,20 @@
 import React, { ReactNode } from "react"
 import "minireset.css"
 import "./Page.scss"
+import Navigation from "../Navigation/Navigation"
 
-interface ChildrenInterface {
+function Page({
+  children,
+  navigation,
+}: {
   children: ReactNode | ReactNode[]
-}
-
-function Page({ children }: ChildrenInterface) {
+  navigation: { home?: boolean; cart?: boolean }
+}) {
   return (
     <div className="App">
       <div className={"page"}>
+        <Navigation navigation={navigation} />
         {children}
-        {/* <Footer /> */}
       </div>
     </div>
   )

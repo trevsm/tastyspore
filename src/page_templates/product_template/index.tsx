@@ -2,12 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Page } from "../../components/Main/Page/Page"
 import { Template } from "./Template"
-import CartIcon from "../../components/MyCart/CartIcon"
+import Notification from "../../components/MyCart/Notification"
 
 export default function Main({ data }: { data: any }) {
   return (
-    <Page>
-      <CartIcon d={data} />
+    <Page navigation={{ cart: true, home: true }}>
+      <Notification d={data} />
       <Template d={data} />
     </Page>
   )

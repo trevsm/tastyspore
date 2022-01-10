@@ -59,7 +59,7 @@ export const query = graphql`
       logo {
         source {
           childImageSharp {
-            gatsbyImageData(width: 170, placeholder: TRACED_SVG, quality: 80)
+            gatsbyImageData(width: 200, placeholder: TRACED_SVG, quality: 100)
           }
         }
       }

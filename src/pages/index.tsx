@@ -4,7 +4,6 @@ import { Page } from "../components/Main/Page/Page"
 import Featured from "../components/partials/Featured/Featured"
 import { MDXQuery } from "../../types"
 import Helmet from "../components/Main/Helmet/Helmet"
-import CartIcon from "../components/MyCart/CartIcon"
 import Notice from "../components/Main/Notice/Notice"
 import Footer from "../components/Main/Footer/Footer"
 import ShiitakeTree from "../components/Media/ShiitakeTree"
@@ -35,7 +34,7 @@ export default function Home({ data }: { data: MDXQuery }) {
   } as React.CSSProperties
 
   return (
-    <Page>
+    <Page navigation={{ cart: true }}>
       <Helmet
         title="Delicious Mushrooms & Tasty Recipes! | TastySpore"
         description="Our Mushrooms grow kits are the best kits available for growing mushrooms indoors. With a 100% guarantee, we know you will love our mushrooms as much as we do."
@@ -50,32 +49,16 @@ export default function Home({ data }: { data: MDXQuery }) {
           "reishi mushroom",
         ]}
       />
-      <CartIcon d={data} />
       <Notice />
       <div className={"main-top"} style={clipStyles}>
         <section>
           <div className="left">
-            <h1>Delicious Mushrooms & Tasty Recipies</h1>
+            <h1>Delicious Mushrooms & Tasty Recipes</h1>
             <p>
               Grow and cook <b>gourmet</b> mushrooms at home with confidence!
             </p>
             <button>Go Foraging!</button>
             <button>Browse Recipes</button>
-            <br />
-            <br />
-            {!bp.xs && (
-              <>
-                <a href="#">
-                  <span>instagra</span>m
-                </a>
-                <a href="#">
-                  <span>faceboo</span>k
-                </a>
-                <a href="#">
-                  <span>youtub</span>e
-                </a>
-              </>
-            )}
           </div>
           <div className="right">
             <ShiitakeTree />

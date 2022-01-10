@@ -13,6 +13,7 @@ import Helmet from "../../components/Main/Helmet/Helmet"
 import { PIInterface } from "../../../types"
 import { useLocalStorage } from "usehooks-ts"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Page } from "../../components/Main/Page/Page"
 
 export function Template({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
@@ -90,9 +91,6 @@ export function Template({ d }: { d: any }) {
           ...fm.benefits,
         ]}
       />
-      <AniLink paintDrip hex="#fff0e4" className="close" to="/">
-        <Home color="#3e3e3e" width={35} />
-      </AniLink>
       <div className="content">
         <div className="image">
           {image && <GatsbyImage image={image} alt={fm?.title as string} />}

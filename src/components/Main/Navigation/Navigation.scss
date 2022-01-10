@@ -1,39 +1,49 @@
 @import "../../../styles/Colors.scss";
-/* Logo Border Radius */
-$br: 25px;
 
-.navigation.content {
-  padding: 0 !important;
-  position: fixed;
-  bottom: 0;
-  right: 0;
+.navigation {
+  position: sticky;
+  height: 0;
+  top: 0;
+  right: 15px;
   left: 0;
-
-  nav {
+  z-index: 10;
+  text-align: right;
+  .flex {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Links */
-    .blob {
-      text-align: center;
+    justify-content: space-between;
+  }
+  .disabled {
+    pointer-events: none;
+    opacity: 0;
+  }
+  .icon-link {
+    position: relative;
+    display: inline-block;
+    padding: 12px;
+    margin: 5px;
+    transition: transform 0.2s ease-out;
+    background-color: white;
+    box-shadow: 0px 0px 7px #00000017;
+    top: 0;
+    span.item-count {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      display: inline-block;
+      border-radius: 100%;
+      width: 13px;
+      height: 13px;
+      border: 2px solid white;
+      background-color: #f36766;
+      margin-right: -5px;
     }
-
-    .blob.link {
-      section {
-        border: unset;
-        min-height: unset;
-      }
-    }
-
-    .blob.link.shop section {
-      background-color: #fee5d1;
-      box-shadow: 1px 1px 10px #cdb69d61;
-      color: #5c462d;
-    }
-    .blob.link.login section {
-      background-color: $brown;
-      box-shadow: 1px 1px 10px #51518152;
-      color: white;
-    }
+  }
+  .icon-link.home {
+    border-radius: 15px 13px 35px 15px;
+    justify-self: left;
+  }
+  .icon-link.cart {
+    border-radius: 15px 13px 15px 35px;
+    justify-self: right;
   }
 }

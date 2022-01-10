@@ -14,7 +14,7 @@
       display: flex;
       h2 {
         width: fit-content;
-        color: #5c5c5c;
+        color: $dark-text;
         font-size: 18px;
         font-weight: bold;
         padding-bottom: 4px;
@@ -34,6 +34,7 @@
         display: flex;
         align-items: center;
         margin-right: 25px;
+        filter: drop-shadow(3px 3px 1px #00000016);
       }
       .bottom {
         display: flex;
@@ -59,7 +60,7 @@
 }
 .cost {
   font-weight: bold;
-  color: #5c5c5c;
+  color: $dark-text;
 }
 .ends {
   font-weight: bold;
@@ -68,7 +69,7 @@
 }
 .cross {
   position: relative;
-  color: #5c5c5c;
+  color: $dark-text;
   display: inline-block;
   padding-right: 10px;
   text-decoration: line-through;

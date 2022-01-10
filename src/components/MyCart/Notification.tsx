@@ -1,14 +1,10 @@
-import React, { useEffect, useState, useRef } from "react"
-import { Link } from "gatsby"
+import React, { useState, useRef } from "react"
 import { PIInterface } from "../../../types"
-import Cart from "../icons/Cart"
 import { animated, useSpring } from "react-spring"
 import { useLocalStorage, useEventListener } from "usehooks-ts"
 import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-import ClientRender from "../../tools/ClientRender"
 
-export default function CartIcon({ d }: { d: any }) {
+export default function Notification({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
 
   const [items, _] = useLocalStorage<PIInterface[]>("my_cart", null)
@@ -26,7 +22,7 @@ export default function CartIcon({ d }: { d: any }) {
     clearTimeout(notificationTimeout.current)
     notificationTimeout.current = setTimeout(() => {
       setShowNotification(false)
-    }, 2000)
+    }, 3000)
   })
 
   let itemCount = 0
@@ -38,23 +34,24 @@ export default function CartIcon({ d }: { d: any }) {
       ? data.frontmatter.inventory.filter((e) => e.size == lastItem.size)[0]
           .quantity
       : 0
+  const name =
+    data.frontmatter.readable_class + " " + data.frontmatter.readable_category
 
   return (
-    <ClientRender>
-      {items && items.length > 0 && (
-        <animated.div style={notificationSpring} className="notification-popup">
-          <p>
-            Added [{lastItem.id}] to your cart!{" "}
-            {lastItem?.quantity == maxQuantity && (
-              <span className="max-10">[Max: {lastItem?.quantity}]</span>
-            )}
-          </p>
-        </animated.div>
-      )}
-      <AniLink paintDrip hex="#fbfbfb" to="/checkout" className={"cart-icon"}>
-        {items && items.length ? <span className="item-count"></span> : ""}
-        <Cart color="#3e3e3e" width={30} />
-      </AniLink>
-    </ClientRender>
+    items &&
+    items.length > 0 && (
+      <animated.div
+        style={notificationSpring}
+        className="notification-popup shadow"
+      >
+        <p>
+          Added {name} to your cart. 🎉
+          <br />
+          {lastItem?.quantity == maxQuantity && (
+            <span className="max-10">[Max: {lastItem?.quantity}]</span>
+          )}
+        </p>
+      </animated.div>
+    )
   )
 }
