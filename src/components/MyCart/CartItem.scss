@@ -5,9 +5,11 @@
   border-radius: 20px;
   box-shadow: rgb(0 0 0 / 6%) 2px 1px 7px;
   margin-bottom: 20px;
-  img {
-    width: 65px;
+  a {
     margin-right: 20px;
+  }
+  img {
+    width: 70px;
   }
   .flex {
     display: flex;
@@ -19,6 +21,9 @@
     top: 0;
     right: 0;
     padding: 15px;
+  }
+  .price {
+    margin-bottom: 10px;
   }
   button.delete {
     position: absolute;

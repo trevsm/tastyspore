@@ -121,8 +121,7 @@ button {
 .main-top {
   position: relative;
   background-color: #fff0e4;
-  margin-bottom: -50px;
-
+  margin-bottom: 20px;
   min-height: 700px;
   height: 90vh;
   max-height: 900px;
@@ -143,7 +142,7 @@ button {
       padding-top: 10px;
       overflow: hidden;
       svg {
-        min-width: 510px;
+        min-width: 530px;
       }
     }
   }
@@ -216,47 +215,6 @@ button {
     margin-left: auto;
     border-bottom: 1px solid #6b6156;
     filter: drop-shadow(0 0 5px #fff0e4);
-  }
-}
-.cart-tab .item {
-  position: relative;
-  background: white;
-  padding: 15px;
-  border-radius: 20px;
-  box-shadow: rgb(0 0 0 / 6%) 2px 1px 7px;
-  margin-bottom: 20px;
-  img {
-    width: 65px;
-    margin-right: 20px;
-  }
-  .flex {
-    display: flex;
-  }
-  .quantity {
-    margin-top: 10px;
-    * {
-      font-size: 15px;
-    }
-    .add,
-    .minus {
-      width: 23px;
-      height: 23px;
-    }
-  }
-  .size {
-    text-transform: capitalize;
-    color: #b1b1b1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 15px;
-  }
-  button.delete {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin: 12px;
-    padding: 0;
   }
 }
 
