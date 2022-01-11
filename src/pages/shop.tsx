@@ -29,7 +29,7 @@ export default function Shop({ data }: { data: MDXQuery }) {
           "reishi mushroom",
         ]}
       />
-      <div className="shop">
+      <div className="shop content">
         <div className="categories">
           <button
             onClick={() => setSub_Category("all")}
@@ -41,13 +41,13 @@ export default function Shop({ data }: { data: MDXQuery }) {
             onClick={() => setSub_Category("oyster-mushroom-kit")}
             className={sub_category == "oyster-mushroom-kit" ? "active" : ""}
           >
-            Oyster Grow Kits
+            Oyster Mushrooms
           </button>
           <button
             onClick={() => setSub_Category("medicinal-mushroom-kit")}
             className={sub_category == "medicinal-mushroom-kit" ? "active" : ""}
           >
-            Medicinal Grow Kits
+            Medicinal Mushrooms
           </button>
         </div>
         <div className="featured">

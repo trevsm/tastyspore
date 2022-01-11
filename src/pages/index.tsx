@@ -9,6 +9,7 @@ import Footer from "../components/Main/Footer/Footer"
 import ShiitakeTree from "../components/Media/ShiitakeTree"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
 import { sinClip } from "../styles/clipPaths"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 function Wavy({
   backgroundColor,
@@ -73,8 +74,10 @@ export default function Home({ data }: { data: MDXQuery }) {
             <p>
               Grow and cook <b>gourmet</b> mushrooms at home with confidence!
             </p>
-            <button>🍄 Go Foraging</button>
-            <button>📖 Browse Recipes</button>
+            <AniLink paintDrip hex={"#fff"} to={"/shop"}>
+              🍄 Go Foraging
+            </AniLink>
+            <a href="#">📖 Browse Recipes</a>
           </div>
           <div className="right">
             <ShiitakeTree />
