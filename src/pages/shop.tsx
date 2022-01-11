@@ -8,11 +8,30 @@ import Featured from "../components/partials/Featured/Featured"
 export default function Shop({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
   const [sub_category, setSub_Category] = useState("all")
+  const [search, setSearch] = useState("")
 
-  const filteredNodes = nodes.filter(
-    (e) =>
-      e.node.frontmatter.sub_category == sub_category || sub_category == "all"
-  )
+  const filteredNodes = nodes.filter((e) => {
+    const elem = e.node.frontmatter
+
+    if (search) {
+      const word = (
+        elem.readable_class.replaceAll("'", "") +
+        " " +
+        elem.readable_class +
+        " " +
+        elem.readable_category +
+        " " +
+        elem.id.replaceAll("-", " ") +
+        " " +
+        elem.aka.join(" ")
+      ).toLocaleLowerCase()
+
+      return word.includes(search.toLocaleLowerCase())
+    }
+
+    return elem.sub_category == sub_category || sub_category == "all"
+  })
+
   return (
     <Page navigation={{ home: true, cart: true }}>
       <Helmet
@@ -30,28 +49,49 @@ export default function Shop({ data }: { data: MDXQuery }) {
         ]}
       />
       <div className="shop content">
+        <div className="search">
+          <input
+            type="text"
+            value={search}
+            placeholder="search..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <div className="categories">
           <button
-            onClick={() => setSub_Category("all")}
+            onClick={() => {
+              setSub_Category("all")
+              setSearch("")
+            }}
             className={sub_category == "all" ? "active" : ""}
           >
             All
           </button>
           <button
-            onClick={() => setSub_Category("oyster-mushroom-kit")}
+            onClick={() => {
+              setSub_Category("oyster-mushroom-kit")
+              setSearch("")
+            }}
             className={sub_category == "oyster-mushroom-kit" ? "active" : ""}
           >
             Oyster Mushrooms
           </button>
           <button
-            onClick={() => setSub_Category("medicinal-mushroom-kit")}
+            onClick={() => {
+              setSub_Category("medicinal-mushroom-kit")
+              setSearch("")
+            }}
             className={sub_category == "medicinal-mushroom-kit" ? "active" : ""}
           >
             Medicinal Mushrooms
           </button>
         </div>
         <div className="featured">
-          <Featured nodes={filteredNodes} />
+          {filteredNodes.length ? (
+            <Featured nodes={filteredNodes} />
+          ) : (
+            <div>no items found</div>
+          )}
         </div>
       </div>
     </Page>
