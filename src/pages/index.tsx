@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import { Page } from "../components/Main/Page/Page"
 import Featured from "../components/partials/Featured/Featured"
@@ -8,30 +8,46 @@ import Notice from "../components/Main/Notice/Notice"
 import Footer from "../components/Main/Footer/Footer"
 import ShiitakeTree from "../components/Media/ShiitakeTree"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import { sinClip } from "../styles/clipPaths"
+
+function Wavy({
+  backgroundColor,
+  invert = false,
+}: {
+  backgroundColor: string
+  invert?: boolean
+}) {
+  const [sw, setSw] = useState(0)
+  const clipValues = {
+    quality: Math.floor(sw / 10),
+    amplitude: sw / 50,
+    period: 5,
+    xShift: Math.PI,
+  }
+  useEffect(() => {
+    setSw(window.innerWidth)
+    window.addEventListener("resize", () => {
+      setSw(window.innerWidth)
+    })
+  }, [])
+  return (
+    <div
+      className="wavy"
+      style={{
+        backgroundColor,
+        "--height": "150px",
+        ...sinClip({
+          ...clipValues,
+          yShift: 50,
+          invert,
+        }),
+      }}
+    ></div>
+  )
+}
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
-  const bp = useBreakpoint()
-  const amp = () => {
-    if (bp.xs) return 2
-    if (bp.sm) return 3
-    return 6
-  }
-
-  const points = 10
-  const sinPath = (A: number, B: number, C: number, D: number) =>
-    "polygon(100% 0%, 0% 0%," +
-    Array(points)
-      .fill(null)
-      .map((_, i) => {
-        const max = (i * (101 + points * 2)) / points
-        return `${max}% ${A * Math.sin((max - i) * B + C) + D}%`
-      })
-      .join(", ") +
-    ")"
-  const clipStyles = {
-    "--clipPath": sinPath(amp(), 0.04, 5, 90),
-  } as React.CSSProperties
 
   return (
     <Page navigation={{ cart: true }}>
@@ -50,22 +66,30 @@ export default function Home({ data }: { data: MDXQuery }) {
         ]}
       />
       <Notice />
-      <div className={"main-top"} style={clipStyles}>
+      <div className={"main-top"}>
         <section>
           <div className="left">
             <h1>Delicious Mushrooms & Tasty Recipes</h1>
             <p>
               Grow and cook <b>gourmet</b> mushrooms at home with confidence!
             </p>
-            <button>Go Foraging!</button>
-            <button>Browse Recipes</button>
+            <button>🍄 Go Foraging</button>
+            <button>📖 Browse Recipes</button>
           </div>
           <div className="right">
             <ShiitakeTree />
           </div>
         </section>
       </div>
-      <div className="content">
+      <div className="wavysection">
+        <div className="content">
+          <Wavy backgroundColor={"#eef6ff"} />
+        </div>
+        <div className="content">
+          <Wavy backgroundColor={"#fef4e9"} invert={true} />
+        </div>
+      </div>
+      <div className="secondary content">
         <br />
         <div className="split">
           <Featured nodes={nodes} />
