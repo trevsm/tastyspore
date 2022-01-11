@@ -2,6 +2,8 @@
 
 .footer {
   padding: 30px;
+  background: #707070;
+  border-radius: 20px;
 
   .content {
     a:not(.social a) {
@@ -13,8 +15,9 @@
       }
     }
     * {
-      color: #8f847b;
+      color: white;
       line-height: 25px;
+      font-size: 18px;
     }
   }
 }

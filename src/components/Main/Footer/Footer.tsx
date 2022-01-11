@@ -18,10 +18,10 @@ export default function Footer() {
         <br />
         <div className="social">
           <a href="#">
-            <Instagram color="#8f847b" width={30} />
+            <Instagram color="#fff" width={30} />
           </a>
           <a href="#">
-            <Facebook color="#8f847b" width={30} />
+            <Facebook color="#fff" width={30} />
           </a>
         </div>
         <br />

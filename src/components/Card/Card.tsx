@@ -15,7 +15,7 @@ export default function Card({ data }: { data: ProductFrontmatterFragment }) {
 
   return (
     <div className="blob card">
-      <AniLink paintDrip hex={fm.accent_color} to={data.frontmatter.id}>
+      <AniLink paintDrip hex={fm.accent_color} to={"/" + data.frontmatter.id}>
         <section>
           <div className="flex">
             <div className="image">

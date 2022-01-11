@@ -5,10 +5,12 @@ export const query = graphql`
     frontmatter {
       accent_color
       category
+      sub_category
       class
       featured
       id
       readable_category
+      readable_sub_category
       readable_class
       summary
       title

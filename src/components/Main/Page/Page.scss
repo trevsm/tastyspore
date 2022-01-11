@@ -67,7 +67,6 @@ button {
     margin: 0 auto;
     width: 100%;
     max-width: var(--maxWidth);
-    margin-bottom: -1px;
   }
 }
 
@@ -214,6 +213,8 @@ button {
   background-color: #fff4e9;
   z-index: 5;
   padding-bottom: 70px;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 10px !important;
   .info {
     padding: 20px;
     margin: 10px;
@@ -222,7 +223,6 @@ button {
       font-size: 30px;
       margin-bottom: 30px;
       font-family: system-ui;
-      text-align: center;
     }
     p {
       line-height: 30px;
@@ -248,6 +248,29 @@ button {
   position: relative;
   z-index: 5;
   margin-top: calc(-1 * (var(--height) - 10px));
+}
+.shop {
+  padding-top: 100px;
+  .categories {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    overflow-x: scroll;
+    button {
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 18px;
+      background: whitesmoke;
+      margin-left: 10px;
+      min-width: fit-content;
+    }
+    button.active {
+      background-color: #ffecbf;
+    }
+  }
+  .featured {
+    padding-bottom: 50px;
+  }
 }
 
 .cart-tab {
