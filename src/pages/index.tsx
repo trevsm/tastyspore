@@ -92,7 +92,28 @@ export default function Home({ data }: { data: MDXQuery }) {
       <div className="secondary content">
         <br />
         <div className="split">
-          <Featured nodes={nodes} />
+          <div className="info">
+            <h2>Welcome!</h2>
+            <p>
+              TastySpore is here to help you learn how to grow and cook gourmet
+              mushrooms such as oyster and shiitake, and lion's mane in your
+              home kitchen.
+            </p>
+            <p>
+              Mushrooms are one of the easiest and most fun foods to grow at
+              home. With our easy-to-use grow kits, you can produce your first
+              crop in as little as 1-2 weeks.
+            </p>
+          </div>
+          <div className="info">
+            <h2>Quality</h2>
+            <p>
+              We offer a wide range of fresh, organic mushrooms and exotic
+              mushroom varieties as well as organic do-it-yourself gourmet
+              mushroom growing kits. We guarantee our products to be free of
+              harmful chemicals, pesticides, and other contaminants.
+            </p>
+          </div>
         </div>
       </div>
       <Footer />

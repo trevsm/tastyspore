@@ -155,7 +155,7 @@ button {
     position: relative;
     font-size: 18px;
     padding: 18px 30px;
-    border: 2px solid;
+    box-shadow: 0px 0px 7px #00000017;
     color: $dark-text;
     background-color: white;
     letter-spacing: 2px;
@@ -213,8 +213,34 @@ button {
   position: relative;
   background-color: #fff4e9;
   z-index: 5;
+  padding-bottom: 70px;
+  .info {
+    padding: 20px;
+    margin: 10px;
+    max-width: 500px;
+    h2 {
+      font-size: 30px;
+      margin-bottom: 30px;
+      font-family: system-ui;
+      text-align: center;
+    }
+    p {
+      line-height: 30px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    p:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+    }
+  }
 }
 
+.wavysection {
+  margin-bottom: -35px;
+}
 .wavy {
   height: var(--height);
 }
