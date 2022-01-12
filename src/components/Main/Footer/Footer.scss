@@ -1,23 +1,41 @@
 @import "../../../styles/Colors.scss";
 
 .footer {
-  padding: 30px;
-  background: #707070;
+  padding: 20px;
+  background: $fourth;
   border-radius: 20px;
+  margin-top: 10px !important;
 
-  .content {
-    a:not(.social a) {
-      border-bottom: 2px solid;
+  .logo {
+    margin: 20px auto;
+  }
+  .center {
+    margin: 0 auto;
+  }
+  .flex {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .copy {
+    margin: 0 auto;
+  }
+  a:not(.social a) {
+    border-bottom: 2px solid;
+  }
+  .social {
+    a {
+      margin-right: 10px;
     }
-    .social {
-      a {
-        margin-right: 10px;
-      }
-    }
-    * {
-      color: white;
-      line-height: 25px;
-      font-size: 18px;
-    }
+  }
+  * {
+    width: fit-content;
+    line-height: 25px;
+    font-size: 18px;
   }
 }

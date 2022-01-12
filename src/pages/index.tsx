@@ -12,10 +12,10 @@ import { sinClip } from "../styles/clipPaths"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 function Wavy({
-  backgroundColor,
+  className,
   invert = false,
 }: {
-  backgroundColor: string
+  className: string
   invert?: boolean
 }) {
   const [sw, setSw] = useState(0)
@@ -33,9 +33,8 @@ function Wavy({
   }, [])
   return (
     <div
-      className="wavy"
+      className={"wavy " + className}
       style={{
-        backgroundColor,
         "--height": "150px",
         ...sinClip({
           ...clipValues,
@@ -86,35 +85,45 @@ export default function Home({ data }: { data: MDXQuery }) {
       </div>
       <div className="wavysection">
         <div className="content">
-          <Wavy backgroundColor={"#eef6ff"} />
+          <Wavy className="first" />
         </div>
         <div className="content">
-          <Wavy backgroundColor={"#fef4e9"} invert={true} />
+          <Wavy className="second" invert={true} />
         </div>
       </div>
-      <div className="secondary content">
+      <div className="second content">
         <br />
         <div className="split">
-          <div className="info">
-            <h2>Welcome!</h2>
+          <div className="info raise">
+            <h2>Discover</h2>
             <p>
-              TastySpore is here to help you learn how to grow and cook gourmet
-              mushrooms such as oyster and shiitake, and lion's mane in your
-              home kitchen.
-            </p>
-            <p>
-              Mushrooms are one of the easiest and most fun foods to grow at
-              home. With our easy-to-use grow kits, you can produce your first
-              crop in as little as 1-2 weeks.
+              Our shop is packed with an amazing array of delicious gourmet
+              mushrooms and is designed to help you discover just a few of the
+              many different types of delicious mushrooms that are available to
+              us. Discover a new world of savory goodness outside the simple
+              cremini (button) mushroom you can find at your local grocery
+              store.
             </p>
           </div>
           <div className="info">
             <h2>Quality</h2>
             <p>
-              We offer a wide range of fresh, organic mushrooms and exotic
-              mushroom varieties as well as organic do-it-yourself gourmet
-              mushroom growing kits. We guarantee our products to be free of
-              harmful chemicals, pesticides, and other contaminants.
+              All of our fresh produce and do-it-yourself growing kits are
+              guaranteed to be free of harmful chemicals, pesticides, and other
+              contaminants.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="third content">
+        <div className="split">
+          <div className="info story">
+            <h2>Our Story</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Aspernatur, eaque voluptates unde deleniti magnam odit quidem
+              distinctio asperiores consequuntur. Itaque pariatur facilis
+              deleniti, alias ipsam enim molestiae eligendi provident id.
             </p>
           </div>
         </div>

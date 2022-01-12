@@ -7,14 +7,10 @@
   color: $dark-text;
 }
 
-/*
-font-family: 'Comfortaa', cursive;
-font-family: 'Poppins', sans-serif;
-*/
 body,
 html {
   height: 100%;
-  font-family: "Poppins", sans-serif;
+  font-family: "Forum", cursive;
   font-size: 16px;
   background-color: #fffdfc;
 }
@@ -183,6 +179,7 @@ button {
   a {
     color: $dark-text;
     text-shadow: 0 0 12px #eef6ffab;
+    font-family: "Forum", cursive;
   }
   h1 {
     font-family: "Forum", cursive;
@@ -191,51 +188,74 @@ button {
     text-transform: capitalize;
   }
   p {
-    font-size: 17px;
+    font-size: 23px;
     line-height: 30px;
   }
 }
 
-.secondary {
-  position: relative;
-  background-color: #fff4e9;
-  z-index: 5;
-  padding-bottom: 70px;
+.second {
+  background-color: $second;
+  padding-top: 0;
   border-radius: 0 0 20px 20px;
-  margin-bottom: 10px !important;
+}
+.third {
+  background-color: $third;
+  border-radius: 20px;
+}
+
+.second,
+.third {
+  position: relative;
+  z-index: 5;
+  margin-top: 10px !important;
+  padding: 30px 10px;
+  .raise {
+    margin-top: -70px;
+  }
   .info {
     padding: 20px;
-    margin: 10px;
     max-width: 500px;
+    width: 50%;
     h2 {
-      font-size: 30px;
+      font-size: 40px;
       margin-bottom: 30px;
-      font-family: system-ui;
+      font-family: "Forum", cursive;
     }
     p {
-      line-height: 30px;
-      font-size: 18px;
+      line-height: 40px;
+      font-size: 23px;
       margin-bottom: 20px;
-      text-align: justify;
+      font-family: "Forum", cursive;
     }
-    p:before {
-      content: "";
-      display: inline-block;
-      width: 20px;
-    }
+  }
+  .story {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .info {
+    max-width: unset !important;
+    width: 100% !important;
   }
 }
 
 .wavysection {
   margin-bottom: -35px;
-}
-.wavy {
-  height: var(--height);
-}
-.content:nth-of-type(2) .wavy {
-  position: relative;
-  z-index: 5;
-  margin-top: calc(-1 * (var(--height) - 10px));
+  .wavy {
+    height: var(--height);
+  }
+  .first {
+    background-color: $first;
+  }
+  .second {
+    position: relative;
+    z-index: 5;
+    margin-top: calc(-1 * (var(--height) - 10px)) !important;
+    background-color: $second;
+  }
 }
 .shop {
   padding-top: 100px;

@@ -765,7 +765,7 @@ export type StaticImage = Node & {
   uid?: Maybe<Scalars['Int']>;
   rdev?: Maybe<Scalars['Int']>;
   blksize?: Maybe<Scalars['Int']>;
-  ino?: Maybe<Scalars['Int']>;
+  ino?: Maybe<Scalars['Float']>;
   size?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
   atimeMs?: Maybe<Scalars['Float']>;
@@ -1153,7 +1153,7 @@ export type QueryStaticImageArgs = {
   uid?: InputMaybe<IntQueryOperatorInput>;
   rdev?: InputMaybe<IntQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
-  ino?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
   size?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
   atimeMs?: InputMaybe<FloatQueryOperatorInput>;
@@ -4044,7 +4044,7 @@ export type StaticImageFilterInput = {
   uid?: InputMaybe<IntQueryOperatorInput>;
   rdev?: InputMaybe<IntQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
-  ino?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
   size?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
   atimeMs?: InputMaybe<FloatQueryOperatorInput>;

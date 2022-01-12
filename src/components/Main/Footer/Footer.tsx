@@ -7,35 +7,35 @@ import "./Footer.scss"
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <div className="footer">
-      <div className="content">
-        <Logo />
-        <br />
+    <div className="footer content">
+      <Logo />
+      <br />
+      <div className="center">
         <p>
           Interesting in purchasing our products locally?{" "}
           <a href="">Contact Us</a>.
         </p>
         <br />
-        <div className="social">
-          <a href="#">
-            <Instagram color="#fff" width={30} />
-          </a>
-          <a href="#">
-            <Facebook color="#fff" width={30} />
-          </a>
+        <br />
+        <div className="flex">
+          <div className="social">
+            <a href="#">
+              <Instagram color="#3c414e" width={30} />
+            </a>
+            <a href="#">
+              <Facebook color="#3c414e" width={30} />
+            </a>
+          </div>
+          <p>
+            TastySpore <br />
+            Salt Lake City, UT
+          </p>
         </div>
         <br />
-        <p>
-          TastySpore <br />
-          Salt Lake City, UT
-        </p>
         <br />
         <div className="copy">
           {year} all rights reserved. TastySpore <sub>©</sub>
         </div>
-        <br />
-        <br />
-        <br />
       </div>
     </div>
   )
