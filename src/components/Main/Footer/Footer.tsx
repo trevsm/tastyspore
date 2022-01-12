@@ -12,7 +12,7 @@ export default function Footer() {
       <br />
       <div className="center">
         <p>
-          Interesting in purchasing our products locally?{" "}
+          Interested in purchasing our products locally?{" "}
           <a href="">Contact Us</a>.
         </p>
         <br />
