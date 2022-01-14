@@ -8,9 +8,8 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <div className="footer content">
-      <Logo />
-      <br />
       <div className="center">
+        <Logo />
         <p>
           Interested in purchasing our products locally?{" "}
           <a href="">Contact Us</a>.

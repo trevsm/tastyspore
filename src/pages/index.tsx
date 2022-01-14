@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { Page } from "../components/Main/Page/Page"
 import Featured from "../components/partials/Featured/Featured"
@@ -8,43 +8,8 @@ import Notice from "../components/Main/Notice/Notice"
 import Footer from "../components/Main/Footer/Footer"
 import ShiitakeTree from "../components/Media/ShiitakeTree"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
-import { sinClip } from "../styles/clipPaths"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-
-function Wavy({
-  className,
-  invert = false,
-}: {
-  className: string
-  invert?: boolean
-}) {
-  const [sw, setSw] = useState(0)
-  const clipValues = {
-    quality: Math.floor(sw / 10),
-    amplitude: sw / 50,
-    period: 5,
-    xShift: Math.PI,
-  }
-  useEffect(() => {
-    setSw(window.innerWidth)
-    window.addEventListener("resize", () => {
-      setSw(window.innerWidth)
-    })
-  }, [])
-  return (
-    <div
-      className={"wavy " + className}
-      style={{
-        "--height": "150px",
-        ...sinClip({
-          ...clipValues,
-          yShift: 50,
-          invert,
-        }),
-      }}
-    ></div>
-  )
-}
+import { WavyBreak } from "./Wavy"
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
@@ -66,7 +31,7 @@ export default function Home({ data }: { data: MDXQuery }) {
         ]}
       />
       <Notice />
-      <div className={"main-top"}>
+      <div className="main-top content">
         <section>
           <div className="left">
             <h1>Delicious Mushrooms & Tasty Recipes</h1>
@@ -83,14 +48,7 @@ export default function Home({ data }: { data: MDXQuery }) {
           </div>
         </section>
       </div>
-      <div className="wavysection">
-        <div className="content">
-          <Wavy className="first" />
-        </div>
-        <div className="content">
-          <Wavy className="second" invert={true} />
-        </div>
-      </div>
+      <WavyBreak values={[10, 10, 1, 0.5]} classNames={["first", "second"]} />
       <div className="second content">
         <br />
         <div className="split">
@@ -115,6 +73,7 @@ export default function Home({ data }: { data: MDXQuery }) {
           </div>
         </div>
       </div>
+      <WavyBreak values={[10, 10, 1, -0.89]} classNames={["second", "third"]} />
       <div className="third content">
         <div className="split">
           <div className="info story">
@@ -128,6 +87,7 @@ export default function Home({ data }: { data: MDXQuery }) {
           </div>
         </div>
       </div>
+      <WavyBreak values={[10, 10, 5, 1]} classNames={["third", "footer"]} />
       <Footer />
     </Page>
   )

@@ -115,12 +115,9 @@ button {
   position: relative;
   display: flex;
   background-color: #eef6ff;
-  margin-bottom: 20px;
   height: 50vh;
   min-height: 750px;
-  max-width: 1500px;
   max-height: 600px;
-  margin: 0 auto;
   border-radius: 15px 15px 0 0;
   section {
     display: flex;
@@ -197,17 +194,16 @@ button {
   background-color: $second;
   padding-top: 0;
   border-radius: 0 0 20px 20px;
+  padding-top: 60px !important;
 }
 .third {
   background-color: $third;
-  border-radius: 20px;
 }
 
 .second,
 .third {
   position: relative;
   z-index: 5;
-  margin-top: 10px !important;
   padding: 30px 10px;
   .raise {
     margin-top: -70px;
@@ -243,18 +239,25 @@ button {
 }
 
 .wavysection {
-  margin-bottom: -35px;
+  margin: -60px 0;
   .wavy {
     height: var(--height);
+    border-radius: 0;
   }
   .first {
     background-color: $first;
   }
   .second {
+    background-color: $second;
+  }
+  .third {
+    background-color: $third;
+  }
+  .bottom {
     position: relative;
     z-index: 5;
     margin-top: calc(-1 * (var(--height) - 10px)) !important;
-    background-color: $second;
+    margin-bottom: -1px;
   }
 }
 .shop {
