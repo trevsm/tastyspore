@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { sinClip } from "./clipPaths"
 
 function Wavy({
   className,
   invert = false,
   values,
+  method,
 }: {
   className: string
   invert?: boolean
   values: number[]
+  method: (x: number) => number
 }) {
-  const [sw, setSw] = useState(0)
   const clipValues = {
-    quality: Math.floor(sw / values[0]),
+    quality: Math.floor(values[0]),
     amplitude: values[1],
-    period: sw / 1000 + values[2] * Math.PI,
-    xShift: values[3] * Math.PI,
+    period: values[2],
+    xShift: values[3],
+    method,
   }
-  useEffect(() => {
-    setSw(window.innerWidth)
-    window.addEventListener("resize", () => {
-      setSw(window.innerWidth)
-    })
-  }, [])
 
   return (
     <div
       className={"wavy " + className}
       style={{
-        "--height": 200 + "px",
         ...sinClip({
           ...clipValues,
           yShift: 50,
@@ -41,20 +36,27 @@ function Wavy({
 export function WavyBreak({
   values,
   classNames,
+  method,
 }: {
   values: number[]
   classNames: string[]
+  method: (x: number) => number
 }) {
   return (
     <div className="wavysection">
       <div className="content">
-        <Wavy className={"top " + classNames[0]} values={values} />
+        <Wavy
+          className={"top " + classNames[0]}
+          values={values}
+          method={method}
+        />
       </div>
       <div className="content">
         <Wavy
           className={"bottom " + classNames[1]}
           invert={true}
           values={values}
+          method={method}
         />
       </div>
     </div>

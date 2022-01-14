@@ -112,81 +112,83 @@ button {
 }
 
 .main-top {
-  position: relative;
-  display: flex;
-  background-color: #eef6ff;
-  height: 50vh;
-  min-height: 750px;
-  max-height: 600px;
-  border-radius: 15px 15px 0 0;
-  section {
+  .resize {
+    position: relative;
     display: flex;
-    .left {
-      position: relative;
-      width: 50%;
-      max-width: 500px;
-      height: 100%;
-      padding: 5px 20px 25px 20px;
+    background-color: #eef6ff;
+    height: 50vh;
+    min-height: 750px;
+    max-height: 600px;
+    border-radius: 15px 15px 0 0;
+    section {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      z-index: 2;
-    }
-    .right {
-      width: 50%;
-      padding-top: 10px;
-      svg {
+      .left {
         position: relative;
-        min-width: 530px;
-        z-index: 4;
+        width: 50%;
+        max-width: 500px;
+        height: 100%;
+        padding: 5px 20px 25px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 2;
+      }
+      .right {
+        width: 50%;
+        padding-top: 10px;
+        svg {
+          position: relative;
+          min-width: 530px;
+          z-index: 4;
+        }
       }
     }
-  }
-  a {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    font-size: 18px;
-    padding: 18px 30px;
-    box-shadow: 0px 0px 7px #00000017;
-    color: $dark-text;
-    background-color: white;
-    letter-spacing: 2px;
-    border-radius: 40px 40px 40px 7px;
-    margin-top: 30px;
-    width: fit-content;
-    &:last-of-type {
-      margin-top: 10px;
-      border-radius: 7px 40px 40px;
-    }
-    &:first-of-type:after {
+    a {
+      cursor: pointer;
+      position: relative;
+      display: inline-block;
+      font-size: 18px;
+      padding: 18px 30px;
+      box-shadow: 0px 0px 7px #00000017;
+      color: $dark-text;
+      background-color: white;
+      letter-spacing: 2px;
       border-radius: 40px 40px 40px 7px;
+      margin-top: 30px;
+      width: fit-content;
+      &:last-of-type {
+        margin-top: 10px;
+        border-radius: 7px 40px 40px;
+      }
+      &:first-of-type:after {
+        border-radius: 40px 40px 40px 7px;
+      }
+      &:last-of-type:after {
+        border-radius: 7px 40px 40px;
+      }
     }
-    &:last-of-type:after {
-      border-radius: 7px 40px 40px;
+    section {
+      max-width: var(--maxWidth);
+      margin: 0 auto;
+      height: 100%;
     }
-  }
-  section {
-    max-width: var(--maxWidth);
-    margin: 0 auto;
-    height: 100%;
-  }
-  h1,
-  p,
-  a {
-    color: $dark-text;
-    text-shadow: 0 0 12px #eef6ffab;
-    font-family: "Forum", cursive;
-  }
-  h1 {
-    font-family: "Forum", cursive;
-    font-size: 55px;
-    margin-bottom: 20px;
-    text-transform: capitalize;
-  }
-  p {
-    font-size: 23px;
-    line-height: 30px;
+    h1,
+    p,
+    a {
+      color: $dark-text;
+      text-shadow: 0 0 12px #eef6ffab;
+      font-family: "Forum", cursive;
+    }
+    h1 {
+      font-family: "Forum", cursive;
+      font-size: 55px;
+      margin-bottom: 20px;
+      text-transform: capitalize;
+    }
+    p {
+      font-size: 23px;
+      line-height: 30px;
+    }
   }
 }
 
@@ -239,7 +241,8 @@ button {
 }
 
 .wavysection {
-  margin: -50px 0;
+  --height: 300px;
+  margin: -100px 0;
   .wavy {
     height: var(--height);
     border-radius: 0;
@@ -408,25 +411,27 @@ button {
 //Mobile
 @media only screen and (max-width: 700px) {
   .main-top {
-    padding-top: 40px;
-    min-height: 560px;
-    section {
-      .left {
-        width: 100%;
-        justify-content: initial;
-      }
-      .right {
-        svg {
-          transform: scale(1.2);
-          clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%);
+    .resize {
+      padding-top: 40px;
+      min-height: 560px;
+      section {
+        .left {
+          width: 100%;
+          justify-content: initial;
         }
-        opacity: 0.7;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 1;
+        .right {
+          svg {
+            transform: scale(1.2);
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%);
+          }
+          opacity: 0.7;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: 1;
+        }
       }
     }
   }

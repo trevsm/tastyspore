@@ -7,6 +7,7 @@ const sinClip = ({
   period,
   xShift,
   yShift,
+  method,
 }: {
   quality: number
   invert: boolean
@@ -14,6 +15,7 @@ const sinClip = ({
   period: number
   xShift: number
   yShift: number
+  method: (x: number) => number
 }) => {
   const endpoints = invert ? "100% 100%, 0% 100%" : "100% 0%, 0% 0%"
   // if (invert) amplitude += Math.PI / (2 * amplitude)
@@ -23,8 +25,8 @@ const sinClip = ({
       const max = (i * (101 + quality * 2)) / quality
       const value = (max - i) * (period / (Math.PI * 20)) - xShift
 
-      if (invert) return `${max}% ${amplitude * Math.sin(value) + yShift}%`
-      return `${max}% ${amplitude * Math.sin(value) + yShift}%`
+      if (invert) return `${max}% ${amplitude * method(value) + yShift}%`
+      return `${max}% ${amplitude * method(value) + yShift}%`
     })
     .join(", ")}
       )`

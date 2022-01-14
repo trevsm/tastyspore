@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { graphql } from "gatsby"
 import { Page } from "../components/Main/Page/Page"
 import { MDXQuery } from "../../types"
@@ -11,6 +11,22 @@ import { WavyBreak } from "../styles/Wavy"
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
+
+  const [sw, setSw] = useState(0)
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    setSw(contentRef.current.offsetWidth)
+    window.addEventListener("resize", () => {
+      if (
+        contentRef.current.offsetWidth &&
+        sw !== contentRef.current.offsetWidth
+      )
+        setSw(contentRef.current.offsetWidth)
+    })
+  }, [])
+
+  const ssw = sw / 1000
 
   return (
     <Page navigation={{ cart: true }}>
@@ -30,23 +46,29 @@ export default function Home({ data }: { data: MDXQuery }) {
       />
       <Notice />
       <div className="main-top content">
-        <section>
-          <div className="left">
-            <h1>Delicious Mushrooms & Tasty Recipes</h1>
-            <p>
-              Grow and cook <b>gourmet</b> mushrooms at home with confidence!
-            </p>
-            <AniLink paintDrip hex={"#fff"} to={"/shop"}>
-              🍄 Go Foraging
-            </AniLink>
-            <a href="#">📖 Browse Recipes</a>
-          </div>
-          <div className="right">
-            <ShiitakeTree />
-          </div>
-        </section>
+        <div className="resize" ref={contentRef}>
+          <section>
+            <div className="left">
+              <h1>Delicious Mushrooms & Tasty Recipes</h1>
+              <p>
+                Grow and cook <b>gourmet</b> mushrooms at home with confidence!
+              </p>
+              <AniLink paintDrip hex={"#fff"} to={"/shop"}>
+                🍄 Go Foraging
+              </AniLink>
+              <a href="#">📖 Browse Recipes</a>
+            </div>
+            <div className="right">
+              <ShiitakeTree />
+            </div>
+          </section>
+        </div>
       </div>
-      <WavyBreak values={[10, 10, 1, 0.5]} classNames={["first", "second"]} />
+      <WavyBreak
+        values={[30, 10, 4, 2]}
+        classNames={["first", "second"]}
+        method={(x) => Math.sin(x)}
+      />
       <div className="second content">
         <br />
         <div className="split">
@@ -71,7 +93,11 @@ export default function Home({ data }: { data: MDXQuery }) {
           </div>
         </div>
       </div>
-      <WavyBreak values={[10, 10, 1, -0.89]} classNames={["second", "third"]} />
+      <WavyBreak
+        values={[30, 10, 2, -0.25]}
+        classNames={["second", "third"]}
+        method={(x) => -1 * Math.sqrt(Math.abs(Math.sin(x)))}
+      />
       <div className="third content">
         <div className="split">
           <div className="info story">
@@ -85,7 +111,11 @@ export default function Home({ data }: { data: MDXQuery }) {
           </div>
         </div>
       </div>
-      <WavyBreak values={[10, 10, 5, 1]} classNames={["third", "footer"]} />
+      <WavyBreak
+        values={[50, 10 - ssw * 2, 15, 0]}
+        classNames={["third", "footer"]}
+        method={(x) => Math.sin(x)}
+      />
       <Footer />
     </Page>
   )
