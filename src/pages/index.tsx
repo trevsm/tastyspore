@@ -112,7 +112,7 @@ export default function Home({ data }: { data: MDXQuery }) {
         </div>
       </div>
       <WavyBreak
-        values={[50, 10 - ssw * 2, 15, 0]}
+        values={[80, 10 - ssw * 2, 15, 0]}
         classNames={["third", "footer"]}
         method={(x) => Math.sin(x)}
       />
