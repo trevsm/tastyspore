@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { sinClip } from "../styles/clipPaths"
+import { sinClip } from "./clipPaths"
 
 function Wavy({
   className,

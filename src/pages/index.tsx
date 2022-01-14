@@ -1,15 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Page } from "../components/Main/Page/Page"
-import Featured from "../components/partials/Featured/Featured"
 import { MDXQuery } from "../../types"
 import Helmet from "../components/Main/Helmet/Helmet"
 import Notice from "../components/Main/Notice/Notice"
 import Footer from "../components/Main/Footer/Footer"
 import ShiitakeTree from "../components/Media/ShiitakeTree"
-import { useBreakpoint } from "gatsby-plugin-breakpoints"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { WavyBreak } from "./Wavy"
+import { WavyBreak } from "../styles/Wavy"
 
 export default function Home({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
