@@ -82,7 +82,7 @@ const Left = styled.div`
   width: 50%;
   max-width: 600px;
   min-width: 350px;
-  margin-left: auto;
+  margin-right: auto;
   height: 100%;
   padding: 5px 20px 25px 20px;
   display: flex;
@@ -102,26 +102,15 @@ const Left = styled.div`
   }
 `
 const Right = styled.div`
+  position: absolute;
+  bottom: -220px;
+  right: 0;
   width: 50%;
   padding-top: 10px;
   svg {
     position: relative;
     width: 550px;
     z-index: 4;
-  }
-  /* mobile */
-  @media only screen and (max-width: ${devices.mobile}px) {
-    & {
-      width: 0;
-      position: absolute;
-      top: -40px;
-      left: 20px;
-      svg {
-        opacity: 0.6;
-        top: -160px !important;
-        right: 0;
-      }
-    }
   }
 `
 
@@ -151,9 +140,13 @@ export default function Home() {
   const contentRef = useRef(null)
 
   useEffect(() => {
-    setSw(contentRef.current.offsetWidth)
+    if (
+      contentRef.current.offsetWidth &&
+      sw !== contentRef.current.offsetWidth
+    ) {
+      setSw(contentRef.current.offsetWidth)
+    }
     window.addEventListener("resize", () => {
-      console.log(sh)
       if (
         contentRef.current.offsetWidth &&
         sw !== contentRef.current.offsetWidth
@@ -167,7 +160,6 @@ export default function Home() {
   const ssw = sw / 1000
 
   const leftMinHeight = sw * 0.5 <= 500 ? 500 : sw * 0.5
-  const svgTop = sw < devices.mobile ? -260 : sh == 0 ? 0 : sh - 760
 
   return (
     <Page navigation={{ cart: true }}>
@@ -207,7 +199,7 @@ export default function Home() {
                 <H1>
                   Delicious <br /> Mushrooms & <br /> Tasty Recipes
                 </H1>
-                <P>
+                <P style={{ maxWidth: "300px" }}>
                   Grow and cook <b>gourmet</b> mushrooms at home with
                   confidence!
                 </P>
@@ -218,8 +210,13 @@ export default function Home() {
                   <LinkStyles invert>📖 Browse Recipes</LinkStyles>
                 </Link>
               </Left>
-              <Right>
-                <ShiitakeTree style={{ top: svgTop }} />
+              <Right style={{ right: (50 / sw) * 250 + "%" }}>
+                <ShiitakeTree
+                  style={{
+                    transform: `scale(${1 - 75 / sw})`,
+                    transformOrigin: "50% 85%",
+                  }}
+                />
               </Right>
             </FlexSection>
           </InnerContent>
