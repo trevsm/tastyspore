@@ -16,16 +16,25 @@ import {
   Split,
   HalfItem,
   devices,
+  font,
 } from "../components/Styled"
 import Logo from "../components/Logo/Logo"
+import PanLogo from "../components/icons/Pan"
 import Instagram from "../components/icons/Social/Instagram"
 import Facebook from "../components/icons/Social/Facebook"
 import styled from "styled-components"
 
 const LogoHeader = styled.div`
+  font-family: ${font.header};
+  font-size: 30px;
+  opacity: 0.7;
+  width: fit-content;
   position: relative;
   z-index: 10;
   padding: 20px;
+  svg {
+    transform: translateY(10px);
+  }
 `
 const InnerContent = styled.div`
   position: relative;
@@ -190,10 +199,8 @@ export default function Home() {
             }}
           >
             <LogoHeader>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe
-              eos nobis est autem fuga aspernatur, debitis quae commodi, quidem
-              voluptatem minima ipsa nisi deleniti alias provident ab atque?
-              Aspernatur, dolorem?
+              <PanLogo width={50} />
+              TastySpore
             </LogoHeader>
             <FlexSection>
               <Left>

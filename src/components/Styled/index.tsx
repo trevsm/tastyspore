@@ -10,6 +10,11 @@ const devices = {
   tablet: 1080,
 }
 
+const font = {
+  header: '"adorn-condensed-sans", sans-serif',
+  text: '"hind", sans-serif',
+}
+
 //GENERAL
 
 const PageStyles = styled.div`
@@ -54,11 +59,6 @@ const Link = ({ children, to, transitionColor }: LinkInterface) => {
       {children}
     </AniLink>
   )
-}
-
-const font = {
-  header: '"adorn-condensed-sans", sans-serif',
-  text: '"hind", sans-serif',
 }
 
 const H1 = styled.h1`
@@ -121,4 +121,5 @@ export {
   HalfItem,
   shadow,
   devices,
+  font,
 }
