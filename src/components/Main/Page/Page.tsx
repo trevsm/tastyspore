@@ -2,6 +2,7 @@ import React, { ReactNode } from "react"
 import "minireset.css"
 import "./Page.scss"
 import Navigation from "../Navigation/Navigation"
+import { PageStyles } from "../../Styled"
 
 function Page({
   children,
@@ -11,12 +12,10 @@ function Page({
   navigation: { home?: boolean; cart?: boolean }
 }) {
   return (
-    <div className="App">
-      <div className={"page"}>
-        <Navigation navigation={navigation} />
-        {children}
-      </div>
-    </div>
+    <PageStyles>
+      <Navigation navigation={navigation} />
+      {children}
+    </PageStyles>
   )
 }
 

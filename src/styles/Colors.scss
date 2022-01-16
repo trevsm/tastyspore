@@ -1,24 +1,21 @@
+$header-font: "adorn-condensed-sans", sans-serif;
+$text-font: "hind", sans-serif;
+
 $dark-text: #3c414e;
 $light-text: #e7e7e7;
 
 $accent: #67718d;
 $pink: #f36766;
 
-$first: #eef6ff; // sky
-$second: #f0ffe9; // grass
-$third: #fff4e9; // dirt
+$first: #dcf2ff; // sky
+$second: #deffe3; // grass
+$third: #fff2e1; // dirt
 $fourth: #ededed; // rock
 
-:root{  
-  --first: $first
-  --second: $second
-  --third: $third
-  --fourth: $fourth
-}
-
-:export {
-  first: $first;
-  second: $second;
-  third: $third;
-  fourth: $fourth;
+:root {
+  --first: #dcf2ff; // sky
+  --second: #deffe3; // grass
+  --third: #fff2e1; // dirt
+  --fourth: #ededed; // rock
+  --dark-text: #3c414e;
 }

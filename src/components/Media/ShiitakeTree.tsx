@@ -1,8 +1,9 @@
 import React from "react"
 
-function Icon() {
+function Icon({ style }: { style?: React.CSSProperties }) {
   return (
     <svg
+      style={style}
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       viewBox="0 0 610.5 985.9"
