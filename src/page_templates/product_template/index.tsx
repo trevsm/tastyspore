@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Page } from "../../components/Main/Page/Page"
+import { Page } from "src/components/Main/Page/Page"
 import { Template } from "./Template"
-import Notification from "../../components/MyCart/Notification"
+import Notification from "src/components/MyCart/Notification"
 
 export default function Main({ data }: { data: any }) {
   return (

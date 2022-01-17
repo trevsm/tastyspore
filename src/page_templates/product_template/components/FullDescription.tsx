@@ -1,5 +1,5 @@
 import React from "react"
-import { ProductFrontmatterFragment } from "../../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "types/gatsby-graphql"
 import "./FullDescription.scss"
 
 export function FullDescription({

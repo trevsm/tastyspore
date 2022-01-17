@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Trash from "../icons/Trash"
+import Trash from "src/components/icons/Trash"
 import "./CartItem.scss"
-import { CIInterface } from "../../../types"
-import { Link } from "gatsby"
+import { CIInterface } from "types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { animated, useSpring } from "react-spring"
 

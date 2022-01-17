@@ -1,14 +1,13 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import { CIInterface, MDXQuery, PIInterface } from "../../types"
-import Helmet from "../components/Main/Helmet/Helmet"
-import CartItem from "../components/MyCart/CartItem"
-import Home from "../components/icons/Home"
-import { Page } from "../components/Main/Page/Page"
+import { CIInterface, MDXQuery, PIInterface } from "types"
+import Helmet from "src/components/Main/Helmet/Helmet"
+import CartItem from "src/components/MyCart/CartItem"
+import { Page } from "src/components/Main/Page/Page"
 import { useLocalStorage } from "usehooks-ts"
 import { useTransition } from "react-spring"
-import Cart from "../components/icons/Cart"
-import ClientRender from "../tools/ClientRender"
+import Cart from "src/components/icons/Cart"
+import ClientRender from "src/tools/ClientRender"
 
 function addZeroes(num: string) {
   const dec = num.split(".")[1]

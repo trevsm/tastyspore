@@ -17,7 +17,10 @@
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
-    "no-submodule-imports": [true, "gatsby-plugin-transition-link"]
+    "baseUrl": ".",
+    "paths": {
+      "@common/*": ["src/common/*"]
+    }
   },
   "include": ["src/**/*", "types"],
   "exclude": ["node_modules", "build"]

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react"
-import { Page } from "../components/Main/Page/Page"
-import Helmet from "../components/Main/Helmet/Helmet"
-import Notice from "../components/Main/Notice/Notice"
-import ShiitakeTree from "../components/Media/ShiitakeTree"
-import { WavyBreak } from "../styles/Wavy"
+import { Page } from "src/components/Main/Page/Page"
+import Helmet from "src/components/Main/Helmet/Helmet"
+import Notice from "src/components/Main/Notice/Notice"
+import ShiitakeTree from "src/components/Media/ShiitakeTree"
+import { WavyBreak } from "src/styles/Wavy"
 import {
   maxWidth,
   shadow,
@@ -17,11 +17,11 @@ import {
   HalfItem,
   devices,
   font,
-} from "../components/Styled"
-import Logo from "../components/Logo/Logo"
-import PanLogo from "../components/icons/Pan"
-import Instagram from "../components/icons/Social/Instagram"
-import Facebook from "../components/icons/Social/Facebook"
+} from "src/components/Styled"
+import Logo from "src/components/Logo/Logo"
+import PanLogo from "src/components/icons/Pan"
+import Instagram from "src/components/icons/Social/Instagram"
+import Facebook from "src/components/icons/Social/Facebook"
 import styled from "styled-components"
 
 const LogoHeader = styled.div`
@@ -136,11 +136,11 @@ export default function Home() {
   const year = new Date().getFullYear()
 
   const [sw, setSw] = useState(0)
-  const [sh, setSh] = useState(0)
   const contentRef = useRef(null)
 
   useEffect(() => {
     if (
+      contentRef.current &&
       contentRef.current.offsetWidth &&
       sw !== contentRef.current.offsetWidth
     ) {
@@ -148,11 +148,11 @@ export default function Home() {
     }
     window.addEventListener("resize", () => {
       if (
+        contentRef.current &&
         contentRef.current.offsetWidth &&
         sw !== contentRef.current.offsetWidth
       ) {
         setSw(contentRef.current.offsetWidth)
-        setSh(contentRef.current.offsetHeight)
       }
     })
   }, [])

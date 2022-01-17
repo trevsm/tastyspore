@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react"
-import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "types/gatsby-graphql"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import Home from "../../components/icons/Home"
 import { FullDescription } from "./components/FullDescription"
 import { Sizes } from "./components/Sizes"
 import { QuantityPrice } from "./components/QuantityPrice"
 
 import "./Template.scss"
-import { navigate } from "gatsby"
-import Helmet from "../../components/Main/Helmet/Helmet"
-import { PIInterface } from "../../../types"
+import Helmet from "src/components/Main/Helmet/Helmet"
+import { PIInterface } from "types"
 import { useLocalStorage } from "usehooks-ts"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { Page } from "../../components/Main/Page/Page"
 
 export function Template({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx

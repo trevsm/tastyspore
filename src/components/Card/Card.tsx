@@ -1,6 +1,6 @@
 import React from "react"
 import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
-import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "types/gatsby-graphql"
 import "./Card.scss"
 import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"

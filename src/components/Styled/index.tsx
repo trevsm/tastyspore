@@ -35,6 +35,13 @@ const Content = styled.section`
   max-width: ${maxWidth};
 `
 
+const Hide = styled.div<{ disabled: boolean }>`
+  ${(props) =>
+    props.disabled &&
+    `pointer-events: none;
+    opacity: 0;`}
+`
+
 interface BgColorProps {
   background: string
 }
@@ -109,6 +116,7 @@ const HalfItem = styled.div<{ width?: string }>`
 
 export {
   maxWidth,
+  Hide,
   PageStyles,
   H1,
   H2,

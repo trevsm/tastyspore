@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react"
-import { PIInterface } from "../../../types"
+import { PIInterface } from "types"
 import { animated, useSpring } from "react-spring"
 import { useLocalStorage, useEventListener } from "usehooks-ts"
-import { ProductFrontmatterFragment } from "../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "types/gatsby-graphql"
 
 export default function Notification({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx

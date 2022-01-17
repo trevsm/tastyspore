@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
-import MailingList from "../../Forms/MailingList"
+import MailingList from "src/components/Forms/MailingList"
 import { animated, useSpring } from "react-spring"
 
 import "./Notice.scss"
 import { useLocalStorage } from "usehooks-ts"
-import ClientRender from "../../../tools/ClientRender"
+import ClientRender from "src/tools/ClientRender"
 
 export default function Notice() {
   const [userNotified, setUserNotified] = useLocalStorage<boolean>(

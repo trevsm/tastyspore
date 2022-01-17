@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { BgColor, Content } from "../components/Styled"
+import { BgColor, Content } from "src/components/Styled"
 import { sinClip } from "./clipPaths"
 
 // WAVY

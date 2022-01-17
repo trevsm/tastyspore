@@ -1,6 +1,6 @@
 import React from "react"
 import { Card } from ".."
-import { ProductFrontmatterFragment } from "../../../../types/gatsby-graphql"
+import { ProductFrontmatterFragment } from "types/gatsby-graphql"
 
 export default function Featured({ nodes }: { nodes: any }) {
   return nodes.map((data: ProductFrontmatterFragment, idx: number) => {

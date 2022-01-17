@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react"
 import "minireset.css"
 import "./Page.scss"
-import Navigation from "../Navigation/Navigation"
-import { PageStyles } from "../../Styled"
+import Navigation from "src/components/Main/Navigation/Navigation"
+import { PageStyles } from "src/components/Styled"
 
 function Page({
   children,

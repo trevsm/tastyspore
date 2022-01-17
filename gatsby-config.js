@@ -4,6 +4,7 @@ module.exports = {
     title: "tastyspore",
   },
   plugins: [
+    "gatsby-plugin-root-import",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",

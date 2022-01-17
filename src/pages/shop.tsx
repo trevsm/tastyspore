@@ -1,9 +1,9 @@
 import { graphql } from "gatsby"
 import React, { useState } from "react"
-import { MDXQuery } from "../../types"
-import Helmet from "../components/Main/Helmet/Helmet"
-import { Page } from "../components/Main/Page/Page"
-import Featured from "../components/partials/Featured/Featured"
+import { MDXQuery } from "types"
+import Helmet from "src/components/Main/Helmet/Helmet"
+import { Page } from "src/components/Main/Page/Page"
+import Featured from "src/components/partials/Featured/Featured"
 
 export default function Shop({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
