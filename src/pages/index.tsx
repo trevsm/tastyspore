@@ -158,8 +158,8 @@ const Trail: React.FC<{
   return (
     <>
       {trail.map(({ ...style }, index) => (
-        <a.div style={style}>
-          <a.div key={index}>{items[index]}</a.div>
+        <a.div style={style} key={index}>
+          <a.div>{items[index]}</a.div>
         </a.div>
       ))}
     </>
