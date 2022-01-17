@@ -94,9 +94,10 @@ const Hr = styled.hr`
   border-radius: 100%;
 `
 
-const Split = styled.div<{ justify?: string }>`
+const Flex = styled.div<{ justify?: string; direction?: "row" | "column" }>`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: ${(props) => (props.direction ? props.direction : "row")};
   justify-content: ${(props) => (props.justify ? props.justify : "left")};
 `
 const HalfItem = styled.div<{ width?: string }>`
@@ -125,7 +126,7 @@ export {
   Content,
   BgColor,
   Link,
-  Split,
+  Flex,
   HalfItem,
   shadow,
   devices,

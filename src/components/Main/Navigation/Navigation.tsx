@@ -6,7 +6,7 @@ import { useLocalStorage } from "usehooks-ts"
 import { PIInterface } from "types"
 import ClientRender from "src/tools/ClientRender"
 import Cart from "src/components/icons/Cart"
-import { Content, Split, Link, Hide } from "src/components/Styled"
+import { Content, Flex, Link, Hide } from "src/styles"
 import styled from "styled-components"
 
 const NavigationStyles = styled(Content)`
@@ -60,7 +60,7 @@ export default function Navigation({
   if (navigation)
     return (
       <NavigationStyles>
-        <Split justify="space-between">
+        <Flex justify="space-between">
           <Hide disabled={!navigation.home}>
             <Link to="/" transitionColor="#eef6ff">
               <LinkStyles left>
@@ -78,7 +78,7 @@ export default function Navigation({
               </Link>
             </ClientRender>
           </Hide>
-        </Split>
+        </Flex>
       </NavigationStyles>
     )
   return null

@@ -1,12 +1,23 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import "./Logo.scss"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import styled from "styled-components"
+
+const LogoStyles = styled.div`
+  position: relative;
+  width: 100%;
+  img {
+    border: 2px solid #b5b5b561;
+    background-color: #ffffff;
+    border-radius: 200px;
+    padding: 5px;
+  }
+`
 
 export default function Logo() {
   const breakpoints = useBreakpoint()
   return (
-    <div className={"logo"}>
+    <LogoStyles>
       {breakpoints.xs ? (
         <StaticImage
           src="../../images/tastyspore.png"
@@ -24,6 +35,6 @@ export default function Logo() {
           width={110}
         />
       )}
-    </div>
+    </LogoStyles>
   )
 }

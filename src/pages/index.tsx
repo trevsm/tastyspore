@@ -13,11 +13,11 @@ import {
   H1,
   H2,
   P,
-  Split,
+  Flex,
   HalfItem,
   devices,
   font,
-} from "src/components/Styled"
+} from "src/styles"
 import Logo from "src/components/Logo/Logo"
 import PanLogo from "src/components/icons/Pan"
 import Instagram from "src/components/icons/Social/Instagram"
@@ -41,12 +41,6 @@ const InnerContent = styled.div`
   height: 50vh;
   max-height: 600px;
   border-radius: 15px 15px 0 0;
-  /* mobile */
-  @media only screen and (max-width: ${devices.mobile}px) {
-    & {
-      margin-left: initial !important ;
-    }
-  }
 `
 
 interface LinkStylesProps {
@@ -132,6 +126,19 @@ const ImageWithBorder = styled.div`
   border: 2px solid #ead2c1;
 `
 
+const SocialFlex = styled(Flex)`
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 100%;
+  a:first-of-type {
+    margin-right: 15px;
+  }
+`
+
 export default function Home() {
   const year = new Date().getFullYear()
 
@@ -187,14 +194,13 @@ export default function Home() {
             ref={contentRef}
             style={{
               minHeight: leftMinHeight,
-              marginLeft: sw / 15,
             }}
           >
             <LogoHeader>
               <PanLogo width={50} />
               TastySpore
             </LogoHeader>
-            <FlexSection>
+            <FlexSection style={{ marginLeft: Math.pow(sw, 2) / 10000 - 15 }}>
               <Left>
                 <H1>
                   Delicious <br /> Mushrooms & <br /> Tasty Recipes
@@ -229,7 +235,7 @@ export default function Home() {
       />
       <Content style={{ zIndex: 5 }}>
         <BgColor background={"var(--second)"}>
-          <Split justify="center">
+          <Flex justify="center">
             <HalfItem style={{ marginTop: "-60px" }}>
               <H2>Discover</H2>
               <P>
@@ -250,24 +256,25 @@ export default function Home() {
                 guaranteed to be free of harmful chemicals, pesticides, and
                 other contaminants.
               </P>
-              <Split>
+              <Flex>
                 <ToxicItem></ToxicItem>
                 <ToxicItem></ToxicItem>
                 <ToxicItem></ToxicItem>
                 <ToxicItem></ToxicItem>
-              </Split>
+              </Flex>
             </HalfItem>
-          </Split>
+          </Flex>
         </BgColor>
       </Content>
       <WavyBreak
         values={[30, 10, 2, -0.25]}
         colors={["var(--second)", "var(--third)"]}
         method={(x) => -1 * Math.sqrt(Math.abs(Math.sin(x)))}
+        shrink
       />
-      <Content style={{ zIndex: 5 }}>
+      <Content style={{ zIndex: 6 }}>
         <BgColor background={"var(--third)"}>
-          <Split justify="center">
+          <Flex justify="center">
             <HalfItem>
               <ImageWithBorder />
             </HalfItem>
@@ -280,28 +287,40 @@ export default function Home() {
                 deleniti, alias ipsam enim molestiae eligendi provident id.
               </P>
             </HalfItem>
-          </Split>
+          </Flex>
         </BgColor>
       </Content>
       <WavyBreak
         values={[80, 10 - ssw * 2, 15, 0]}
         colors={["var(--third)", "var(--fourth)"]}
         method={(x) => Math.sin(x)}
+        shrink
       />
-      <Content>
+      <Content style={{ zIndex: 6 }}>
         <BgColor
           background={"var(--fourth)"}
           style={{ borderRadius: "0 0 15px 15px" }}
         >
-          <div className="center">
+          <Flex
+            direction="column"
+            justify="center"
+            style={{
+              textAlign: "center",
+              padding: "20px",
+              width: "fit-content",
+              margin: "0 auto",
+            }}
+          >
             <Logo />
-            <p>
+            <br />
+            <br />
+            <P>
               Interested in purchasing our products locally?{" "}
               <a href="">Contact Us</a>.
-            </p>
+            </P>
             <br />
             <br />
-            <div className="flex">
+            <SocialFlex justify="center">
               <div className="social">
                 <a href="#">
                   <Instagram color="#3c414e" width={30} />
@@ -310,17 +329,17 @@ export default function Home() {
                   <Facebook color="#3c414e" width={30} />
                 </a>
               </div>
-              <p>
+              <P>
                 TastySpore <br />
                 Salt Lake City, UT
-              </p>
-            </div>
+              </P>
+            </SocialFlex>
             <br />
             <br />
-            <div className="copy">
+            <div>
               {year} all rights reserved. TastySpore <sub>©</sub>
             </div>
-          </div>
+          </Flex>
         </BgColor>
       </Content>
     </Page>

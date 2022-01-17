@@ -1,11 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import { BgColor, Content } from "src/components/Styled"
+import { BgColor, Content } from "src/styles"
 import { sinClip } from "./clipPaths"
 
 // WAVY
-const WavySection = styled.div`
+const WavySection = styled.div<{ shrink?: boolean }>`
   --height: 300px;
+  ${(props) => props.shrink && "margin: -100px 0"}
 `
 const WavyStyles = styled.div<{ background: string }>`
   height: var(--height);
@@ -57,14 +58,16 @@ export function WavyBreak({
   values,
   colors,
   method,
+  shrink,
 }: {
   values: number[]
   colors: string[]
   method: (x: number) => number
+  shrink?: boolean
 }) {
   if (!colors || colors.length != 2) return null
   return (
-    <WavySection>
+    <WavySection shrink={shrink}>
       <Content>
         <Wavy values={values} method={method} color={colors[0]} />
       </Content>
