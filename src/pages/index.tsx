@@ -23,6 +23,7 @@ import PanLogo from "src/components/icons/Pan"
 import Instagram from "src/components/icons/Social/Instagram"
 import Facebook from "src/components/icons/Social/Facebook"
 import styled from "styled-components"
+import { useTrail, a } from "react-spring"
 
 const LogoHeader = styled.div`
   font-family: ${font.header};
@@ -31,7 +32,7 @@ const LogoHeader = styled.div`
   width: fit-content;
   position: relative;
   z-index: 10;
-  padding: 20px;
+  padding: 10px 25px;
   svg {
     transform: translateY(10px);
   }
@@ -88,10 +89,6 @@ const Left = styled.div`
     & {
       width: 100%;
       z-index: 5;
-      h1,
-      p {
-        filter: drop-shadow(0 0 10px white);
-      }
     }
   }
 `
@@ -112,7 +109,7 @@ const ToxicItem = styled.div`
   min-width: 70px;
   min-height: 70px;
   background-color: #ebffeb;
-  border: 2px solid #bee5bf;
+  border: 3px solid #bee5bf;
   border-radius: 500px;
   margin: 20px 20px 0 0;
   box-shadow: ${shadow};
@@ -123,7 +120,7 @@ const ImageWithBorder = styled.div`
   height: 300px;
   background-color: #f3faff;
   border-radius: 30px;
-  border: 2px solid #ead2c1;
+  border: 3px solid #ead2c1;
 `
 
 const SocialFlex = styled(Flex)`
@@ -141,13 +138,48 @@ const SocialFlex = styled(Flex)`
   }
 `
 
+const Trail: React.FC<{
+  open: boolean
+  animation: "fade" | "shift"
+  tension: number
+}> = ({ open, children, animation, tension }) => {
+  const items = React.Children.toArray(children)
+  const trail = useTrail(items.length, {
+    config: { mass: 5, tension, friction: 100 },
+    opacity: open ? 1 : 0,
+    transform:
+      animation == "shift"
+        ? open
+          ? "translateX(0)"
+          : "translateX(100px)"
+        : "unset",
+    from: { opacity: 0 },
+  })
+  return (
+    <>
+      {trail.map(({ ...style }, index) => (
+        <a.div style={style}>
+          <a.div key={index}>{items[index]}</a.div>
+        </a.div>
+      ))}
+    </>
+  )
+}
+
 export default function Home() {
   const year = new Date().getFullYear()
 
+  // H1 enter animation
+  const [open, setOpen] = useState(false)
+
+  // ContentRef width for moving things around
   const [sw, setSw] = useState(0)
   const contentRef = useRef(null)
 
   useEffect(() => {
+    setTimeout(() => {
+      setOpen(true)
+    }, 500)
     if (
       contentRef.current &&
       contentRef.current.offsetWidth &&
@@ -198,25 +230,39 @@ export default function Home() {
               minHeight: leftMinHeight,
             }}
           >
-            <LogoHeader>
-              <PanLogo width={50} />
-              TastySpore
-            </LogoHeader>
+            <Trail open={open} animation="fade" tension={100}>
+              <LogoHeader>
+                <PanLogo width={50} />
+                TastySpore
+              </LogoHeader>
+            </Trail>
             <FlexSection style={{ marginLeft: Math.pow(sw, 2) / 10000 - 15 }}>
               <Left>
-                <H1>
-                  Delicious <br /> Mushrooms & <br /> Tasty Recipes
-                </H1>
-                <P style={{ maxWidth: "300px" }}>
-                  Grow and cook <b>gourmet</b> mushrooms at home with
-                  confidence!
-                </P>
-                <Link transitionColor="#fff" to="/shop">
-                  <LinkStyles>🍄 Go Foraging</LinkStyles>
-                </Link>
-                <Link transitionColor="#fff" to="#">
-                  <LinkStyles invert>📖 Browse Recipes</LinkStyles>
-                </Link>
+                <div
+                  style={{
+                    minHeight: "160px",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Trail open={open} animation="shift" tension={600}>
+                    <H1 style={{ margin: "20px 0" }}>
+                      <p>Delicious</p>
+                      <p>Mushrooms &</p>
+                      <p>Tasty Recipes</p>
+                    </H1>
+                    <P style={{ maxWidth: "300px", marginBottom: "20px" }}>
+                      Grow and cook <b>gourmet</b> mushrooms at home with
+                      confidence!
+                    </P>
+                    <Link transitionColor="#fff" to="/shop">
+                      <LinkStyles>🍄 Go Foraging</LinkStyles>
+                    </Link>
+                    <Link transitionColor="#fff" to="#">
+                      <LinkStyles invert>📖 Browse Recipes</LinkStyles>
+                    </Link>
+                  </Trail>
+                </div>
               </Left>
               <Right style={{ right: (50 / sw) * 250 + "%" }}>
                 <ShiitakeTree
