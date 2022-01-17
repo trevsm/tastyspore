@@ -134,6 +134,8 @@ const SocialFlex = styled(Flex)`
   justify-content: space-evenly;
   padding: 10px;
   width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
   a:first-of-type {
     margin-right: 15px;
   }
