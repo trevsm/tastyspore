@@ -308,7 +308,7 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <StaticWave colors={["second", "third"]} clipIndex={1} />
+      <StaticWave colors={["second", "third"]} clipIndex={1} shrink />
       <Content style={{ zIndex: 6 }}>
         <BgColor background={"var(--third)"}>
           <Flex justify="center">
@@ -327,7 +327,7 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <StaticWave colors={["third", "fourth"]} clipIndex={2} />
+      <StaticWave colors={["third", "fourth"]} clipIndex={2} shrink />
       <Content style={{ zIndex: 6 }}>
         <BgColor
           background={"var(--fourth)"}
