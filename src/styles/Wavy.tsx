@@ -124,12 +124,12 @@ export function StaticWave({
 }) {
   if (ci >= staticClipPaths.length) return null
   return (
-    <WaveMain>
+    <WaveMain shrink={shrink}>
       <Content>
-        <Wave color={colors[c[0]]} top clipIndex={ci} shrink={shrink} />
+        <Wave color={colors[c[0]]} top clipIndex={ci} />
       </Content>
       <Content>
-        <Wave color={colors[c[1]]} bottom clipIndex={ci} shrink={shrink} />
+        <Wave color={colors[c[1]]} bottom clipIndex={ci} />
       </Content>
     </WaveMain>
   )
