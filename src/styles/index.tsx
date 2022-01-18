@@ -17,17 +17,6 @@ const font = {
 
 //GENERAL
 
-const PageStyles = styled.div`
-  position: relative;
-  min-height: 100vh;
-  height: 100vh;
-  max-height: 100vh;
-  min-width: 350px;
-  overflow: auto;
-  overflow-x: hidden;
-  padding: 10px;
-`
-
 const Content = styled.section`
   position: relative;
   margin: 0 auto;
@@ -118,7 +107,6 @@ const HalfItem = styled.div<{ width?: string }>`
 export {
   maxWidth,
   Hide,
-  PageStyles,
   H1,
   H2,
   P,

@@ -9,7 +9,9 @@ import Cart from "src/components/icons/Cart"
 import { Content, Flex, Link, Hide } from "src/styles"
 import styled from "styled-components"
 
-const NavigationStyles = styled(Content)`
+const NavigationStyles = styled(Content).attrs({
+  as: "nav",
+})`
   position: sticky;
   height: 0;
   top: 0;

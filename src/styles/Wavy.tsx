@@ -17,7 +17,7 @@ const WavyStyles = styled.div<{ background: string }>`
 const WavyBottom = styled(WavyStyles)`
   position: relative;
   z-index: 5;
-  margin-top: calc(-1 * (var(--height) - 10px)) !important;
+  margin-top: calc(-1 * (var(--height) - 3px)) !important;
   margin-bottom: -1px;
 `
 

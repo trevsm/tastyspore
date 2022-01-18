@@ -24,11 +24,12 @@ import Instagram from "src/components/icons/Social/Instagram"
 import Facebook from "src/components/icons/Social/Facebook"
 import styled from "styled-components"
 import { useTrail, a } from "react-spring"
+import Small_Cloud from "src/components/Media/Small_Cloud"
+import Large_Cloud from "src/components/Media/Large_Cloud"
 
 const LogoHeader = styled.div`
   font-family: ${font.header};
   font-size: 30px;
-  opacity: 0.7;
   width: fit-content;
   position: relative;
   z-index: 10;
@@ -237,6 +238,22 @@ export default function Home() {
               </LogoHeader>
             </Trail>
             <FlexSection style={{ marginLeft: Math.pow(sw, 2) / 10000 - 15 }}>
+              <Small_Cloud
+                style={{
+                  width: 150,
+                  position: "absolute",
+                  top: "15%",
+                  left: "30%",
+                }}
+              />
+              <Large_Cloud
+                style={{
+                  width: 450,
+                  position: "absolute",
+                  top: "30%",
+                  left: sw > 700 ? "65%" : "450px",
+                }}
+              />
               <Left>
                 <div
                   style={{
@@ -264,10 +281,10 @@ export default function Home() {
                   </Trail>
                 </div>
               </Left>
-              <Right style={{ right: (50 / sw) * 250 + "%" }}>
+              <Right style={{ right: (57 / sw) * 300 + "%" }}>
                 <ShiitakeTree
                   style={{
-                    transform: `scale(${1 - 75 / sw})`,
+                    transform: `translateY(166px) rotate(2deg)`,
                     transformOrigin: "50% 85%",
                   }}
                 />

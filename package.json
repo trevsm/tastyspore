@@ -12,7 +12,7 @@
     "start": "gatsby develop -H 0.0.0.0",
     "cname:add": "echo tastyspore.com > public/CNAME",
     "build": "yarn clean && gatsby build && yarn cname:add",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -H 0.0.0.0",
     "clean": "gatsby clean",
     "deploy": "npx gh-pages -d public",
     "cap:update": "npx cap update android",
