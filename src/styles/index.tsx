@@ -15,6 +15,14 @@ const font = {
   text: '"hind", sans-serif',
 }
 
+const colors = {
+  first: "#dcf2ff", // sky
+  second: "#deffe3", // grass
+  third: "#fff2e1", // dirt
+  fourth: "#ededed", // rock
+} as const
+type ColorsType = keyof typeof colors
+
 //GENERAL
 
 const Content = styled.section`
@@ -103,8 +111,10 @@ const HalfItem = styled.div<{ width?: string }>`
 `
 
 /////////////////
+export type { ColorsType }
 
 export {
+  colors,
   maxWidth,
   Hide,
   H1,

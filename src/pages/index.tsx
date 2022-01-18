@@ -3,7 +3,7 @@ import { Page } from "src/components/Main/Page/Page"
 import Helmet from "src/components/Main/Helmet/Helmet"
 import Notice from "src/components/Main/Notice/Notice"
 import ShiitakeTree from "src/components/Media/ShiitakeTree"
-import { WavyBreak } from "src/styles/Wavy"
+import { StaticWave, WavyBreak } from "src/styles/Wavy"
 import {
   maxWidth,
   shadow,
@@ -23,9 +23,9 @@ import PanLogo from "src/components/icons/Pan"
 import Instagram from "src/components/icons/Social/Instagram"
 import Facebook from "src/components/icons/Social/Facebook"
 import styled from "styled-components"
-import { useTrail, a } from "react-spring"
 import Small_Cloud from "src/components/Media/Small_Cloud"
 import Large_Cloud from "src/components/Media/Large_Cloud"
+import { Trail } from "src/styles/Trail"
 
 const LogoHeader = styled.div`
   font-family: ${font.header};
@@ -138,34 +138,13 @@ const SocialFlex = styled(Flex)`
     margin-right: 15px;
   }
 `
-
-const Trail: React.FC<{
-  open: boolean
-  animation: "fade" | "shift"
-  tension: number
-}> = ({ open, children, animation, tension }) => {
-  const items = React.Children.toArray(children)
-  const trail = useTrail(items.length, {
-    config: { mass: 5, tension, friction: 100 },
-    opacity: open ? 1 : 0,
-    transform:
-      animation == "shift"
-        ? open
-          ? "translateX(0)"
-          : "translateX(100px)"
-        : "unset",
-    from: { opacity: 0 },
-  })
-  return (
-    <>
-      {trail.map(({ ...style }, index) => (
-        <a.div style={style} key={index}>
-          <a.div>{items[index]}</a.div>
-        </a.div>
-      ))}
-    </>
-  )
-}
+/* 
+<WavyBreak
+  values={[30, 15 - 4000 / sw, 4, 2]}
+  colors={["var(--first)", "var(--second)"]}
+  method={(x) => Math.sin(x)}
+/> 
+*/
 
 export default function Home() {
   const year = new Date().getFullYear()
@@ -293,11 +272,9 @@ export default function Home() {
           </InnerContent>
         </BgColor>
       </Content>
-      <WavyBreak
-        values={[30, 15 - 4000 / sw, 4, 2]}
-        colors={["var(--first)", "var(--second)"]}
-        method={(x) => Math.sin(x)}
-      />
+
+      <StaticWave colors={["first", "second"]} clipIndex={0} />
+
       <Content style={{ zIndex: 5 }}>
         <BgColor background={"var(--second)"}>
           <Flex justify="center">
@@ -331,12 +308,7 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <WavyBreak
-        values={[30, 10, 2, -0.25]}
-        colors={["var(--second)", "var(--third)"]}
-        method={(x) => -1 * Math.sqrt(Math.abs(Math.sin(x)))}
-        shrink
-      />
+      <StaticWave colors={["second", "third"]} clipIndex={1} />
       <Content style={{ zIndex: 6 }}>
         <BgColor background={"var(--third)"}>
           <Flex justify="center">
@@ -355,12 +327,7 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <WavyBreak
-        values={[80, 10 - ssw * 2, 15, 0]}
-        colors={["var(--third)", "var(--fourth)"]}
-        method={(x) => Math.sin(x)}
-        shrink
-      />
+      <StaticWave colors={["third", "fourth"]} clipIndex={2} />
       <Content style={{ zIndex: 6 }}>
         <BgColor
           background={"var(--fourth)"}
