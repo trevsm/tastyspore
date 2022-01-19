@@ -1,59 +1,5 @@
 @import "src/styles/Colors.scss";
 
-.blob.card {
-  margin-bottom: 30px;
-  max-width: 400px;
-  section {
-    // padding: 0;
-    cursor: pointer;
-    .next {
-      padding-top: 20px;
-      display: flex;
-    }
-    .flex {
-      display: flex;
-      h2 {
-        width: fit-content;
-        color: $dark-text;
-        font-size: 18px;
-        font-weight: bold;
-        padding-bottom: 4px;
-      }
-      p.summary {
-        text-align: left;
-        padding-top: 10px;
-        font-size: 14px;
-        padding-bottom: 10px;
-      }
-      div {
-        width: 100%;
-      }
-      .image {
-        width: 70%;
-        justify-content: left;
-        display: flex;
-        align-items: center;
-        margin-right: 25px;
-        filter: drop-shadow(3px 3px 1px #00000016);
-      }
-      .bottom {
-        display: flex;
-        justify-content: space-between;
-        .more-info {
-          font-size: 13px;
-          border-radius: 100px;
-          padding: 2px 5px;
-          border: 1px solid;
-        }
-      }
-    }
-  }
-}
-
-.blob.card:not(.info) {
-  padding: 0;
-}
-
 .cost,
 .cross {
   font-size: 18px;

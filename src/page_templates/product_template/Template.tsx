@@ -6,10 +6,161 @@ import { FullDescription } from "./components/FullDescription"
 import { Sizes } from "./components/Sizes"
 import { QuantityPrice } from "./components/QuantityPrice"
 
-import "./Template.scss"
 import Helmet from "src/components/Main/Helmet/Helmet"
 import { PIInterface } from "types"
 import { useLocalStorage } from "usehooks-ts"
+import styled from "styled-components"
+import { Content, H1, H2, Hr } from "src/styles"
+
+const ProductPageStyles = styled.div`
+  padding-top: 30px !important;
+  padding: 20px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 30px 30px 0 0;
+
+  overflow: auto;
+  .content {
+    padding: 20px !important;
+  }
+  h1 {
+    font-size: 35px;
+    margin-bottom: 40px;
+  }
+  h2 {
+    line-height: 20px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: initial;
+  }
+  .image {
+    width: fit-content;
+    margin: 20px auto;
+    margin-bottom: 40px;
+  }
+  button.buy {
+  }
+  button.buy.out-of-stock {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .select-size-label {
+    opacity: 0.5;
+  }
+  .sizes {
+    display: flex;
+    align-items: flex-end;
+    .unit {
+      display: inline-block;
+      padding-left: 2px;
+      font-size: 12px;
+    }
+    .small,
+    .medium,
+    .large {
+      cursor: pointer;
+      width: 100%;
+      background: #f7f7f7;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      border: 2px solid #ededed;
+      min-height: 100%;
+    }
+    div.selected {
+      border: 2px solid var(--accentColor);
+      &:after {
+        position: relative;
+        display: inline-block;
+        content: "(selected)";
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+        color: #9d9c9c;
+      }
+    }
+    .size-label {
+      text-transform: capitalize;
+    }
+    .price-label {
+      text-align: center;
+      padding: 0;
+      line-height: unset;
+      padding-top: 10px;
+      margin-right: 10px;
+      font-size: 25px;
+      font-weight: inherit;
+      span {
+        color: $dark-text;
+        padding-right: 2px;
+        font-size: 12px;
+      }
+    }
+    .out-of-stock {
+      color: #bdbdbd;
+      pointer-events: none;
+      .out-label {
+        font-size: 15px;
+      }
+    }
+  }
+  .price {
+    font-size: 22px;
+    line-height: 40px;
+    font-weight: bold;
+    padding: 0 20px 0 10px;
+    span {
+      font-size: 15px;
+      transform: translateY(-8px);
+      padding-right: 3px;
+    }
+  }
+`
+
+const BuyButton = styled.button`
+  padding: 10px 20px;
+  background-color: $dark-text;
+  font-size: 20px;
+  border-radius: 100px;
+  margin-left: auto;
+  transition: all 0.07s ease;
+  user-select: none;
+  span {
+    color: white;
+  }
+  &:active {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+`
+
+const H1WithSpan = styled(H1)`
+  line-height: 35px;
+  span {
+    font-size: 24px;
+    font-style: italic;
+    color: #858585;
+    font-weight: lighter;
+  }
+`
+
+const BottomContent = styled(Content)`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 0 20px #0000001c;
+`
 
 export function Template({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
@@ -74,7 +225,7 @@ export function Template({ d }: { d: any }) {
   }, [size])
 
   return (
-    <div className="product-page" style={mdxStyle}>
+    <ProductPageStyles style={mdxStyle}>
       <Helmet
         title={fm.readable_class + " " + fm.readable_category + " | TastySpore"}
         description={fm.description}
@@ -87,29 +238,29 @@ export function Template({ d }: { d: any }) {
           ...fm.benefits,
         ]}
       />
-      <div className="content">
+      <Content>
         <div className="image">
           {image && <GatsbyImage image={image} alt={fm?.title as string} />}
         </div>
-        <h3>{fm?.readable_category}</h3>
-        <h2 style={{ color: accentColor }}>
+        <H2>{fm?.readable_category}</H2>
+        <H1WithSpan style={{ color: accentColor }}>
           {fm?.readable_class} <span>({fm?.scientific_name})</span>
-        </h2>
+        </H1WithSpan>
         <p className="select-size-label">(select a size)</p>
         <Sizes inventory={fm.inventory} size={size} setSize={setSize} />
-        <hr />
+        <Hr />
         <FullDescription data={data} />
         <br />
         <br />
         <br />
-      </div>
-      <div className="bottom content">
+      </Content>
+      <BottomContent>
         <p className="price" style={{ color: accentColor }}>
           <span>$</span>
           {price}
         </p>
         {QuantityPrice(setQuantity, maxQuantity, quantity)}
-        <button
+        <BuyButton
           className={
             "buy" + (selectedItem.quantity == 0 ? " out-of-stock" : "")
           }
@@ -118,9 +269,13 @@ export function Template({ d }: { d: any }) {
             setCartItems(fm.id, size, quantity)
           }}
         >
-          {selectedItem.quantity == 0 ? <span>No Stock</span> : <span>+</span>}
-        </button>
-      </div>
-    </div>
+          {selectedItem.quantity == 0 ? (
+            <span>No stock</span>
+          ) : (
+            <span>Add to cart +</span>
+          )}
+        </BuyButton>
+      </BottomContent>
+    </ProductPageStyles>
   )
 }

@@ -8,6 +8,96 @@ import { useLocalStorage } from "usehooks-ts"
 import { useTransition } from "react-spring"
 import Cart from "src/components/icons/Cart"
 import ClientRender from "src/tools/ClientRender"
+import { Content, H3 } from "src/styles"
+import styled from "styled-components"
+
+const CartTabStyles = styled(Content)`
+  height: 100%;
+  background-color: white;
+  z-index: 0;
+  padding: 0 !important;
+  a.back-button {
+    position: absolute;
+    left: 20px;
+    margin-right: auto;
+    padding: 10px;
+    margin-top: 5px;
+  }
+  h3 {
+    width: 100%;
+    text-align: center;
+    padding: 23px 30px 30px;
+  }
+  section {
+    background-color: #f7f7f7;
+    border-radius: 30px 30px 0 0;
+    padding: 20px;
+    height: 95%;
+    padding-bottom: 40%;
+    overflow: auto;
+  }
+  overflow: hidden;
+
+  .no-items {
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    svg {
+      margin-bottom: 20px;
+      margin-left: -20px;
+    }
+    p {
+      color: #c9c9c9;
+      font-family: system-ui;
+    }
+  }
+`
+
+const NavStyles = styled(Content)`
+  position: fixed;
+  bottom: 0;
+  padding: 30px;
+  background: #fffffff2;
+  right: 0;
+  left: 0;
+  border-radius: 30px 30px 0 0;
+  box-shadow: rgb(0 0 0 / 5%) 0px 0px 20px;
+  backdrop-filter: blur(1px);
+  .sub,
+  .price {
+    display: flex;
+    justify-content: space-between;
+    font-family: system-ui;
+  }
+  .sub span,
+  .price span {
+    display: inline-block;
+  }
+  .sub {
+    color: #c9c9c9;
+    margin-bottom: 10px;
+  }
+  .price {
+    font-size: 23px;
+    line-height: 40px;
+    color: #313439;
+    border-top: 2px solid #e0e0e0;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 15px 20px;
+    background: #313439;
+    color: white;
+    border-radius: 20px;
+    font-size: 20px;
+    width: 100%;
+  }
+`
 
 function addZeroes(num: string) {
   const dec = num.split(".")[1]
@@ -130,8 +220,8 @@ export default function MyCart({ data }: { data: MDXQuery }) {
         ]}
       />
       <ClientRender>
-        <div className="cart-tab content">
-          <h3 className="cart">My Cart</h3>
+        <CartTabStyles>
+          <H3 className="cart">My Cart</H3>
           <section>
             {transitions.map(({ item, props, key }, index) => (
               <CartItem
@@ -151,7 +241,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
             )}
           </section>
           {items && items.length && (
-            <div className="nav content">
+            <NavStyles as="div">
               <p className="sub">
                 Sub total: <span>${sub_total}</span>
               </p>
@@ -170,9 +260,9 @@ export default function MyCart({ data }: { data: MDXQuery }) {
               >
                 Continue to shipping
               </button>
-            </div>
+            </NavStyles>
           )}
-        </div>
+        </CartTabStyles>
       </ClientRender>
     </Page>
   )

@@ -3,7 +3,7 @@ import { Page } from "src/components/Main/Page/Page"
 import Helmet from "src/components/Main/Helmet/Helmet"
 import Notice from "src/components/Main/Notice/Notice"
 import ShiitakeTree from "src/components/Media/ShiitakeTree"
-import { StaticWave, WavyBreak } from "src/styles/Wavy"
+import { StaticWave } from "src/styles/Wavy"
 import {
   maxWidth,
   shadow,
@@ -17,6 +17,7 @@ import {
   HalfItem,
   devices,
   font,
+  colors,
 } from "src/styles"
 import Logo from "src/components/Logo/Logo"
 import PanLogo from "src/components/icons/Pan"
@@ -118,6 +119,7 @@ const ToxicItem = styled.div`
 
 const ImageWithBorder = styled.div`
   width: 100%;
+  max-width: 400px;
   height: 300px;
   background-color: #f3faff;
   border-radius: 30px;
@@ -241,7 +243,7 @@ export default function Home() {
                     flexDirection: "column",
                   }}
                 >
-                  <Trail open={open} animation="shift" tension={600}>
+                  <Trail open={open} animation="shift" tension={500}>
                     <H1 style={{ margin: "20px 0" }}>
                       <p>Delicious</p>
                       <p>Mushrooms &</p>
@@ -273,11 +275,15 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      <StaticWave colors={["first", "second"]} clipIndex={0} />
+      <StaticWave
+        top={colors.material.sky}
+        bottom={colors.material.grass}
+        clipIndex={0}
+      />
 
       <Content style={{ zIndex: 5 }}>
         <BgColor background={"var(--second)"}>
-          <Flex justify="center">
+          <Flex justify="center" wrap>
             <HalfItem style={{ marginTop: "-60px" }}>
               <H2>Discover</H2>
               <P>
@@ -308,10 +314,17 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <StaticWave colors={["second", "third"]} clipIndex={1} shrink />
+
+      <StaticWave
+        top={colors.material.grass}
+        bottom={colors.material.dirt}
+        clipIndex={1}
+        shrink
+      />
+
       <Content style={{ zIndex: 6 }}>
         <BgColor background={"var(--third)"}>
-          <Flex justify="center">
+          <Flex justify="center" wrap>
             <HalfItem>
               <ImageWithBorder />
             </HalfItem>
@@ -327,7 +340,14 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <StaticWave colors={["third", "fourth"]} clipIndex={2} shrink />
+
+      <StaticWave
+        top={colors.material.dirt}
+        bottom={colors.material.rock}
+        clipIndex={2}
+        shrink
+      />
+
       <Content style={{ zIndex: 6 }}>
         <BgColor
           background={"var(--fourth)"}
@@ -353,11 +373,11 @@ export default function Home() {
             <br />
             <br />
             <SocialFlex justify="center">
-              <div className="social">
-                <a href="#">
+              <div>
+                <a href="https://www.instagram.com/tastyspore/">
                   <Instagram color="#3c414e" width={30} />
                 </a>
-                <a href="#">
+                <a href="https://www.facebook.com/tastyspore">
                   <Facebook color="#3c414e" width={30} />
                 </a>
               </div>

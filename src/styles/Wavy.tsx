@@ -114,22 +114,24 @@ const Wave = styled.div<IStaticWave>`
 `
 
 export function StaticWave({
-  colors: c,
+  top,
+  bottom,
   clipIndex: ci,
   shrink,
 }: {
-  colors: ColorsType[]
+  top: string
+  bottom: string
   clipIndex: number
-  shrink: boolean
+  shrink?: boolean
 }) {
   if (ci >= staticClipPaths.length) return null
   return (
     <WaveMain shrink={shrink}>
       <Content>
-        <Wave color={colors[c[0]]} top clipIndex={ci} />
+        <Wave color={top} top clipIndex={ci} />
       </Content>
       <Content>
-        <Wave color={colors[c[1]]} bottom clipIndex={ci} />
+        <Wave color={bottom} bottom clipIndex={ci} />
       </Content>
     </WaveMain>
   )

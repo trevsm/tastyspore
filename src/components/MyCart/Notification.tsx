@@ -3,6 +3,25 @@ import { PIInterface } from "types"
 import { animated, useSpring } from "react-spring"
 import { useLocalStorage, useEventListener } from "usehooks-ts"
 import { ProductFrontmatterFragment } from "types/gatsby-graphql"
+import styled from "styled-components"
+
+const NotificationStyles = styled(animated.div)`
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  padding: 20px;
+  background: #fffdfc;
+  border-top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 0 0 20px 20px;
+  text-align: center;
+  font-size: 20px;
+  box-shadow: 1px 1px 3px #e3e3e3;
+  .max-10 {
+    color: $pink;
+  }
+`
 
 export default function Notification({ d }: { d: any }) {
   const data: ProductFrontmatterFragment = d?.mdx
@@ -22,7 +41,7 @@ export default function Notification({ d }: { d: any }) {
     clearTimeout(notificationTimeout.current)
     notificationTimeout.current = setTimeout(() => {
       setShowNotification(false)
-    }, 3000)
+    }, 1500)
   })
 
   let itemCount = 0
@@ -40,10 +59,7 @@ export default function Notification({ d }: { d: any }) {
   return (
     items &&
     items.length > 0 && (
-      <animated.div
-        style={notificationSpring}
-        className="notification-popup shadow"
-      >
+      <NotificationStyles style={notificationSpring}>
         <p>
           Added {name} to your cart. 🎉
           <br />
@@ -51,7 +67,7 @@ export default function Notification({ d }: { d: any }) {
             <span className="max-10">[Max: {lastItem?.quantity}]</span>
           )}
         </p>
-      </animated.div>
+      </NotificationStyles>
     )
   )
 }

@@ -1,6 +1,95 @@
-import React from "react"
+import React, { ReactNode } from "react"
+import { Flex, H2, H3, Hr } from "src/styles"
+import styled from "styled-components"
 import { ProductFrontmatterFragment } from "types/gatsby-graphql"
-import "./FullDescription.scss"
+
+const FullDescriptionStyles = styled.div`
+  padding-bottom: 100px;
+
+  position: relative;
+  display: -webkit-box;
+  padding-top: 10px;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  h2 {
+    color: var(--accentColor);
+  }
+  p {
+    line-height: 27px;
+  }
+  div {
+    margin-bottom: 10px;
+  }
+  overflow-y: auto;
+  h3 {
+    margin-left: 10px;
+  }
+  li {
+    list-style: none;
+  }
+
+  .aliases,
+  .benefits,
+  .profile {
+    text-transform: capitalize;
+  }
+  .benefits,
+  .nutrition,
+  .aliases,
+  .description {
+    margin-top: 40px;
+    p {
+      padding: 0 10px;
+    }
+  }
+  .aliases {
+    li {
+      width: fit-content;
+    }
+  }
+  .benefits {
+    li {
+      &::before {
+        content: "✓ ";
+      }
+    }
+  }
+  .nutrition {
+    padding: 30px 20px;
+    border: 1px solid var(--accentColor);
+    border-radius: 25px;
+    h3,
+    i {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  }
+`
+
+const Snippets = styled(Flex)`
+  padding: 0 10px;
+  li {
+    width: fit-content;
+    padding: 10px;
+    margin: 10px 10px 0 0;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    box-shadow: 1px 1px 3px #e3e3e3;
+  }
+`
+
+const Table = styled.ul`
+  padding: 0 10px;
+  li {
+    padding: 10px;
+  }
+  li:nth-of-type(2n + 1) {
+    background-color: #f5f5f5;
+  }
+  span {
+    display: inline-block;
+  }
+`
 
 export function FullDescription({
   data,
@@ -11,52 +100,52 @@ export function FullDescription({
 
   if (!fm) return null
   return (
-    <div className="full-description">
-      <h2>Profile </h2>
-      <div className="profile">
+    <FullDescriptionStyles>
+      <H2>Profile </H2>
+      <Flex direction="row" wrap>
         <div className="flavor">
-          <h3>Flavor: </h3>
-          <ul>
+          <H3>Flavor: </H3>
+          <Snippets>
             {fm.profile.flavor.map((e: string, key: number) => (
               <li key={key}>{e}</li>
             ))}
-          </ul>
+          </Snippets>
         </div>
         <div className="texture">
-          <h3>Texture: </h3>
-          <ul>
+          <H3>Texture: </H3>
+          <Snippets wrap>
             {fm.profile.texture.map((e: string, key: number) => (
               <li key={key}>{e}</li>
             ))}
-          </ul>
+          </Snippets>
         </div>
         <div className="aroma">
-          <h3>Aroma: </h3>
-          <ul>
+          <H3>Aroma: </H3>
+          <Snippets wrap>
             {fm.profile.aroma.map((e: string, key: number) => (
               <li key={key}>{e}</li>
             ))}
-          </ul>
+          </Snippets>
         </div>
         <div className="similar" style={{ minWidth: "200px" }}>
-          <h3>Similar flavor to: </h3>
-          <ul>
+          <H3>Similar flavor to: </H3>
+          <Snippets wrap>
             {fm.profile.similar.map((e, key) => (
               <li key={key}>{e}</li>
             ))}
-          </ul>
+          </Snippets>
         </div>
-      </div>
+      </Flex>
       <div className="aliases">
-        <h2>Common Names</h2>
-        <ul>
+        <H2>Common Names</H2>
+        <Snippets wrap>
           {fm.aka.map((e, key) => (
             <li key={key}>{e}</li>
           ))}
-        </ul>
+        </Snippets>
       </div>
       <div className="description">
-        <h2>Description</h2>
+        <H2>Description</H2>
         <p>
           {fm.description} They prefer {fm.grow.temp.readable} temperatures of
           around {fm.grow.temp.degrees.min}°F ~{fm.grow.temp.degrees.max}°F at a
@@ -65,33 +154,33 @@ export function FullDescription({
         </p>
       </div>
       <div className="benefits">
-        <h2>Benefits</h2>
-        <ul>
+        <H2>Benefits</H2>
+        <Snippets direction="column">
           {fm.benefits.map((e, key) => (
             <li key={key}>{e}</li>
           ))}
-        </ul>
+        </Snippets>
       </div>
       <div className="nutrition">
-        <h2>Nutrition Values</h2>
+        <H2>Nutrition Values</H2>
         <i>In 1 cup:</i>
-        <ul>
+        <Table>
           <li>calories: {fm.nutrition.calories}</li>
           <li>carbs: {fm.nutrition.carbs}</li>
           <li>protein: {fm.nutrition.protein}</li>
           <li>fat: {fm.nutrition.fat}</li>
           <li>fiber: {fm.nutrition.fiber}</li>
-        </ul>
-        <hr />
-        <h3>Vitamins</h3>
-        <ul className="vitamins">
+        </Table>
+        <Hr />
+        <H3>Vitamins</H3>
+        <Table className="vitamins">
           {fm.nutrition.vitamins.map((e, key) => (
             <li key={key}>
               {e.name}: {e.value}
             </li>
           ))}
-        </ul>
+        </Table>
       </div>
-    </div>
+    </FullDescriptionStyles>
   )
 }

@@ -4,6 +4,48 @@ import { MDXQuery } from "types"
 import Helmet from "src/components/Main/Helmet/Helmet"
 import { Page } from "src/components/Main/Page/Page"
 import Featured from "src/components/partials/Featured/Featured"
+import { Content, Flex, Hr } from "src/styles"
+import styled from "styled-components"
+
+const ShopStyles = styled(Content)`
+  padding-top: 100px;
+`
+
+const Search = styled.div`
+  width: 100%;
+  padding: 0 10px;
+  max-width: 400px;
+  input {
+    font-size: 20px;
+    padding: 10px 20px;
+    width: 100%;
+    border: 1px solid #e3e3e3;
+    border-radius: 100px;
+  }
+`
+
+const Categories = styled(Flex)`
+  padding: 30px 10px;
+  button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 18px;
+    background: whitesmoke;
+    margin-right: 10px;
+    min-width: fit-content;
+  }
+  button.active {
+    background-color: #4c5c6a;
+    color: white;
+  }
+`
+
+const FeaturedStyles = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+`
 
 export default function Shop({ data }: { data: MDXQuery }) {
   const nodes = data.allMdx.edges
@@ -48,16 +90,16 @@ export default function Shop({ data }: { data: MDXQuery }) {
           "reishi mushroom",
         ]}
       />
-      <div className="shop content">
-        <div className="search">
+      <ShopStyles>
+        <Search>
           <input
             type="text"
             value={search}
             placeholder="search..."
             onChange={(e) => setSearch(e.target.value)}
           />
-        </div>
-        <div className="categories">
+        </Search>
+        <Categories wrap>
           <button
             onClick={() => {
               setSub_Category("all")
@@ -85,15 +127,16 @@ export default function Shop({ data }: { data: MDXQuery }) {
           >
             Medicinal Mushrooms
           </button>
-        </div>
-        <div className="featured">
+        </Categories>
+        <Hr />
+        <FeaturedStyles>
           {filteredNodes.length ? (
             <Featured nodes={filteredNodes} />
           ) : (
             <div>no items found</div>
           )}
-        </div>
-      </div>
+        </FeaturedStyles>
+      </ShopStyles>
     </Page>
   )
 }

@@ -8,7 +8,7 @@ export const Trail: React.FC<{
 }> = ({ open, children, animation, tension }) => {
   const items = React.Children.toArray(children)
   const trail = useTrail(items.length, {
-    config: { mass: 5, tension, friction: 100 },
+    config: { mass: 10, tension, friction: 100 },
     opacity: open ? 1 : 0,
     transform:
       animation == "shift"

@@ -4,6 +4,12 @@ module.exports = {
     title: "tastyspore",
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "G-643TTLK24R",
+      },
+    },
     "gatsby-plugin-root-import",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
@@ -20,20 +26,6 @@ module.exports = {
         host: "https://www.tastyspore.com",
         sitemap: "https://www.tastyspore.com/sitemap/sitemap-index.xml",
         policy: [{ userAgent: "*", allow: "/" }],
-      },
-    },
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "G-643TTLK24R",
-      },
-    },
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "GTM-MVSTVQV",
-        includeInDevelopment: false,
-        defaultDataLayer: { platform: "gatsby" },
       },
     },
     {
