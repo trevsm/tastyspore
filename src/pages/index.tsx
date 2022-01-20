@@ -3,7 +3,7 @@ import { Page } from "src/components/Main/Page/Page"
 import Helmet from "src/components/Main/Helmet/Helmet"
 import Notice from "src/components/Main/Notice/Notice"
 import ShiitakeTree from "src/components/Media/ShiitakeTree"
-import { StaticWave } from "src/styles/Wavy"
+import { WavyBreak } from "src/styles/Wavy"
 import {
   maxWidth,
   shadow,
@@ -275,10 +275,15 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      <StaticWave
+      {/* <StaticWave
         top={colors.material.sky}
         bottom={colors.material.grass}
         clipIndex={0}
+      /> */}
+      <WavyBreak
+        values={[30, 15 - 4000 / sw, 4, 2]}
+        colors={["var(--first)", "var(--second)"]}
+        method={(x) => Math.sin(x)}
       />
 
       <Content style={{ zIndex: 5 }}>
@@ -315,10 +320,16 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      <StaticWave
+      {/* <StaticWave
         top={colors.material.grass}
         bottom={colors.material.dirt}
         clipIndex={1}
+        shrink
+      /> */}
+      <WavyBreak
+        values={[30, 10, 2, -0.25]}
+        colors={["var(--second)", "var(--third)"]}
+        method={(x) => -1 * Math.sqrt(Math.abs(Math.sin(x)))}
         shrink
       />
 
@@ -341,10 +352,16 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      <StaticWave
+      {/* <StaticWave
         top={colors.material.dirt}
         bottom={colors.material.rock}
         clipIndex={2}
+        shrink
+      /> */}
+      <WavyBreak
+        values={[80, 10 - ssw * 2, 15, 0]}
+        colors={["var(--third)", "var(--fourth)"]}
+        method={(x) => Math.sin(x)}
         shrink
       />
 
