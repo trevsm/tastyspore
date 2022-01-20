@@ -260,7 +260,7 @@ export function Template({ d }: { d: any }) {
           {price}
         </p>
         <PickQuantity
-          current={selectedItem.quantity}
+          current={quantity}
           add={() => {
             setQuantity((prev) => (prev < maxQuantity ? prev + 1 : maxQuantity))
           }}
