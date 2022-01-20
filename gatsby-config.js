@@ -20,6 +20,7 @@ module.exports = {
     "gatsby-plugin-breakpoints",
     "gatsby-plugin-htaccess",
     "gatsby-plugin-transition-link",
+    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
