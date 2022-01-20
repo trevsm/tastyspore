@@ -17,6 +17,7 @@ import {
   HalfItem,
   devices,
   font,
+  colors,
 } from "src/styles"
 import Logo from "src/components/Logo/Logo"
 import PanLogo from "src/components/icons/Pan"
@@ -273,11 +274,15 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      <StaticWave colors={["first", "second"]} clipIndex={0} />
+      <StaticWave
+        top={colors.material.sky}
+        bottom={colors.material.grass}
+        clipIndex={0}
+      />
 
       <Content style={{ zIndex: 5 }}>
         <BgColor background={"var(--second)"}>
-          <Flex justify="center">
+          <Flex justify="center" wrap>
             <HalfItem style={{ marginTop: "-60px" }}>
               <H2>Discover</H2>
               <P>
@@ -308,10 +313,17 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <StaticWave colors={["second", "third"]} clipIndex={1} shrink />
+
+      <StaticWave
+        top={colors.material.grass}
+        bottom={colors.material.dirt}
+        clipIndex={1}
+        shrink
+      />
+
       <Content style={{ zIndex: 6 }}>
         <BgColor background={"var(--third)"}>
-          <Flex justify="center">
+          <Flex justify="center" wrap>
             <HalfItem>
               <ImageWithBorder />
             </HalfItem>
@@ -327,7 +339,14 @@ export default function Home() {
           </Flex>
         </BgColor>
       </Content>
-      <StaticWave colors={["third", "fourth"]} clipIndex={2} shrink />
+
+      <StaticWave
+        top={colors.material.dirt}
+        bottom={colors.material.rock}
+        clipIndex={2}
+        shrink
+      />
+
       <Content style={{ zIndex: 6 }}>
         <BgColor
           background={"var(--fourth)"}

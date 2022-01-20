@@ -40,8 +40,6 @@ export function Template({ d }: { d: any }) {
 
   const setCartItems = (id: string, size: string, quantity: number) => {
     setItems((prev) => {
-      console.log(prev)
-
       if (prev == undefined) {
         return [{ id, size, quantity }]
       }

@@ -1,4 +1,5 @@
 import React from "react"
+import { H2, H3 } from "src/styles"
 import "./Header.scss"
 
 export default function Header({
@@ -10,8 +11,8 @@ export default function Header({
 }) {
   return (
     <div className="header">
-      <h2>{title}</h2>
-      <h3>{subtitle}</h3>
+      <H2>{title}</H2>
+      <H3>{subtitle}</H3>
     </div>
   )
 }

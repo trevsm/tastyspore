@@ -1,4 +1,5 @@
 import React from "react"
+import { H2, H3, Hr } from "src/styles"
 import { ProductFrontmatterFragment } from "types/gatsby-graphql"
 import "./FullDescription.scss"
 
@@ -12,10 +13,10 @@ export function FullDescription({
   if (!fm) return null
   return (
     <div className="full-description">
-      <h2>Profile </h2>
+      <H2>Profile </H2>
       <div className="profile">
         <div className="flavor">
-          <h3>Flavor: </h3>
+          <H3>Flavor: </H3>
           <ul>
             {fm.profile.flavor.map((e: string, key: number) => (
               <li key={key}>{e}</li>
@@ -23,7 +24,7 @@ export function FullDescription({
           </ul>
         </div>
         <div className="texture">
-          <h3>Texture: </h3>
+          <H3>Texture: </H3>
           <ul>
             {fm.profile.texture.map((e: string, key: number) => (
               <li key={key}>{e}</li>
@@ -31,7 +32,7 @@ export function FullDescription({
           </ul>
         </div>
         <div className="aroma">
-          <h3>Aroma: </h3>
+          <H3>Aroma: </H3>
           <ul>
             {fm.profile.aroma.map((e: string, key: number) => (
               <li key={key}>{e}</li>
@@ -39,7 +40,7 @@ export function FullDescription({
           </ul>
         </div>
         <div className="similar" style={{ minWidth: "200px" }}>
-          <h3>Similar flavor to: </h3>
+          <H3>Similar flavor to: </H3>
           <ul>
             {fm.profile.similar.map((e, key) => (
               <li key={key}>{e}</li>
@@ -48,7 +49,7 @@ export function FullDescription({
         </div>
       </div>
       <div className="aliases">
-        <h2>Common Names</h2>
+        <H2>Common Names</H2>
         <ul>
           {fm.aka.map((e, key) => (
             <li key={key}>{e}</li>
@@ -56,7 +57,7 @@ export function FullDescription({
         </ul>
       </div>
       <div className="description">
-        <h2>Description</h2>
+        <H2>Description</H2>
         <p>
           {fm.description} They prefer {fm.grow.temp.readable} temperatures of
           around {fm.grow.temp.degrees.min}°F ~{fm.grow.temp.degrees.max}°F at a
@@ -65,7 +66,7 @@ export function FullDescription({
         </p>
       </div>
       <div className="benefits">
-        <h2>Benefits</h2>
+        <H2>Benefits</H2>
         <ul>
           {fm.benefits.map((e, key) => (
             <li key={key}>{e}</li>
@@ -73,7 +74,7 @@ export function FullDescription({
         </ul>
       </div>
       <div className="nutrition">
-        <h2>Nutrition Values</h2>
+        <H2>Nutrition Values</H2>
         <i>In 1 cup:</i>
         <ul>
           <li>calories: {fm.nutrition.calories}</li>
@@ -82,8 +83,8 @@ export function FullDescription({
           <li>fat: {fm.nutrition.fat}</li>
           <li>fiber: {fm.nutrition.fiber}</li>
         </ul>
-        <hr />
-        <h3>Vitamins</h3>
+        <Hr />
+        <H3>Vitamins</H3>
         <ul className="vitamins">
           {fm.nutrition.vitamins.map((e, key) => (
             <li key={key}>
