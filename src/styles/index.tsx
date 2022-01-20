@@ -159,10 +159,61 @@ const HalfItem = styled.div<{ width?: string }>`
   }
 `
 
+const Quantity = styled.div`
+  font-family: monospace;
+  line-height: 27px;
+  .add,
+  .minus,
+  .num {
+    color: #383838;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .add,
+  .minus {
+    max-width: 30px;
+    border: 2px solid #383838;
+    border-radius: 5px;
+  }
+`
+
+function PickQuantity({
+  current,
+  add,
+  minus,
+}: {
+  current: number
+  add: () => void
+  minus: () => void
+}) {
+  return (
+    <Quantity>
+      <button className="add" onClick={() => add()}>
+        +
+      </button>
+      <span className="num">{current}</span>
+      <button
+        className="minus"
+        onClick={() => {
+          minus()
+        }}
+      >
+        -
+      </button>
+    </Quantity>
+  )
+}
+
 /////////////////
 export type { ColorsType }
 
 export {
+  PickQuantity,
+  Quantity,
   Blob,
   colors,
   maxWidth,

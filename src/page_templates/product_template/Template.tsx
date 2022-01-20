@@ -10,7 +10,7 @@ import Helmet from "src/components/Main/Helmet/Helmet"
 import { PIInterface } from "types"
 import { useLocalStorage } from "usehooks-ts"
 import styled from "styled-components"
-import { Content, H1, H2, Hr } from "src/styles"
+import { Content, H1, H2, Hr, PickQuantity } from "src/styles"
 
 const ProductPageStyles = styled.div`
   padding-top: 30px !important;
@@ -259,7 +259,15 @@ export function Template({ d }: { d: any }) {
           <span>$</span>
           {price}
         </p>
-        {QuantityPrice(setQuantity, maxQuantity, quantity)}
+        <PickQuantity
+          current={selectedItem.quantity}
+          add={() => {
+            setQuantity((prev) => (prev < maxQuantity ? prev + 1 : maxQuantity))
+          }}
+          minus={() => {
+            setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
+          }}
+        />
         <BuyButton
           className={
             "buy" + (selectedItem.quantity == 0 ? " out-of-stock" : "")

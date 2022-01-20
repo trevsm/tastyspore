@@ -140,13 +140,6 @@ const SocialFlex = styled(Flex)`
     margin-right: 15px;
   }
 `
-/* 
-<WavyBreak
-  values={[30, 15 - 4000 / sw, 4, 2]}
-  colors={["var(--first)", "var(--second)"]}
-  method={(x) => Math.sin(x)}
-/> 
-*/
 
 export default function Home() {
   const year = new Date().getFullYear()
@@ -275,11 +268,6 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      {/* <StaticWave
-        top={colors.material.sky}
-        bottom={colors.material.grass}
-        clipIndex={0}
-      /> */}
       <WavyBreak
         values={[30, 15 - 4000 / sw, 4, 2]}
         colors={["var(--first)", "var(--second)"]}
@@ -320,12 +308,6 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      {/* <StaticWave
-        top={colors.material.grass}
-        bottom={colors.material.dirt}
-        clipIndex={1}
-        shrink
-      /> */}
       <WavyBreak
         values={[30, 10, 2, -0.25]}
         colors={["var(--second)", "var(--third)"]}
@@ -352,12 +334,6 @@ export default function Home() {
         </BgColor>
       </Content>
 
-      {/* <StaticWave
-        top={colors.material.dirt}
-        bottom={colors.material.rock}
-        clipIndex={2}
-        shrink
-      /> */}
       <WavyBreak
         values={[80, 10 - ssw * 2, 15, 0]}
         colors={["var(--third)", "var(--fourth)"]}

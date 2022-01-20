@@ -1,11 +1,10 @@
 import React, { useState } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Trash from "src/components/icons/Trash"
-import "./CartItem.scss"
 import { CIInterface } from "types"
 import { animated, useSpring } from "react-spring"
 import styled from "styled-components"
-import { Link } from "src/styles"
+import { Link, PickQuantity, Quantity } from "src/styles"
 
 const ItemStyles = styled(animated.div)`
   position: relative;
@@ -14,9 +13,6 @@ const ItemStyles = styled(animated.div)`
   border-radius: 20px;
   box-shadow: rgb(0 0 0 / 6%) 2px 1px 7px;
   margin-bottom: 20px;
-  button {
-    cursor: pointer;
-  }
   a {
     margin-right: 20px;
     width: 100px;
@@ -45,45 +41,46 @@ const ItemStyles = styled(animated.div)`
     margin: 12px;
     padding: 0;
   }
-  .confirm-delete {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
+`
 
-    border-radius: 20px;
+const ConfirmDeletePop = styled(animated.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  p,
+  button {
+    color: white;
+    font-size: 18px;
+  }
+  p {
+    width: 100%;
+    color: #313439;
+    text-align: center;
+  }
+
+  .no,
+  .yes {
+    padding: 10px;
+    height: 100%;
+  }
+  .no {
     background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    p,
-    button {
-      color: white;
-      font-size: 18px;
-    }
-    p {
-      width: 100%;
-      color: #313439;
-      text-align: center;
-    }
-
-    .no,
-    .yes {
-      padding: 10px;
-      height: 100%;
-    }
-    .no {
-      background-color: white;
-      color: #313439;
-      border-left: 2px solid #f7f7f7;
-    }
-    .yes {
-      background-color: #f36766;
-      border-radius: 0 20px 20px 0;
-    }
+    color: #313439;
+    border-left: 2px solid #f7f7f7;
+  }
+  .yes {
+    background-color: #f36766;
+    border-radius: 0 20px 20px 0;
   }
 `
 
@@ -116,7 +113,7 @@ export default function CartItem({
         }
       }}
     >
-      <animated.div className="confirm-delete" style={fade}>
+      <ConfirmDeletePop className="confirm-delete" style={fade}>
         <p>Remove this item?</p>
         <button
           onClick={() => {
@@ -135,7 +132,7 @@ export default function CartItem({
         >
           Remove
         </button>
-      </animated.div>
+      </ConfirmDeletePop>
       <div className={"flex"}>
         <Link transitionColor={item.accent_color} to={"/" + item.id}>
           <GatsbyImage image={getImage(item.image)} alt={item.title} />
@@ -143,35 +140,19 @@ export default function CartItem({
         <div className="info">
           <h2>{item.title}</h2>
           <p className="price">${item.price.msrp}</p>
-          <div className="quantity">
-            <button
-              className="add"
-              onClick={() =>
-                setItemQuantity(
-                  item,
-                  item.quantity < 10 ? item.quantity + 1 : 10
-                )
+          <PickQuantity
+            current={item.quantity}
+            add={() => {
+              setItemQuantity(item, item.quantity < 10 ? item.quantity + 1 : 10)
+            }}
+            minus={() => {
+              if (setConfirmDelete && item.quantity - 1 == 0) {
+                setConfirmDelete(true)
+                return
               }
-            >
-              +
-            </button>
-            <span className="num">{item.quantity}</span>
-            <button
-              className="minus"
-              onClick={() => {
-                if (item.quantity - 1 == 0) {
-                  setConfirmDelete(true)
-                } else {
-                  setItemQuantity(
-                    item,
-                    item.quantity > 1 ? item.quantity - 1 : 1
-                  )
-                }
-              }}
-            >
-              -
-            </button>
-          </div>
+              setItemQuantity(item, item.quantity > 1 ? item.quantity - 1 : 1)
+            }}
+          />
           <p className="size">
             {item.size[0]} : {item.weight}lbs
           </p>
