@@ -4,12 +4,6 @@ module.exports = {
     title: "tastyspore",
   },
   plugins: [
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "G-643TTLK24R",
-      },
-    },
     "gatsby-plugin-root-import",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
@@ -21,6 +15,7 @@ module.exports = {
     "gatsby-plugin-htaccess",
     "gatsby-plugin-transition-link",
     "gatsby-plugin-styled-components",
+    "gatsby-env-variables",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
