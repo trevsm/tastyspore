@@ -80,7 +80,8 @@ interface LinkInterface {
 const Link = ({ children, to, transitionColor }: LinkInterface) => {
   return (
     <AniLink
-      paintDrip
+      fade
+      duration={1}
       hex={transitionColor}
       to={to}
       style={{ width: "fit-content" }}

@@ -17,7 +17,6 @@ import {
   HalfItem,
   devices,
   font,
-  colors,
 } from "src/styles"
 import Logo from "src/components/Logo/Logo"
 import PanLogo from "src/components/icons/Pan"
