@@ -235,7 +235,7 @@ export default function Home() {
                     flexDirection: "column",
                   }}
                 >
-                  <Trail open={open} animation="shift" tension={200}>
+                  <Trail open={open} animation="shift" tension={500}>
                     <H1 style={{ margin: "20px 0" }}>
                       <p>Delicious</p>
                       <p>Mushrooms &</p>

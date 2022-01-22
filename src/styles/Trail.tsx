@@ -1,5 +1,5 @@
 import React from "react"
-import { useTrail, animated, config } from "react-spring"
+import { useTrail, a } from "react-spring"
 
 export const Trail: React.FC<{
   open: boolean
@@ -8,21 +8,22 @@ export const Trail: React.FC<{
 }> = ({ open, children, animation, tension }) => {
   const items = React.Children.toArray(children)
   const trail = useTrail(items.length, {
-    config: config.gentle,
+    config: { mass: 10, tension, friction: 100 },
     opacity: open ? 1 : 0,
     transform:
       animation == "shift"
         ? open
-          ? "translateY(0)"
-          : "translateY(20px)"
+          ? "translateX(0)"
+          : "translateX(100px)"
         : "unset",
+    from: { opacity: 0 },
   })
   return (
     <>
       {trail.map(({ ...style }, index) => (
-        <animated.div style={style} key={index}>
-          <animated.div>{items[index]}</animated.div>
-        </animated.div>
+        <a.div style={style} key={index}>
+          <a.div>{items[index]}</a.div>
+        </a.div>
       ))}
     </>
   )
