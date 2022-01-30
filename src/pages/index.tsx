@@ -174,7 +174,10 @@ export default function Home() {
 
   const ssw = sw / 1000
 
-  const leftMinHeight = sw * 0.5 <= 500 ? 500 : sw * 0.5
+  let leftMinHeight = sw * 0.5
+  if(leftMinHeight <= 500) leftMinHeight = 500
+  if(leftMinHeight >= 800) leftMinHeight = 800
+
 
   return (
     <Page navigation={{ cart: true }}>
@@ -193,7 +196,7 @@ export default function Home() {
         ]}
       />
       <Notice />
-      <Content>
+      <Content expand>
         <BgColor
           background={"var(--first)"}
           style={{ borderRadius: "15px 15px 0 0" }}
@@ -273,7 +276,7 @@ export default function Home() {
         method={(x) => Math.sin(x)}
       />
 
-      <Content style={{ zIndex: 5 }}>
+      <Content expand style={{ zIndex: 5 }}>
         <BgColor background={"var(--second)"}>
           <Flex justify="center" wrap>
             <HalfItem style={{ marginTop: "-60px" }}>
@@ -314,7 +317,7 @@ export default function Home() {
         shrink
       />
 
-      <Content style={{ zIndex: 6 }}>
+      <Content expand style={{ zIndex: 6 }}>
         <BgColor background={"var(--third)"}>
           <Flex justify="center" wrap>
             <HalfItem>
@@ -340,7 +343,7 @@ export default function Home() {
         shrink
       />
 
-      <Content style={{ zIndex: 6 }}>
+      <Content expand style={{ zIndex: 6 }}>
         <BgColor
           background={"var(--fourth)"}
           style={{ borderRadius: "0 0 15px 15px" }}

@@ -68,10 +68,10 @@ export function WavyBreak({
   if (!colors || colors.length != 2) return null
   return (
     <WavySection shrink={shrink}>
-      <Content>
+      <Content expand>
         <Wavy values={values} method={method} color={colors[0]} />
       </Content>
-      <Content>
+      <Content expand>
         <Wavy invert values={values} method={method} color={colors[1]} />
       </Content>
     </WavySection>

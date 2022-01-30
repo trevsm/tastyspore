@@ -50,11 +50,11 @@ type ColorsType = {
 
 //GENERAL
 
-const Content = styled.section`
+const Content = styled.section<{expand?:boolean}>`
   position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: ${maxWidth};
+  ${props => !props.expand && `max-width: ${maxWidth};`}
 `
 
 const Hide = styled.div<{ disabled: boolean }>`
