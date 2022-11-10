@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link as GLink } from "gatsby"
 import styled from "styled-components"
 
 const maxWidth = "1500px"
@@ -50,11 +51,11 @@ type ColorsType = {
 
 //GENERAL
 
-const Content = styled.section<{expand?:boolean}>`
+const Content = styled.section<{ expand?: boolean }>`
   position: relative;
   margin: 0 auto;
   width: 100%;
-  ${props => !props.expand && `max-width: ${maxWidth};`}
+  ${(props) => !props.expand && `max-width: ${maxWidth};`}
 `
 
 const Hide = styled.div<{ disabled: boolean }>`
@@ -76,8 +77,10 @@ interface LinkInterface {
   children: ReactNode | ReactNode[]
   to: string
   transitionColor: string
+  animate?: boolean
 }
-const Link = ({ children, to, transitionColor }: LinkInterface) => {
+const Link = ({ children, to, transitionColor, animate }: LinkInterface) => {
+  if (!animate) return <GLink to={to}>{children}</GLink>
   return (
     <AniLink
       paintDrip

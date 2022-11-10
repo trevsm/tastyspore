@@ -1,5 +1,4 @@
 import React from "react"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import "./Navigation.scss"
 import Home from "src/components/icons/Home"
 import { useLocalStorage } from "usehooks-ts"

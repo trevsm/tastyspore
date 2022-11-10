@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Page } from "src/components/Main/Page/Page"
 import Helmet from "src/components/Main/Helmet/Helmet"
-import Notice from "src/components/Main/Notice/Notice"
+// import Notice from "src/components/Main/Notice/Notice"
 import ShiitakeTree from "src/components/Media/ShiitakeTree"
 import { WavyBreak } from "src/styles/Wavy"
 import {
@@ -175,9 +175,8 @@ export default function Home() {
   const ssw = sw / 1000
 
   let leftMinHeight = sw * 0.5
-  if(leftMinHeight <= 500) leftMinHeight = 500
-  if(leftMinHeight >= 800) leftMinHeight = 800
-
+  if (leftMinHeight <= 500) leftMinHeight = 500
+  if (leftMinHeight >= 800) leftMinHeight = 800
 
   return (
     <Page navigation={{ cart: true }}>
@@ -195,7 +194,7 @@ export default function Home() {
           "reishi mushroom",
         ]}
       />
-      <Notice />
+      {/* <Notice /> */}
       <Content expand>
         <BgColor
           background={"var(--first)"}
@@ -207,7 +206,7 @@ export default function Home() {
               minHeight: leftMinHeight,
             }}
           >
-            <Trail open={open} animation="fade" tension={100}>
+            <Trail open={open} animation="shift">
               <LogoHeader>
                 <PanLogo width={50} />
                 TastySpore
@@ -231,14 +230,14 @@ export default function Home() {
                 }}
               />
               <Left>
-                <div
-                  style={{
-                    minHeight: "160px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <Trail open={open} animation="shift" tension={200}>
+                <Trail open={open} animation="fade">
+                  <div
+                    style={{
+                      minHeight: "160px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
                     <H1 style={{ margin: "20px 0" }}>
                       <p>Delicious</p>
                       <p>Mushrooms &</p>
@@ -254,8 +253,8 @@ export default function Home() {
                     <Link transitionColor="#fff" to="#">
                       <LinkStyles invert>📖 Browse Recipes</LinkStyles>
                     </Link>
-                  </Trail>
-                </div>
+                  </div>
+                </Trail>
               </Left>
               <Right style={{ right: (57 / sw) * 300 + "%" }}>
                 <ShiitakeTree
