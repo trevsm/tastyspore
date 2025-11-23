@@ -114,15 +114,13 @@ const ToxicItem = styled.div`
   border-radius: 500px;
   margin: 20px 20px 0 0;
   box-shadow: ${shadow};
-`
-
-const ImageWithBorder = styled.div`
-  width: 100%;
-  max-width: 400px;
-  height: 300px;
-  background-color: #f3faff;
-  border-radius: 30px;
-  border: 3px solid #ead2c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 40px;
+    height: 40px;
+  }
 `
 
 const SocialFlex = styled(Flex)`
@@ -299,10 +297,26 @@ export default function Home() {
                 other contaminants.
               </P>
               <Flex>
-                <ToxicItem></ToxicItem>
-                <ToxicItem></ToxicItem>
-                <ToxicItem></ToxicItem>
-                <ToxicItem></ToxicItem>
+                <ToxicItem>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#4CAF50"/>
+                  </svg>
+                </ToxicItem>
+                <ToxicItem>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  </svg>
+                </ToxicItem>
+                <ToxicItem>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#4CAF50"/>
+                  </svg>
+                </ToxicItem>
+                <ToxicItem>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#4CAF50"/>
+                  </svg>
+                </ToxicItem>
               </Flex>
             </HalfItem>
           </Flex>
@@ -319,16 +333,18 @@ export default function Home() {
       <Content expand style={{ zIndex: 6 }}>
         <BgColor background={"var(--third)"}>
           <Flex justify="center" wrap>
-            <HalfItem>
-              <ImageWithBorder />
-            </HalfItem>
             <HalfItem width="100%">
               <H2>Our Story</H2>
               <P>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Aspernatur, eaque voluptates unde deleniti magnam odit quidem
-                distinctio asperiores consequuntur. Itaque pariatur facilis
-                deleniti, alias ipsam enim molestiae eligendi provident id.
+                TastySpore was born from a passion for bringing the incredible
+                world of gourmet mushrooms into your home. We believe that
+                everyone should have access to fresh, flavorful mushrooms that
+                go far beyond what you'll find at the grocery store. Our
+                carefully curated growing kits make it easy for anyone to
+                cultivate beautiful, delicious mushrooms right in their own
+                kitchen, while our recipes help you transform your harvest into
+                unforgettable meals. Join us on this journey of discovery, one
+                mushroom at a time.
               </P>
             </HalfItem>
           </Flex>

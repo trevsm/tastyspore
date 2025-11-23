@@ -1,8 +1,28 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
+import { gsap } from "gsap"
 
 function Icon({ style }: { style?: React.CSSProperties }) {
+  const svgRef = useRef<SVGSVGElement>(null)
+
+  useEffect(() => {
+    if (!svgRef.current) return
+
+    // Animate cloud panning continuously from left to right
+    const animation = gsap.to(svgRef.current, {
+      x: "+=150vw", // Move across viewport width plus extra
+      duration: 120, // Very slow pan (120 seconds)
+      ease: "none",
+      repeat: -1, // Infinite loop
+    })
+
+    return () => {
+      animation.kill()
+    }
+  }, [])
+
   return (
     <svg
+      ref={svgRef}
       style={style}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"

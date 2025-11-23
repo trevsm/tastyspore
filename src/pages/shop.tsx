@@ -143,7 +143,7 @@ export default function Shop({ data }: { data: MDXQuery }) {
 
 export const query = graphql`
   query {
-    allMdx(sort: { order: DESC, fields: frontmatter___title }) {
+    allMdx(sort: { frontmatter: { title: DESC } }) {
       edges {
         node {
           ...ProductFrontmatter

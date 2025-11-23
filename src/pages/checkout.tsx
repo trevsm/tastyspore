@@ -171,10 +171,18 @@ export default function MyCart({ data }: { data: MDXQuery }) {
   }
 
   const transitions = useTransition(
-    itemsWithData.map((item, i) => {
-      return { ...item }
-    }),
-    (d) => d.id + d.size,
+    itemsWithData
+      .filter(
+        (item) =>
+          item &&
+          item.id &&
+          item.size &&
+          item.accent_color &&
+          item.price &&
+          item.image
+      )
+      .map((item) => ({ ...item })),
+    (d) => (d?.id || "") + (d?.size || ""),
     {
       from: { opacity: 0 },
       enter: {
@@ -270,7 +278,7 @@ export default function MyCart({ data }: { data: MDXQuery }) {
 
 export const query = graphql`
   query {
-    allMdx(sort: { order: DESC, fields: frontmatter___title }) {
+    allMdx(sort: { frontmatter: { title: DESC } }) {
       edges {
         node {
           ...ProductFrontmatter

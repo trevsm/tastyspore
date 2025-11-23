@@ -127,25 +127,39 @@ export default function CartItem({
           className="yes"
           onClick={() => {
             setConfirmDelete(false)
-            removeItem(item.id, item.size)
+            if (item?.id && item?.size) {
+              removeItem(item.id, item.size)
+            }
           }}
         >
           Remove
         </button>
       </ConfirmDeletePop>
       <div className={"flex"}>
-        <Link transitionColor={item.accent_color} to={"/" + item.id}>
-          <GatsbyImage image={getImage(item.image)} alt={item.title} />
+        <Link
+          transitionColor={item?.accent_color || "#313439"}
+          to={"/" + (item?.id || "")}
+        >
+          <GatsbyImage
+            image={getImage(item?.image)}
+            alt={item?.title || "Product"}
+          />
         </Link>
         <div className="info">
-          <h2>{item.title}</h2>
-          <p className="price">${item.price.msrp}</p>
+          <h2>{item?.title || ""}</h2>
+          <p className="price">${item?.price?.msrp || 0}</p>
           <PickQuantity
-            current={item.quantity}
+            current={item?.quantity || 1}
             add={() => {
-              setItemQuantity(item, item.quantity < 10 ? item.quantity + 1 : 10)
+              if (item) {
+                setItemQuantity(
+                  item,
+                  item.quantity < 10 ? item.quantity + 1 : 10
+                )
+              }
             }}
             minus={() => {
+              if (!item) return
               if (setConfirmDelete && item.quantity - 1 == 0) {
                 setConfirmDelete(true)
                 return
@@ -154,7 +168,7 @@ export default function CartItem({
             }}
           />
           <p className="size">
-            {item.size[0]} : {item.weight}lbs
+            {item?.size?.[0] || ""} : {item?.weight || 0}lbs
           </p>
           <button
             className="delete"

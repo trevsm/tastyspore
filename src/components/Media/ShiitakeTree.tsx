@@ -1,14 +1,303 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
+import { gsap } from "gsap"
 
 function Icon({ style }: { style?: React.CSSProperties }) {
+  const svgRef = useRef<SVGSVGElement>(null)
+
+  useEffect(() => {
+    if (!svgRef.current) return
+
+    // Mushroom cap colors (brownish/tan colors)
+    const mushroomCapColors = [
+      "#ad8e76",
+      "#997761",
+      "#91715e",
+      "#8e7059",
+      "#846045",
+      "#725440",
+      "#968174",
+      "#9b7a64",
+      "#aa8b74",
+    ]
+
+    // Mushroom stem/underside colors
+    const mushroomStemColors = [
+      "#897062",
+      "#b5a39a",
+      "#635e53",
+      "#7b695d",
+      "#b5a299",
+      "#8e7e75",
+    ]
+
+    // Mushroom detail colors (gills, white dots, etc.)
+    const mushroomDetailColors = ["#e8ddd9", "#fff4eb", "#f7e4d0", "#f9d6b9"]
+
+    // Combine all mushroom colors
+    const allMushroomColors = [
+      ...mushroomCapColors,
+      ...mushroomStemColors,
+      ...mushroomDetailColors,
+    ]
+
+    // Find all mushroom-related paths
+    const mushroomPaths: Array<{
+      element: SVGPathElement
+      bbox: DOMRect
+      isDetail: boolean
+    }> = []
+    const allPaths = svgRef.current.querySelectorAll("path")
+
+    allPaths.forEach((path) => {
+      const fill = path.getAttribute("fill")
+      if (fill && allMushroomColors.includes(fill.toLowerCase())) {
+        try {
+          const bbox = path.getBBox()
+          if (bbox.width > 0 && bbox.height > 0) {
+            const isDetail = mushroomDetailColors.includes(fill.toLowerCase())
+            mushroomPaths.push({ element: path, bbox, isDetail })
+          }
+        } catch (e) {
+          // Skip if getBBox fails
+        }
+      }
+    })
+
+    // Also check for groups containing detail elements
+    const allGroups = svgRef.current.querySelectorAll("g")
+    allGroups.forEach((group) => {
+      const fill = group.getAttribute("fill")
+      if (fill && mushroomDetailColors.includes(fill.toLowerCase())) {
+        const pathsInGroup = group.querySelectorAll("path")
+        pathsInGroup.forEach((path) => {
+          try {
+            const bbox = path.getBBox()
+            if (bbox.width > 0 && bbox.height > 0) {
+              mushroomPaths.push({
+                element: path as SVGPathElement,
+                bbox,
+                isDetail: true,
+              })
+            }
+          } catch (e) {
+            // Skip if getBBox fails
+          }
+        })
+      }
+    })
+
+    // Group paths that belong to the same mushroom (by proximity)
+    const mushroomGroups: Array<SVGPathElement[]> = []
+    const usedPaths = new Set<SVGPathElement>()
+
+    // First, group main mushroom parts (caps and stems)
+    const mainMushroomPaths = mushroomPaths.filter((p) => !p.isDetail)
+
+    mainMushroomPaths.forEach(({ element, bbox }) => {
+      if (usedPaths.has(element)) return
+
+      const group: SVGPathElement[] = [element]
+      usedPaths.add(element)
+
+      // Find nearby main paths that likely belong to the same mushroom
+      const centerX = bbox.x + bbox.width / 2
+      const centerY = bbox.y + bbox.height / 2
+      const threshold = Math.max(bbox.width, bbox.height) * 1.5
+
+      mainMushroomPaths.forEach(
+        ({ element: otherElement, bbox: otherBbox }) => {
+          if (usedPaths.has(otherElement)) return
+
+          const otherCenterX = otherBbox.x + otherBbox.width / 2
+          const otherCenterY = otherBbox.y + otherBbox.height / 2
+
+          const distance = Math.sqrt(
+            Math.pow(centerX - otherCenterX, 2) +
+              Math.pow(centerY - otherCenterY, 2)
+          )
+
+          if (distance < threshold) {
+            group.push(otherElement)
+            usedPaths.add(otherElement)
+          }
+        }
+      )
+
+      // Now find nearby detail elements (white dots) for this mushroom
+      const detailPaths = mushroomPaths.filter((p) => p.isDetail)
+      detailPaths.forEach(({ element: detailElement, bbox: detailBbox }) => {
+        if (usedPaths.has(detailElement)) return
+
+        const detailCenterX = detailBbox.x + detailBbox.width / 2
+        const detailCenterY = detailBbox.y + detailBbox.height / 2
+
+        // Use a larger threshold for details since they might be scattered
+        const detailThreshold = threshold * 1.2
+
+        const distance = Math.sqrt(
+          Math.pow(centerX - detailCenterX, 2) +
+            Math.pow(centerY - detailCenterY, 2)
+        )
+
+        if (distance < detailThreshold) {
+          group.push(detailElement)
+          usedPaths.add(detailElement)
+        }
+      })
+
+      if (group.length > 0) {
+        mushroomGroups.push(group)
+      }
+    })
+
+    // Calculate Y position and size for each mushroom group
+    const mushroomGroupsWithY: Array<{
+      elements: SVGPathElement[]
+      yPos: number
+      size: number
+    }> = []
+
+    mushroomGroups.forEach((elements) => {
+      let maxY = 0
+      let minX = Infinity
+      let maxX = -Infinity
+      let minY = Infinity
+      let maxYInGroup = -Infinity
+      
+      elements.forEach((element) => {
+        try {
+          const bbox = element.getBBox()
+          const bottomY = bbox.y + bbox.height
+          maxY = Math.max(maxY, bottomY)
+          
+          // Calculate bounding box for size
+          minX = Math.min(minX, bbox.x)
+          maxX = Math.max(maxX, bbox.x + bbox.width)
+          minY = Math.min(minY, bbox.y)
+          maxYInGroup = Math.max(maxYInGroup, bbox.y + bbox.height)
+        } catch (e) {
+          // Skip if getBBox fails
+        }
+      })
+      
+      // Calculate size as the diagonal of the bounding box
+      const width = maxX - minX
+      const height = maxYInGroup - minY
+      const size = Math.sqrt(width * width + height * height)
+      
+      mushroomGroupsWithY.push({ elements, yPos: maxY, size })
+    })
+
+    // Sort mushrooms by Y position (bottom to top - higher Y values first)
+    mushroomGroupsWithY.sort((a, b) => b.yPos - a.yPos)
+
+    // Calculate size range for normalization
+    const sizes = mushroomGroupsWithY.map((m) => m.size)
+    const minSize = Math.min(...sizes)
+    const maxSize = Math.max(...sizes)
+    const sizeRange = maxSize - minSize || 1
+
+    // Set initial state: scale 0 and opacity 0 for all mushroom elements
+    mushroomGroupsWithY.forEach(({ elements }) => {
+      elements.forEach((element) => {
+        gsap.set(element, {
+          scale: 0,
+          opacity: 0,
+          transformOrigin: "center bottom",
+        })
+      })
+    })
+
+    // Animate mushrooms sequentially from bottom to top
+    const tl = gsap.timeline({ delay: 0.3 })
+    mushroomGroupsWithY.forEach(({ elements, size }, index) => {
+      // Normalize size to 0-1 range
+      const normalizedSize = (size - minSize) / sizeRange
+      
+      // Animate all parts of the mushroom together
+      tl.to(
+        elements,
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.4,
+          ease: "back.out(1.7)",
+          onComplete: () => {
+            // Start idle swaying animation immediately after this mushroom appears
+            // Bigger mushrooms sway slower (longer duration)
+            const baseDuration = 2 + normalizedSize * 2.5 // 2-4.5 seconds based on size
+            const swayDuration = baseDuration + Math.random() * 1.5 // Add random variation
+            
+            // Smaller random delay variation
+            const swayDelay = Math.random() * 0.3
+            
+            // Bigger mushrooms have less rotation (they're heavier)
+            const baseRotation = 5 - normalizedSize * 2.5 // 5 degrees for small, 2.5 for large
+            const swayRotation = (baseRotation + Math.random() * 2) * (Math.random() > 0.5 ? 1 : -1)
+            
+            // More easing variations
+            const easings = ["sine.inOut", "power1.inOut", "power2.inOut", "circ.inOut"]
+            const easeVariation = easings[Math.floor(Math.random() * easings.length)]
+            
+            gsap.to(elements, {
+              rotation: swayRotation,
+              duration: swayDuration / 2,
+              ease: easeVariation,
+              delay: swayDelay,
+              yoyo: true,
+              repeat: -1,
+              transformOrigin: "center bottom",
+            })
+          },
+        },
+        index * 0.1
+      )
+    })
+  }, [])
+
   return (
     <svg
+      ref={svgRef}
       style={style}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       data-name="Layer 1"
       viewBox="0 0 541.97 919.78"
     >
+      <defs>
+        <style>
+          {`
+            @keyframes grassWind {
+              0%, 100% {
+                transform: translateX(0) rotate(0deg);
+                transform-origin: 50% 100%;
+              }
+              25% {
+                transform: translateX(3px) rotate(1.5deg);
+                transform-origin: 50% 100%;
+              }
+              50% {
+                transform: translateX(0) rotate(0deg);
+                transform-origin: 50% 100%;
+              }
+              75% {
+                transform: translateX(-3px) rotate(-1.5deg);
+                transform-origin: 50% 100%;
+              }
+            }
+            .grass-blade {
+              animation: grassWind 4s ease-in-out infinite;
+            }
+            .grass-blade:nth-of-type(2) {
+              animation-delay: 0.8s;
+            }
+            .grass-blade:nth-of-type(3) {
+              animation-delay: 1.6s;
+              animation-duration: 4.5s;
+            }
+          `}
+        </style>
+      </defs>
       <g data-name="Layer 2">
         <g data-name="Layer 1-2">
           <image
@@ -20,6 +309,7 @@ function Icon({ style }: { style?: React.CSSProperties }) {
             opacity="0.1"
           ></image>
           <path
+            className="grass-blade"
             fill="#7cb580"
             d="M258.39 701.89c12.24-5.41 25.62-48.74 25.62-48.74l-5.17 33.92 22.44-26.57-9.88 24.84 20.6-16.26-3.6 14.09 21.42-30.77-7.09 34.6 22.46-17 7.3 35.68 14.64-48.09 8.55 51.83 9.13-16.77 6.42 24.35 14.84-46.66-1.07 60 13.81-4-80.25 82.53z"
           ></path>
@@ -32,6 +322,7 @@ function Icon({ style }: { style?: React.CSSProperties }) {
             opacity="0.1"
           ></image>
           <path
+            className="grass-blade"
             fill="#93cc99"
             d="M76.42 708.56c12.25-5.41 25.58-48.75 25.58-48.75l-5.16 33.93 22.43-26.58-9.84 24.84L130 675.75l-3.61 14.09 21.42-30.77-7 34.63 22.45-17 7.3 35.68 14.65-48.08 8.54 51.83 9.13-16.77 6.42 24.36 14.84-46.67L223 737l13.81-4-80.25 82.52z"
           ></path>
@@ -1168,6 +1459,7 @@ function Icon({ style }: { style?: React.CSSProperties }) {
             opacity="0.1"
           ></image>
           <path
+            className="grass-blade"
             fill="#b5e5bb"
             d="M13.41 712c42.36 1.72 93.29-43.19 93.29-43.19l-17.25 34.42 65.43-28.43L125 700.51l59.38-17.94-13.19 17.27L236 664.43l-30.66 43.77 72.75-27.27-17.67 31.47L341 666.75l-9 47.66 53.78-13.28 8.35 22.39L443.19 696l-.37 13.61a15.73 15.73 0 0015.27 16.18 15.32 15.32 0 002.87-.18l17.62-2.73a5.38 5.38 0 016.17 6c-4.82 35.4-37.21 190.72-233.89 190.84-188.5.18-235.14-161.49-243.63-200.31a6.11 6.11 0 016.18-7.41z"
           ></path>
